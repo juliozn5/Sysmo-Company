@@ -1,0 +1,36 @@
+Requisitos del sistema:
+
+Node: v14.15.5 o superior
+PHP: 7.3v o superior
+Composer: 2.0.4v o superior
+Laravel: 8.0 vo superior
+Laravel / UI: 3.0vo superior
+Laravel / Passport: 10.0v o superior
+
+
+1- composer install
+
+2- php artisan key:generate
+
+antes de ejecutar el siguiente comando, en package.json esta esta linea:
+
+"webpack-cli": "^3.3.5"
+
+puede que te de error al hacer el npm install asi que se quita antes de hacerlo en dado caso de error
+
+3- sudo npm install
+
+4- npm run dev
+ 
+y por ultimo 
+
+5- php artisan serve
+
+y ya estaria la template funcional
+
+Si tiene problemas con los permisos, debe ejecutar el siguiente comando en el directorio de su proyecto:
+
+sudo chmod -R o+rw bootstrap/cache
+sudo chmod -R o+rw storage
+
+para usarla solamente haga los pasos anteriores despues de copiar todos los archivos (incluyendo los archivos invisibles) a excepción del .git y lo pega en su rama main vacia, y listo, ya puede adaptar la template a lo que se necesita y ya tendria todo incluido y documentado por la mimsa template
