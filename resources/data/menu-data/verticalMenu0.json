@@ -1,0 +1,12 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "icon": "home",
+      "url": "dashboard/analytics",
+      "slug": "dashboard-analytics"
+    }
+    
+  ]
+
+}
