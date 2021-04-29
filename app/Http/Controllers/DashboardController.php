@@ -14,11 +14,19 @@ class DashboardController extends Controller
     return view('/content/dashboard/dashboard-analytics', ['pageConfigs' => $pageConfigs]);
   }
 
-  // Dashboard - Ecommerce
-  public function dashboardEcommerce()
-  {
-    $pageConfigs = ['pageHeader' => false];
+    // Home
+    public function home()
+    {
+      $pageConfigs = ['pageHeader' => false];
+  
+      return view('/content/pages/page-home', ['pageConfigs' => $pageConfigs]);
+    }
 
-    return view('/content/dashboard/dashboard-ecommerce', ['pageConfigs' => $pageConfigs]);
-  }
+  // Dashboard - Ecommerce
+  // public function dashboardEcommerce()
+  // {
+  //   $pageConfigs = ['pageHeader' => false];
+
+  //   return view('/content/dashboard/dashboard-ecommerce', ['pageConfigs' => $pageConfigs]);
+  // }
 }

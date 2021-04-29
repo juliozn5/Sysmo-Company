@@ -2,59 +2,15 @@
   "menu": [
     {
       "name": "Dashboards",
-      "badge": "2",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "home",
-      "slug": "",
-      "submenu": [
-        {
-          "url": "dashboard/analytics",
-          "name": "Analytics",
-          "icon": "circle",
-          "slug": "dashboard-analytics"
-        },
-        {
-          "url": "/",
-          "name": "eCommerce",
-          "icon": "circle",
-          "slug": "dashboard-ecommerce"
-        }
-      ]
+      "url": "/",
+      "slug": "dashboard-analytics"
     },
 
     {
-      "navheader": "Apps & Pages",
+      "navheader": " Other",
       "slug": ""
-    },
-    {
-      "url": "app/email",
-      "name": "Email",
-      "icon": "mail",
-      "slug": "app-email"
-    },
-    {
-      "url": "app/chat",
-      "name": "Chat",
-      "icon": "message-square",
-      "slug": "app-chat"
-    },
-    {
-      "url": "app/todo",
-      "name": "Todo",
-      "icon": "check-square",
-      "slug": "app-todo"
-    },
-    {
-      "url": "app/calendar",
-      "name": "Calendar",
-      "icon": "calendar",
-      "slug": "app-calendar"
-    },
-    {
-      "url": "app/kanban",
-      "name": "Kanban",
-      "icon": "grid",
-      "slug": "app-kanban"
     },
     {
       "name": "Invoice",
@@ -154,61 +110,6 @@
       "icon": "file-text",
       "slug": "",
       "submenu": [
-        {
-          "name": "Authentication",
-          "icon": "circle",
-          "slug": "",
-          "submenu": [
-            {
-              "url": "auth/login-v1",
-              "name": "Login v1",
-              "slug": "auth-login-v1",
-              "newTab": true
-            },
-            {
-              "url": "auth/login-v2",
-              "name": "Login v2",
-              "slug": "auth-login-v2",
-              "newTab": true
-            },
-            {
-              "url": "auth/register-v1",
-              "name": "Register v1",
-              "slug": "auth-register-v1",
-              "newTab": true
-            },
-            {
-              "url": "auth/register-v2",
-              "name": "Register v2",
-              "slug": "auth-register-v2",
-              "newTab": true
-            },
-            {
-              "url": "auth/forgot-password-v1",
-              "name": "Forgot Password v1",
-              "slug": "auth-forgot-password-v1",
-              "newTab": true
-            },
-            {
-              "url": "auth/forgot-password-v2",
-              "name": "Forgot Password v2",
-              "slug": "auth-forgot-password-v2",
-              "newTab": true
-            },
-            {
-              "url": "auth/reset-password-v1",
-              "name": "Reset Password v1",
-              "slug": "auth-reset-password-v1",
-              "newTab": true
-            },
-            {
-              "url": "auth/reset-password-v2",
-              "name": "Reset Password v2",
-              "slug": "auth-reset-password-v2",
-              "newTab": true
-            }
-          ]
-        },
         {
           "url": "page/account-settings",
           "name": "Account Settings",
@@ -816,63 +717,6 @@
           "slug": "chart-chartjs"
         }
       ]
-    },
-    {
-      "url": "maps/leaflet",
-      "name": "Leaflet Maps",
-      "icon": "map",
-      "slug": "map-leaflet"
-    },
-    {
-      "navheader": "Misc",
-      "slug": ""
-    },
-    {
-      "name": "Menu Levels",
-      "icon": "menu",
-      "slug": "",
-      "submenu": [
-        {
-          "name": "Second Level 2.1",
-          "icon": "circle",
-          "slug": "menu-level"
-        },
-        {
-          "name": "Second Level 2.2",
-          "icon": "circle",
-          "slug": "",
-          "submenu": [
-            {
-              "name": "Third Level 3.1",
-              "slug": "menu-level"
-            },
-            {
-              "name": "Third Level 3.2",
-              "slug": "menu-level"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Disabled Menu",
-      "icon": "eye-off",
-      "classlist": "disabled",
-      "slug": "menu-disabled"
-    },
-    {
-      "url": "https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation/documentation-laravel-folder-structure.html",
-      "name": "Documentation",
-      "icon": "folder",
-      "slug": "documentation",
-      "newTab": true
-    },
-    {
-      "url": "https://pixinvent.ticksy.com/",
-      "name": "Raise Support",
-      "icon": "life-buoy",
-      "slug": "raise-support",
-      "newTab": true
     }
   ]
 }
