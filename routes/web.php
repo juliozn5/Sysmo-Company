@@ -30,9 +30,17 @@ use App\Http\Controllers\ChartsController;
 
 // Main Page Route
 // Route::get('/', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('verified');
-Route::get('/', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce');
+Route::get('/', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics');
 
-Auth::routes(['verify' => true]);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+//Auth::routes(['verify' => true]);
 
 /* Route Dashboards */
 Route::group(['prefix' => 'dashboard'], function () {

@@ -5,11 +5,11 @@
 
   {{-- Include Sidebar --}}
   @if((isset($configData['showMenu']) && $configData['showMenu'] === true))
-  @include('panels.sidebar')
+  @include('layouts.panels.sidebar')
   @endif
 
   {{-- Include Navbar --}}
-  @include('panels.navbar')
+  @include('layouts.panels.navbar')
 
   <!-- BEGIN: Content-->
   <div class="app-content content {{ $configData['pageClass'] }}">
@@ -38,7 +38,7 @@
     <div class="content-wrapper {{ $configData['layoutWidth'] === 'boxed' ? 'container p-0' : '' }}">
       {{-- Include Breadcrumb --}}
       @if($configData['pageHeader'] === true && isset($configData['pageHeader']))
-      @include('panels.breadcrumb')
+      @include('layouts.panels.breadcrumb')
       @endif
 
       <div class="content-body">
@@ -51,20 +51,20 @@
   </div>
   <!-- End: Content-->
 
-  @if($configData['blankPage'] == false && isset($configData['blankPage']))
+  {{-- @if($configData['blankPage'] == false && isset($configData['blankPage']))
   @include('content/pages/customizer')
 
   @include('content/pages/buy-now')
-  @endif
+  @endif --}}
 
   <div class="sidenav-overlay"></div>
   <div class="drag-target"></div>
 
   {{-- include footer --}}
-  @include('panels/footer')
+  {{-- @include('panels/footer') --}}
 
   {{-- include default scripts --}}
-  @include('panels/scripts')
+  @include('layouts.panels.scripts')
 
   <script type="text/javascript">
     $(window).on('load', function() {

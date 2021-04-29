@@ -14,14 +14,6 @@ class DashboardController extends Controller
     return view('/content/dashboard/dashboard-analytics', ['pageConfigs' => $pageConfigs]);
   }
 
-    // Home
-    public function home()
-    {
-      $pageConfigs = ['pageHeader' => false];
-  
-      return view('/content/pages/page-home', ['pageConfigs' => $pageConfigs]);
-    }
-
   // Dashboard - Ecommerce
   // public function dashboardEcommerce()
   // {
