@@ -15,7 +15,7 @@ class ImpersonateController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('users.list-user')->with('msj-success','Te has logueado Exitosamente');
+        return redirect()->route('dashboard')->with('message','Te has logueado Exitosamente');
 
     }
 
@@ -24,8 +24,8 @@ class ImpersonateController extends Controller
 
         Auth::loginUsingId(session()->pull('impersonated_by'));
 
-        return redirect()->route('users.list-user')
-        ->with('msj-success','Has iniciado seccion Exitosamente');
+        return redirect()->route('dashboard')
+        ->with('message','Has iniciado seccion Exitosamente');
 
     }
 }

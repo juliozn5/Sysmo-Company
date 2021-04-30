@@ -42,7 +42,7 @@
                       <a>
                           @if (session('impersonated_by'))
                           <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
-                              <i class="feather icon-log-in"></i> Volver a mi Usuario
+                              <i class="mr-50" data-feather="power"></i> Regresar
                           </a>
                           @else
                           <form method="POST" class="pr-3 mr-3" action="{{ route('logout') }}">

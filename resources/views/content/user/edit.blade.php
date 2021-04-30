@@ -31,49 +31,62 @@
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
+                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped"
+                            data-order='[[ 1, "asc" ]]' data-page-length='10'>
                             <thead class="bg-purple-alt2">
 
                                 <tr class="text-center text-dark">
                                     <th>ID</th>
-                                    <th>Usuario</th>
+                                    <th>Perfil</th>
                                     <th>Email</th>
-                                    <th>Asunto</th>
+                                    <th>Rol</th>
                                     <th>Estado</th>
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
                                 </tr>
-
                             </thead>
 
                             <tbody>
-
-                                 @foreach ($ticket as $item)
+                                @foreach ($user as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->getUser->username}}</td>
+                                    <td>{{ $item->username}}</td>
                                     <td>{{ $item->email}}</td>
-                                    <td>{{ $item->issue}}</td>
+                                    {{-- <td>{{ $item->balance}}</td> --}}
 
-                                     @if ($item->status == '0')
-                                    <td> <a class=" badge badge-info text-white">En Espera</a></td>
-                                    @elseif($item->status == '1')
-                                    <td> <a class=" badge badge-success text-white">Solucionado</a></td>
-                                    @elseif($item->status == '2')
-                                    <td> <a class=" badge badge-warning text-white">Procesando</a></td>
-                                    @elseif($item->status == '3')
-                                    <td> <a class=" badge badge-danger text-white">Cancelada</a></td>
+                                    @if ($item->admin == '1')
+                                    <td>Administrador</td>
+                                    @else
+                                    <td>Normal</td>
                                     @endif
-                                    
+
+                                    @if ($item->status == '0')
+                                    <td> <a class=" badge badge-danger text-white">Inactivo</a></td>
+                                    @else
+                                    <td> <a class=" badge badge-success text-white">Activo</a></td>
+                                    @endif
+
                                     <td>{{ $item->created_at}}</td>
+
                                     <td>
-                                        
-                                        {{-- <a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a> --}}
-                                      
-                                        <form class="float-right ml-1" action="{{ route('ticket.destroy', $item->id) }}" method="POST">
+                                        @if(Auth::user()->id == $item->id)
+                                        <a href="{{ route('profile.show') }}"
+                                            class="btn btn-secondary text-bold-600">Editar</a>
+                                        @else
+                                        <a href="{{ route('users.edit-user',$item->id) }}"
+                                            class="btn btn-secondary text-bold-600">Editar</a>
+                                        @endif
+                                        <form class="float-right ml-1" action="{{ route('ticket.destroy', $item->id) }}"
+                                            method="POST">
                                             @csrf
                                             @method('DELETE')
-                                           <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
+
+                                        <form class="float-right ml-1" action="{{route('impersonate.start', $item)}}"
+                                            method="POST" id="formImpersonate">
+                                            @csrf
+                                            <button class="btn btn-primary">Ver</button>
                                         </form>
                                     </td>
                                 </tr>

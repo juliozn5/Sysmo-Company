@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserControler;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
@@ -22,6 +23,12 @@ Route::group(['prefix' => 'dashboard'], function () {
 
   Route::get('analytics', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics');
   Route::get('ecommerce', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('auth', 'checkrole:1');
+
+});
+
+Route::group(['prefix' => 'admin'], function () {
+
+  Route::get('user-list', [UserControler::class,'list'])->name('user.list')->middleware('auth', 'checkrole:1');
 
 });
 

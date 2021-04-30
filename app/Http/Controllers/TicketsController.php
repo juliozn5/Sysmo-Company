@@ -93,8 +93,6 @@ class TicketsController extends Controller
 
         $ticket = Ticket::where('user_id', Auth::id())->get();
 
-        View::share('titleg', 'Historial de Tickets');
-
         return view('content.tickets.componenteTickets.user.list-user')
         ->with('ticket', $ticket);
     }
@@ -153,8 +151,6 @@ class TicketsController extends Controller
     public function listAdmin(){
         
         $ticket = Ticket::all();
-
-        View::share('titleg', 'Historial de Tickets');
         
         return view('content.tickets.componenteTickets.admin.list-admin')
         ->with('ticket', $ticket);

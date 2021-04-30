@@ -22,6 +22,17 @@
       ]
     },
     {
+      "navheader": "Table",
+      "slug": ""
+    },
+    {
+      "name": "User",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "user",
+      "slug": "User",
+      "url": "admin/user-list"
+    },
+    {
       "navheader": "Soporte",
       "slug": ""
     },
