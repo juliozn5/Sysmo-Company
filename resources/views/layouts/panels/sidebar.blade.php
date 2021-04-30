@@ -31,7 +31,7 @@ $configData = Helper::applClasses();
               </g>
             </svg>
           </span>
-          <h2 class="brand-text">Vuexy-template</h2>
+          <h2 class="brand-text">Sysmo-Company</h2>
         </a>
     </ul>
   </div>

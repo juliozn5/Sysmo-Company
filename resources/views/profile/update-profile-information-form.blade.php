@@ -1,59 +1,5 @@
 <x-jet-form-section submit="updateProfileInformation">
-    <x-slot name="title">
-    </x-slot>
-
-    <x-slot name="description">
-    </x-slot>
-
     <x-slot name="form">
-
-      <div class="media">
-        <a href="javascript:void(0);" class="mr-25">
-    
-            @if (Auth::user()->profile_photo_path != NULL)
-            <img src="{{ $this->user->profile_photo_url }}" id="account-upload-img" class="rounded mr-50"
-                alt="profile image" height="80" width="80" />
-            @else
-            <img src="https://ui-avatars.com/api/?name={{ Auth::user()->username }}" id="account-upload-img"
-                class="rounded mr-50" alt="profile image" height="80" width="90" />
-            @endif
-        </a>
-        <!-- upload and reset button -->
-        <div class="media-body mt-75 ml-1">
-            <label for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>
-            <input type="file" id="account-upload" hidden accept="image/*" />
-            <button class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
-            <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
-        </div>
-        <!--/ upload and reset button -->
-    </div>
-    <!--/ header media -->
-    
-    <!-- form -->
-    <form class="validate-form mt-2">
-        <div class="row">
-            <div class="col-12 col-sm-6">
-                <div class="form-group">
-                    <label for="account-username">Username</label>
-                    <input type="text" class="form-control" id="account-username" name="username" placeholder="Username"
-                        value="johndoe" />
-                </div>
-                <div class="col-span-6 sm:col-span-4">
-                  <x-jet-label for="username" value="{{ __('username') }}" />
-                  <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username"
-                      autocomplete="username" />
-                  <x-jet-input-error for="username" class="mt-2" />
-              </div>
-            </div>
-    
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary mt-2 mr-1">Save changes</button>
-                <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
-            </div>
-        </div>
-    </form>
-
-    
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
         <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
@@ -67,7 +13,7 @@
                                   reader.readAsDataURL($refs.photo.files[0]);
                           " />
 
-            <x-jet-label for="photo" value="{{ __('Photo') }}" />
+            {{-- <x-jet-label for="photo" value="{{ __('Photo') }}" /> --}}
 
             <!-- Current Profile Photo -->
             @if (Auth::user()->profile_photo_path != NULL)
@@ -77,11 +23,10 @@
             </div>
             @else
             <div class="mt-2" x-show="! photoPreview">
-                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->username }}" alt="{{ $this->user->name }}"
+                <img src="https://ui-avatars.com/api/?background=random&name={{ Auth::user()->username }}" alt="{{ $this->user->name }}"
                     class="rounded-full h-20 w-20 object-cover">
             </div>
             @endif
-
 
             <!-- New Profile Photo Preview -->
             <div class="mt-2" x-show="photoPreview">
@@ -89,14 +34,15 @@
                     x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                 </span>
             </div>
+            <p class="mt-1">JPG, JPEG o PNG permitidos. Tamaño máximo de 1mb</p>
 
             <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                {{ __('Select A New Photo') }}
+                {{ __('Selecionar Nueva foto') }}
             </x-jet-secondary-button>
 
             @if ($this->user->profile_photo_path)
             <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                {{ __('Remove Photo') }}
+                {{ __('Revomer foto actual') }}
             </x-jet-secondary-button>
             @endif
 
@@ -122,17 +68,13 @@
 
     <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
+            {{ __('Cambios Guardados Exitosamente.') }}
         </x-jet-action-message>
 
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-jet-button>
     </x-slot>
 
-    
+
 </x-jet-form-section>
-
-
-
-

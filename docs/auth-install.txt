@@ -1,5 +1,0 @@
-https://jetstream.laravel.com/2.x/introduction.html
-
-https://www.youtube.com/watch?v=BZFavPxP2xc
-
-https://dev.to/kingsconsult/laravel-8-auth-registration-and-login-32jl

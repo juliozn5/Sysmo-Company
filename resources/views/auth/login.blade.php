@@ -1,6 +1,6 @@
 @extends('layouts/fullLayoutMaster')
 
-@section('title', 'Login Page')
+@section('title', 'Login')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -39,11 +39,12 @@
                     </g>
                   </g>
                 </svg>
-                <h2 class="brand-text text-primary ml-1">Vuexy</h2>
+                <h2 class="brand-text text-primary ml-1">Sysmo Company</h2>
               </a>
       
-              <h4 class="card-title mb-1">Welcome to Vuexy! 👋</h4>
-              <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+              <h4 class="card-title mb-1">Bienvenido a Sysmo Company! 👋</h4>
+              <p class="card-text mb-2">
+                Inicie sesion en su cuenta</p>
       
               <x-jet-validation-errors class="mb-4" />
 
@@ -61,10 +62,10 @@
       
                 <div class="form-group">
                   <div class="d-flex justify-content-between">
-                    <label for="login-password">Password</label>
+                    <label for="login-password">Contraseña</label>
                     @if (Route::has('password.request'))
                     <a href="{{ route('password.request') }}">
-                      <small>Forgot Password?</small>
+                      <small>Olvidaste la Contraseña?</small>
                     </a>
                     @endif
                   </div>
@@ -78,17 +79,17 @@
                 <div class="form-group">
                   <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" {{ old('remember-me') ? 'checked' : '' }} />
-                    <label class="custom-control-label" for="remember-me"> Remember Me </label>
+                    <label class="custom-control-label" for="remember-me">Recordar Session</label>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block" tabindex="4">Sign in</button>
+                <button type="submit" class="btn btn-primary btn-block" tabindex="4">Entrar</button>
               </form>
       
               <p class="text-center mt-2">
-                <span>New on our platform?</span>
+                <span>¿Nuevo en nuestra plataforma?</span>
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}">
-                  <span>Create an account</span>
+                  <span>Crea una cuenta</span>
                 </a>
                 @endif
               </p>

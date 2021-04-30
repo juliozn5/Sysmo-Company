@@ -29,7 +29,7 @@
                      <a class="nav-link active" id="account-pill-general" data-toggle="pill"
                          href="#account-vertical-general" aria-expanded="true">
                          <i data-feather="user" class="font-medium-3 mr-1"></i>
-                         <span class="font-weight-bold">General</span>
+                         <span class="font-weight-bold">Informacion General</span>
                      </a>
                  </li>
                  <!-- change password -->
@@ -37,7 +37,7 @@
                      <a class="nav-link" id="account-pill-password" data-toggle="pill" href="#account-vertical-password"
                          aria-expanded="false">
                          <i data-feather="lock" class="font-medium-3 mr-1"></i>
-                         <span class="font-weight-bold">Change Password</span>
+                         <span class="font-weight-bold">Cambiar Constraseña</span>
                      </a>
                  </li>
 

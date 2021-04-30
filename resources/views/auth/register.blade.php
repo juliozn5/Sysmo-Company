@@ -1,6 +1,6 @@
 @extends('layouts/fullLayoutMaster')
 
-@section('title', 'Register Page')
+@section('title', 'Register')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -38,11 +38,10 @@
               </g>
             </g>
           </svg>
-          <h2 class="brand-text text-primary ml-1">Vuexy</h2>
+          <h2 class="brand-text text-primary ml-1">Sysmo Company</h2>
         </a>
 
-        <h4 class="card-title mb-1">Adventure starts here 🚀</h4>
-        <p class="card-text mb-2">Make your app management easy and fun!</p>
+        <p class="card-text mb-2">Llena este formulario para poder iniciar sesion!</p>
         <x-jet-validation-errors class="mb-4" />
         <form class="auth-register-form mt-2" method="POST" action="{{ route('register') }}">
           @csrf

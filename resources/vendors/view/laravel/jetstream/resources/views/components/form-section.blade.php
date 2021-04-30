@@ -1,14 +1,12 @@
 @props(['submit'])
         <form wire:submit.prevent="{{ $submit }}">
-            <div {{ isset($actions) ? 'sm:rounded-tl-md sm:rounded-tr-md' : 'sm:rounded-md' }}">
-                <div>
+                <div class="mb-2">
                     {{ $form ?? '' }}
                 </div>
-            </div>
 
             @if (isset($actions))
-                <div class="flex items-center justify-end text-right sm:px-6 sm:rounded-bl-md sm:rounded-br-md">
-                    {{ $actions }}
+                <div class="flex items-center justify-end text-right">
+                {{ $actions }}
                 </div>
             @endif
         </form>
