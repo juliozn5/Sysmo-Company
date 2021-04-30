@@ -23,8 +23,8 @@
             </div>
             @else
             <div class="mt-2" x-show="! photoPreview">
-                <img src="https://ui-avatars.com/api/?background=random&name={{ Auth::user()->username }}" alt="{{ $this->user->name }}"
-                    class="rounded-full h-20 w-20 object-cover">
+                <img src="https://ui-avatars.com/api/?background=random&name={{ Auth::user()->username }}"
+                    alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
             </div>
             @endif
 
@@ -49,20 +49,38 @@
             <x-jet-input-error for="photo" class="mt-2" />
         </div>
         @endif
+        <div class="row">
+            <!-- Name -->
+            <div class="col-6 ">
+                <x-jet-label for="username" value="{{ __('username') }}" />
+                <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username"
+                    autocomplete="username" />
+                <x-jet-input-error for="username" class="mt-2" />
+            </div>
 
-        <!-- Name -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="username" value="{{ __('username') }}" />
-            <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username"
-                autocomplete="username" />
-            <x-jet-input-error for="username" class="mt-2" />
-        </div>
+            <!-- Email -->
+            <div class="col-6 ">
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+                <x-jet-input-error for="email" class="mt-2" />
+            </div>
 
-        <!-- Email -->
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
-            <x-jet-input-error for="email" class="mt-2" />
+            <!-- whatsapp -->
+            <div class="col-6 ">
+                <x-jet-label for="whatsapp" value="{{ __('whatsapp') }}" />
+                <x-jet-input id="whatsapp" type="text" class="mt-1 block w-full" wire:model.defer="state.whatsapp" />
+                <x-jet-input-error for="whatsapp" class="mt-2" />
+            </div>
+
+            <!-- Email -->
+            <div class="col-6 ">
+                <x-jet-label for="role" value="{{ __('role') }}" />
+                <select id="role" type="text" class="mt-1 block w-full" wire:model.defer="state.role" >
+
+                </select>
+                <x-jet-input-error for="role" class="mt-2" />
+            </div>
+
         </div>
     </x-slot>
 

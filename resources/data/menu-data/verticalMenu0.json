@@ -18,13 +18,13 @@
       "slug": "Tickets",
       "submenu": [
         {
-          "url": "tickets/ticket-create",
+          "url": "tickets/create",
           "name": "Crear Ticket",
           "icon": "circle",
           "slug": "create"
         },
         {
-          "url": "content/tickets/componenteTickets/user/list-user",
+          "url": "tickets/list-user",
           "name": "Lista de Tickets",
           "icon": "circle",
           "slug": "list"

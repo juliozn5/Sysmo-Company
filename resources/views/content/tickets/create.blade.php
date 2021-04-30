@@ -1,5 +1,7 @@
 @extends('layouts/contentLayoutMaster')
 
+@section('title', 'create-tickets')
+
 @section('content')
 
 <section id="basic-vertical-layouts">
@@ -12,7 +14,7 @@
                 <div class="card-content"> 
                     <div class="card-body">
                         <form action="{{route('ticket.store')}}" method="POST">
-                            @csrf
+                            @csrf 
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
@@ -51,6 +53,9 @@
                                         <button type="submit"
                                             class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Enviar
                                             Ticket</button>
+
+                                            <a href="{{ route('ticket.list-user') }}"
+                                            class="btn btn-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                     </div>
                                 </div>
                             </div>

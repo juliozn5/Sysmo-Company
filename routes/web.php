@@ -28,18 +28,18 @@ Route::group(['prefix' => 'dashboard'], function () {
 Route::prefix('tickets')->group(function(){
 
   // Para el usuario
-  Route::get('ticket-create', [TicketsController::class,'create'])->name('ticket.create');
-  Route::post('ticket-store', [TicketsController::class,'store'])->name('ticket.store');
-  Route::get('ticket-edit-user/{id}', [TicketsController::class,'editUser'])->name('ticket.edit-user');
-  Route::patch('ticket-update-user/{id}', [TicketsController::class,'updateUser'])->name('ticket.update-user');
-  Route::get('ticket-list-user', [TicketsController::class,'listUser'])->name('ticket.list-user');
-  Route::get('ticket-show-user/{id}', [TicketsController::class,'showUser'])->name('ticket.show-user');
+  Route::get('create', [TicketsController::class,'create'])->name('ticket.create');
+  Route::post('store', [TicketsController::class,'store'])->name('ticket.store');
+  Route::get('edit-user/{id}', [TicketsController::class,'editUser'])->name('ticket.edit-user');
+  Route::patch('update-user/{id}', [TicketsController::class,'updateUser'])->name('ticket.update-user');
+  Route::get('list-user', [TicketsController::class,'listUser'])->name('ticket.list-user');
+  Route::get('show-user/{id}', [TicketsController::class,'showUser'])->name('ticket.show-user');
   // Para el Admin
-  Route::get('ticket-edit-admin/{id}', [TicketsController::class,'editAdmin'])->name('ticket.edit-admin');
-  Route::patch('ticket-update-admin/{id}', [TicketsController::class,'updateAdmin'])->name('ticket.update-admin');
-  Route::get('ticket-list-admin', [TicketsController::class,'listAdmin'])->name('ticket.list-admin');
-  Route::get('ticket-show-admin/{id}', [TicketsController::class,'showAdmin'])->name('ticket.show-admin');
-  Route::delete('ticket-delete/{id}', [TicketsController::class,'destroy'])->name('ticket.destroy');
+  Route::get('edit-admin/{id}', [TicketsController::class,'editAdmin'])->name('ticket.edit-admin');
+  Route::patch('update-admin/{id}', [TicketsController::class,'updateAdmin'])->name('ticket.update-admin');
+  Route::get('list-admin', [TicketsController::class,'listAdmin'])->name('ticket.list-admin');
+  Route::get('show-admin/{id}', [TicketsController::class,'showAdmin'])->name('ticket.show-admin');
+  Route::delete('delete/{id}', [TicketsController::class,'destroy'])->name('ticket.destroy');
 
 });
 

@@ -6,14 +6,13 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
 class TicketsController extends Controller
 {
     // permite ver la vista de creacion del ticket
 
     public function create(){
 
+ 
         return view('content.tickets.create');
     }
 
@@ -36,15 +35,15 @@ class TicketsController extends Controller
             'description.required' => 'La descripción es Requerido',
         ];
 
+        
         $this->validate($request, $fields, $msj);
 
         $ticket = Ticket::create($request->all());
         $ticket->user_id = Auth::user()->id;
-        dd($ticket);
         $ticket->save();
         
 
-        return redirect()->route('content.tickets.componenteTickets.user.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
+        return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
 
     // permite editar el ticket
@@ -53,7 +52,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
 
-        return view('tickets.componenteTickets.user.edit-user')
+        return view('content.tickets.componenteTickets.user.edit-user')
         ->with('ticket', $ticket);
     }
 

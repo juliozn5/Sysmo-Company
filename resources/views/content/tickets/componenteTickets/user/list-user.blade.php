@@ -1,16 +1,40 @@
-@extends('layouts.dashboard')
+@extends('layouts/contentLayoutMaster')
+
+@section('title', 'list-tickets-user')
+
+@section('page-style')
+{{-- Page Css files --}}
+<link rel="stylesheet" type="text/css" href="{{asset('css/additional/data-tables/dataTables.min.css')}}">
+@endsection
 
 @section('content')
+
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                        <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
+                        <li class="breadcrumb-item"><a href="#">Tickets</a></li>
+                        <li class="breadcrumb-item"><a href="#">Crear Ticket</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="record">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
+                    <a href="{{ route('ticket.create')}}" class="btn btn-primary float-right mb-0 waves-effect waves-light"><i
+                        data-feather="plus-circle"></i>&nbsp; Crear Ticket</a>
                     <div class="table-responsive">
-                        <h1>Historial de Tickets</h1>
-                        <p>Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
-                        <a href="{{ route('ticket.create')}}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Crear Ticket</a>
-                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
+                        
+                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
                             <thead class="">
 
                                 <tr class="text-center text-white bg-purple-alt2">
@@ -28,7 +52,7 @@
 
                             <tbody>
 
-                                 @foreach ($ticket as $item)
+                                @foreach ($ticket as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
                                     <td>{{ $item->whatsapp}}</td>
@@ -37,21 +61,23 @@
                                     <td>{{ $item->description}}</td>
 
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">En Espera</a></td>
+                                    <td> <a class=" badge badge-info text-white">En Espera</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Solucionado</a></td>
+                                    <td> <a class=" badge badge-success text-white">Solucionado</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Procesando</a></td>
+                                    <td> <a class=" badge badge-warning text-white">Procesando</a></td>
                                     @elseif($item->status == '3')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
+                                    <td> <a class=" badge badge-danger text-white">Cancelada</a></td>
                                     @endif
 
                                     <td>{{ $item->created_at}}</td>
 
                                     @if ($item->status == '0')
-                                    <td><a href="{{ route('ticket.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
+                                    <td><a href="{{ route('ticket.edit-user',$item->id) }}"
+                                            class="btn btn-secondary text-bold-600">Editar</a></td>
                                     @else
-                                    <td><a href="{{ route('ticket.show-user',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
+                                    <td><a href="{{ route('ticket.show-user',$item->id) }}"
+                                            class="btn btn-secondary text-bold-600">Revisar</a></td>
                                     @endif
                                 </tr>
                                 @endforeach
@@ -67,6 +93,21 @@
 
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
-@include('layouts.componenteDashboard.optionDatatable')
+@section('page-script')
 
+<script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
 
+<script>
+    $(document).ready(function () {
+        $('#mytable').DataTable({
+            //dom: 'flBrtip',
+            responsive: true,
+            searching: false,
+            ordering: true,
+            paging: true,
+            select: true,
+        });
+    });
+
+</script>
+@endsection
