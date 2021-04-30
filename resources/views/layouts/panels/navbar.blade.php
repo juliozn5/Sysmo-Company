@@ -40,13 +40,19 @@
                           <i class="mr-50" data-feather="user"></i> Perfil
                       </a>
                       <a>
+                          @if (session('impersonated_by'))
+                          <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
+                              <i class="feather icon-log-in"></i> Volver a mi Usuario
+                          </a>
+                          @else
                           <form method="POST" class="pr-3 mr-3" action="{{ route('logout') }}">
                               @csrf
-                              <button class="dropdown-item pr-5 mb-0 float-start" href="{{ route('logout') }}" onclick="event.preventDefault();
-                  this.closest('form').submit();">
-                                  <i class="mr-50" data-feather="power"></i> Salir
+                              <button class="dropdown-item mb-0 float-start" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                 this.closest('form').submit();">
+                                  <i class="mr-50" data-feather="power"></i> Cerrar sesion
                               </button>
                           </form>
+                          @endif
                       </a>
                   </div>
               </li>

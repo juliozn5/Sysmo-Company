@@ -5,7 +5,33 @@
       "icon": "home",
       "url": "dashboard/analytics",
       "slug": "dashboard-analytics"
+    },
+    {
+      "navheader": "Soporte",
+      "slug": ""
+    },
+    {
+      "name": "Tickets",
+      "badge": "2",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "tag",
+      "slug": "Tickets",
+      "submenu": [
+        {
+          "url": "tickets/ticket-create",
+          "name": "Crear Ticket",
+          "icon": "circle",
+          "slug": "create"
+        },
+        {
+          "url": "content/tickets/componenteTickets/user/list-user",
+          "name": "Lista de Tickets",
+          "icon": "circle",
+          "slug": "list"
+        }
+      ]
     }
+
     
   ]
 

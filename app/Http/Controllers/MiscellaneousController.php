@@ -39,4 +39,15 @@ class MiscellaneousController extends Controller
       'pageConfigs' => $pageConfigs
     ]);
   }
+
+   // 403
+   public function errorAuthorization()
+   {
+     $pageConfigs = ['blankPage' => true];
+ 
+     return view('/content/miscellaneous/403', [
+       'pageConfigs' => $pageConfigs
+     ]);
+   }
+  
 }
