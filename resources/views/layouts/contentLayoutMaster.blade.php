@@ -31,3 +31,5 @@ $configData = Helper::applClasses();
 @extends((( $configData["mainLayoutType"] === 'horizontal') ? 'layouts.horizontalLayoutMaster' :
 'layouts.verticalLayoutMaster' ))
 @endisset
+
+

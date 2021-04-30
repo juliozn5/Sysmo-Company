@@ -43,7 +43,7 @@ class TicketsController extends Controller
         $ticket->save();
         
 
-        return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
+        return redirect()->route('ticket.list-user')->with('message', 'El Ticket se creo Exitosamente');
     }
 
     // permite editar el ticket
@@ -84,7 +84,7 @@ class TicketsController extends Controller
         $ticket->save();
         
         $route = route('ticket.list-user');
-        return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
+        return redirect($route)->with('message', 'Ticket '.$id.' Actualizado ');
     }
 
     // permite ver la lista de tickets
@@ -144,8 +144,8 @@ class TicketsController extends Controller
         $ticket->note_admin = $request->note_admin;
         $ticket->save();
         
-        $route = route('content.tickets.componenteTickets.admin.list-admin');
-        return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
+        $route = route('ticket.list-admin');
+        return redirect($route)->with('message', 'Ticket '.$id.' Actualizado ');
     }
 
     // permite ver la lista de tickets
@@ -179,7 +179,7 @@ class TicketsController extends Controller
     
     $ticket->delete();
     
-    return redirect()->route('content.tickets.componenteTickets.admin.list-admin')->with('msj-success', 'Ticket '.$id.' Eliminado');
+    return redirect()->route('ticket.list-admin')->with('message', 'Ticket '.$id.' Eliminado');
   }
 
 

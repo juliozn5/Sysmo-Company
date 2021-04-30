@@ -33,3 +33,6 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+{{-- additional --}}
+<link rel="stylesheet" href="{{ asset('css/additional/toastr/toastr.min.css') }}">

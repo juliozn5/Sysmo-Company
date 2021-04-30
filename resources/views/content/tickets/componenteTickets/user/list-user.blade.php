@@ -17,7 +17,7 @@
                     <ol class="breadcrumb">
                         <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
                         <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-                        <li class="breadcrumb-item"><a href="#">Crear Ticket</a></li>
+                        <li class="breadcrumb-item"><a href="#">Lista de Ticket</a></li>
                     </ol>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
                             <thead class="">
 
-                                <tr class="text-center text-white bg-purple-alt2">
+                                <tr class="text-center text-dark">
                                     <th>ID</th>
                                     <th>Whatsapp</th>
                                     <th>Email</th>

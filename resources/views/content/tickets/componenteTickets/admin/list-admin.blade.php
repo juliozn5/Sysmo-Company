@@ -1,6 +1,29 @@
-@extends('layouts.dashboard')
+@extends('layouts/contentLayoutMaster')
+
+@section('title', 'list-tickets-user')
+
+@section('page-style')
+{{-- Page Css files --}}
+<link rel="stylesheet" type="text/css" href="{{asset('css/additional/data-tables/dataTables.min.css')}}">
+@endsection
 
 @section('content')
+
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                        <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
+                        <li class="breadcrumb-item"><a href="#">Tickets</a></li>
+                        <li class="breadcrumb-item"><a href="#">Lista de Ticket</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="record">
     <div class="col-12">
@@ -8,12 +31,10 @@
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <h1>Historial de Tickets</h1>
-                        <p>Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
-                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
-                            <thead class="">
+                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
+                            <thead class="bg-purple-alt2">
 
-                                <tr class="text-center text-white bg-purple-alt2">
+                                <tr class="text-center text-dark">
                                     <th>ID</th>
                                     <th>Usuario</th>
                                     <th>Email</th>
@@ -30,33 +51,33 @@
                                  @foreach ($ticket as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->getUser->fullname}}</td>
+                                    <td>{{ $item->getUser->username}}</td>
                                     <td>{{ $item->email}}</td>
                                     <td>{{ $item->issue}}</td>
 
-                                    @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">En Espera</a></td>
+                                     @if ($item->status == '0')
+                                    <td> <a class=" badge badge-info text-white">En Espera</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Solucionado</a></td>
+                                    <td> <a class=" badge badge-success text-white">Solucionado</a></td>
                                     @elseif($item->status == '2')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Procesando</a></td>
+                                    <td> <a class=" badge badge-warning text-white">Procesando</a></td>
                                     @elseif($item->status == '3')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cancelada</a></td>
+                                    <td> <a class=" badge badge-danger text-white">Cancelada</a></td>
                                     @endif
                                     
                                     <td>{{ $item->created_at}}</td>
-                                    <td><a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a>
-                                        <button type="submit" class="btn btn-danger">
-                                            <form action="{{route('ticket.destroy', $item->id)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                            <i class="fa fa-trash"></i>
-                                        </button>
+                                    <td>
+                                        
+                                        <a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a>
+                                      
+                                        <form class="float-right ml-1" action="{{ route('ticket.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                           <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -67,6 +88,21 @@
 
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
-@include('layouts.componenteDashboard.optionDatatable')
+@section('page-script')
 
+<script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
 
+<script>
+    $(document).ready(function () {
+        $('#mytable').DataTable({
+            dom: 'flBrtip',
+            responsive: true,
+            searching: false,
+            ordering: true,
+            paging: true,
+            select: true,
+        });
+    });
+
+</script>
+@endsection

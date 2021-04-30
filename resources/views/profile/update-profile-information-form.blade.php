@@ -51,7 +51,7 @@
         @endif
         <div class="row">
             <!-- Name -->
-            <div class="col-6 ">
+            <div class="col-6 mb-2 ">
                 <x-jet-label for="username" value="{{ __('username') }}" />
                 <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username"
                     autocomplete="username" />
@@ -59,24 +59,31 @@
             </div>
 
             <!-- Email -->
-            <div class="col-6 ">
+            <div class="col-6 mb-2 ">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
                 <x-jet-input-error for="email" class="mt-2" />
             </div>
 
             <!-- whatsapp -->
-            <div class="col-6 ">
+            <div class="col-6 mb-2 ">
                 <x-jet-label for="whatsapp" value="{{ __('whatsapp') }}" />
                 <x-jet-input id="whatsapp" type="text" class="mt-1 block w-full" wire:model.defer="state.whatsapp" />
                 <x-jet-input-error for="whatsapp" class="mt-2" />
             </div>
 
-            <!-- Email -->
-            <div class="col-6 ">
+            <!-- role -->
+            <div class="col-6 mb-2 ">
                 <x-jet-label for="role" value="{{ __('role') }}" />
                 <select id="role" type="text" class="mt-1 block w-full" wire:model.defer="state.role" >
+                @if ( Auth::user()->role == 0 )
+                <option value="{{ Auth::user()->role }}">Normal</option>
+                <option class="text-danger text-bold-600" value="1">Administrador</option>
 
+                @elseif ( Auth::user()->role == 1 )
+                <option class="text-danger text-bold-600" value="{{ Auth::user()->role }}">Administrador</option>
+                <option value="0">Normal</option>
+                @endif
                 </select>
                 <x-jet-input-error for="role" class="mt-2" />
             </div>

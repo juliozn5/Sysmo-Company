@@ -74,6 +74,9 @@
                                     <div class="col-12">
                                         <button type="submit"
                                             class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar Ticket</button>
+
+                                            <a href="{{ route('ticket.list-user') }}"
+                                            class="btn btn-danger mr-1 mb-1 waves-effect waves-light">Cancelar</a>
                                     </div>
                                 </div>
                             </div>

@@ -21,71 +21,16 @@
         }
       ]
     },
-
     {
-      "navheader": "Apps & Pages",
+      "navheader": "Soporte",
       "slug": ""
     },
     {
-      "url": "app/email",
-      "name": "Email",
-      "icon": "mail",
-      "slug": "app-email"
-    },
-    {
-      "url": "app/chat",
-      "name": "Chat",
-      "icon": "message-square",
-      "slug": "app-chat"
-    },
-    {
-      "url": "app/todo",
-      "name": "Todo",
-      "icon": "check-square",
-      "slug": "app-todo"
-    },
-    {
-      "url": "app/calendar",
-      "name": "Calendar",
-      "icon": "calendar",
-      "slug": "app-calendar"
-    },
-    {
-      "url": "app/kanban",
-      "name": "Kanban",
-      "icon": "grid",
-      "slug": "app-kanban"
-    },
-    {
-      "name": "Invoice",
-      "icon": "file-text",
-      "slug": "",
-      "submenu": [
-        {
-          "url": "app/invoice/list",
-          "name": "List",
-          "icon": "circle",
-          "slug": "app-invoice-list"
-        },
-        {
-          "url": "app/invoice/preview",
-          "name": "Preview",
-          "icon": "circle",
-          "slug": "app-invoice-preview"
-        },
-        {
-          "url": "app/invoice/edit",
-          "name": "Edit",
-          "icon": "circle",
-          "slug": "app-invoice-edit"
-        },
-        {
-          "url": "app/invoice/add",
-          "name": "Add",
-          "icon": "circle",
-          "slug": "app-invoice-add"
-        }
-      ]
+      "name": "Tickets",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "tag",
+      "slug": "Tickets",
+      "url": "tickets/list-admin"
     }
   ]
 }
