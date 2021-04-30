@@ -2,14 +2,14 @@
       class="header-navbar navbar navbar-expand-lg align-items-center {{ $configData['navbarClass'] }} navbar-light navbar-shadow {{ $configData['navbarColor'] }}">
       <div class="navbar-container d-flex content">
           <ul class="nav navbar-nav align-items-center ml-auto">
-              <li class="nav-item d-none d-lg-block">BALANCE</a></li>
+              {{-- <li class="nav-item d-none d-lg-block">BALANCE</a></li> --}}
               <li class="nav-item dropdown dropdown-user">
                   <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="user-nav d-sm-flex d-none">
                           <span class="user-name font-weight-bolder">{{ Auth::user()->username }}</span>
                           @if (Auth::user()->role == 1)
-                          <h5 class="user-status">Administrador</h5>
+                          <h5 class="user-status badge badge-primary">Administrador</h5>
                           @endif
                       </div>
                       <span class="avatar">
@@ -24,7 +24,7 @@
                           <button
                               class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                               <img class="h-12 w-12 rounded-full object-cover"
-                                  src="https://ui-avatars.com/api/?name={{ Auth::user()->username }}"
+                                  src="https://ui-avatars.com/api/?background=random&name={{ Auth::user()->username }}"
                                   alt="{{ Auth::user()->username }}" />
                           </button>
                           @endif

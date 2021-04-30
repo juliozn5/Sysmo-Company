@@ -8284,7 +8284,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=bootstrap.js.map
 
 
 /***/ }),
