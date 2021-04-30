@@ -17,9 +17,7 @@
     <div class="header-navbar-shadow"></div>
 
     <div class="content-wrapper">
-      {{-- Include Breadcrumb --}}
-      @if($configData['pageHeader'] == true) @include('panels.breadcrumb') @endif
-
+    
       <div class="{{ $configData['contentsidebarClass'] }}">
         <div class="content-body">
           {{-- Include Page Content --}}
@@ -41,9 +39,6 @@
 
   <div class="sidenav-overlay"></div>
   <div class="drag-target"></div>
-
-  {{-- include footer --}}
-  @include('panels/footer')
 
   {{-- include default scripts --}}
   @include('panels/scripts')

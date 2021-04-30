@@ -112,11 +112,12 @@
 
           <div class="form-group">
             <div class="custom-control custom-checkbox">
-              <input class="custom-control-input" type="checkbox" id="register-privacy-policy" tabindex="4" />
+              <input class="custom-control-input" type="checkbox" id="register-privacy-policy" required tabindex="4" />
               <label class="custom-control-label" for="register-privacy-policy">
-                I agree to <a href="#terms">privacy policy & terms</a>
+                I agree to <a href="#terms" class="text-danger">privacy policy & terms</a>
               </label>
             </div>
+     
           </div>
           <button type="submit" class="btn btn-primary btn-block" tabindex="5">Sign up</button>
         </form>

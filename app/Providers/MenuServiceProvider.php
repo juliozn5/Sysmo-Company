@@ -27,7 +27,7 @@ class MenuServiceProvider extends ServiceProvider
         // get all data from menu.json file
         $verticalMenuJson0 = file_get_contents(base_path('resources/data/menu-data/verticalMenu0.json'));
         $verticalMenuData0 = json_decode($verticalMenuJson0);
-        $verticalMenuJson1 = file_get_contents(base_path('resources/data/menu-data/horizontalMenu.json'));
+        $verticalMenuJson1 = file_get_contents(base_path('resources/data/menu-data/verticalMenu1.json'));
         $verticalMenuData1 = json_decode($verticalMenuJson1);
 
          // Share all menuData to all the views

@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->double('wallet_id')->default(0);
             $table->double('balance')->default(0);
             $table->bigInteger('referred_id')->default(1);
-            $table->text('profile_photo')->nullable();
+            $table->text('profile_photo_path')->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
