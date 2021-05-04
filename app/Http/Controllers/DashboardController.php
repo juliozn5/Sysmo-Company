@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+
+   // Dashboard - Analytics user
+   public function dashboardAnalyticsUser()
+   {
+     $pageConfigs = ['pageHeader' => false];
+ 
+     return view('content.dashboard.dashboard-analytics-user', ['pageConfigs' => $pageConfigs]);
+   }
+
   // Dashboard - Analytics
   public function dashboardAnalytics()
   {

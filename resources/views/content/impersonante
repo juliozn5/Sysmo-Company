@@ -1,6 +1,0 @@
-<form action="{{route('impersonate.start', $item)}}" method="POST" class="btn" id="formImpersonate">
-                                        @csrf
-                                    <button class="btn btn-primary">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-                                     </form>

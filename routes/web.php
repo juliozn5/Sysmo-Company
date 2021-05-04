@@ -21,7 +21,8 @@ Route::group(['middleware'=>['auth']], function() {
 /* Route Dashboards */
 Route::group(['prefix' => 'dashboard'], function () {
 
-  Route::get('analytics', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics');
+  Route::get('analytics-user', [DashboardController::class,'dashboardAnalyticsUser'])->name('dashboard-analytics');
+  Route::get('analytics', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics')->middleware('auth', 'checkrole:1');
   Route::get('ecommerce', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('auth', 'checkrole:1');
 
 });

@@ -54,7 +54,7 @@
                                     <td>{{ $item->email}}</td>
                                     {{-- <td>{{ $item->balance}}</td> --}}
 
-                                    @if ($item->admin == '1')
+                                    @if ($item->role == '1')
                                     <td>Administrador</td>
                                     @else
                                     <td>Normal</td>
@@ -69,25 +69,26 @@
                                     <td>{{ $item->created_at}}</td>
 
                                     <td>
-                                        {{-- @if(Auth::user()->id == $item->id)
+                                        @if(Auth::user()->id == $item->id)
                                         <a href="{{ route('profile.show') }}"
                                             class="btn btn-secondary text-bold-600">Editar</a>
                                         @else
-                                        <a href="{{ route('users.edit-user',$item->id) }}"
+                                        {{-- <a href="{{ route('users.edit-user',$item->id) }}"
                                             class="btn btn-secondary text-bold-600">Editar</a>
-                                        @endif --}}
-                                        <form class="float-right ml-1" action="{{ route('ticket.destroy', $item->id) }}"
+                                             --}}
+                                        {{-- <form class="float-right ml-1" action="{{ route('user.destroy', $item->id) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
+                                        </form> --}}
 
                                         <form class="float-right ml-1" action="{{route('impersonate.start', $item)}}"
                                             method="POST" id="formImpersonate">
                                             @csrf
                                             <button class="btn btn-primary">Ver</button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
