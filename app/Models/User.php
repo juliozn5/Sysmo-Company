@@ -66,4 +66,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    public function getDescriptionAttribute()
+    {
+        return $this->display_name;
+    }
+
+    public function children()
+    {
+        return $this->hasMany(User::class, 'referred_id', 'id');
+    }
+
 }

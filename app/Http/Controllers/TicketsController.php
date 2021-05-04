@@ -109,7 +109,6 @@ class TicketsController extends Controller
 
 
 
-
     // permite editar el ticket
 
     public function editAdmin($id){
@@ -167,7 +166,7 @@ class TicketsController extends Controller
     }
 
 
-  // permite eliminar una orden
+  // permite eliminar una ticket
     
   public function destroy($id)
   {
@@ -177,66 +176,5 @@ class TicketsController extends Controller
     
     return redirect()->route('ticket.list-admin')->with('message', 'Ticket '.$id.' Eliminado');
   }
-
-
-    // /**
-    //  * Permite obtener la cantidad de Tickets que tiene un usuario
-    //  *
-    //  * @param integer $user_id
-    //  * @return integer
-    //  */
-    // public function getTotalTickets($user_id): int
-    // {
-    //     try {
-    //         $Tickets = Ticket::where('user_id', $user_id)->get()->count('id');
-    //         if ($user_id == 1) {
-    //             $Tickets = Ticket::all()->count('id');
-    //         }
-    //         return $Tickets;
-    //     } catch (\Throwable $th) {
-    //         dd($th);
-    //     }
-    // }
-
-    // /**
-    //  * Permite obtener el total de Tickets por meses
-    //  *
-    //  * @param integer $user_id
-    //  * @return array
-    //  */
-    // public function getDataGraphiTickets($user_id): array
-    // {
-    //     try {
-    //         $totalTickets = [];
-    //         if (Auth::user()->admin == 1) {
-    //             $Tickets = Ticket::select(DB::raw('COUNT(id) as Tickets'))
-    //                             ->where([
-    //                                 ['status', '>=', 0]
-    //                             ])
-    //                             ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
-    //                             ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
-    //                             ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
-    //                             ->take(6)
-    //                             ->get();
-    //         }else{
-    //             $Tickets = Ticket::select(DB::raw('COUNT(id) as Tickets'))
-    //                             ->where([
-    //                                 ['user_id', '=',  $user_id],
-    //                                 ['status', '>=', 0]
-    //                             ])
-    //                             ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
-    //                             ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
-    //                             ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
-    //                             ->take(6)
-    //                             ->get();
-    //         }
-    //         foreach ($Tickets as $ticket) {
-    //             $totalTickets [] = $ticket->Tickets;
-    //         }
-    //         return $totalTickets;
-    //     } catch (\Throwable $th) {
-    //         dd($th);
-    //     }
-    // }
 
 }

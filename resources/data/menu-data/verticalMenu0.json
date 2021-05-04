@@ -7,6 +7,37 @@
       "slug": "dashboard-analytics"
     },
     {
+      "navheader": "Sistema de Referidos",
+      "slug": ""
+    },
+    {
+      "name": "Referidos",
+      "badge": "3",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "users",
+      "slug": "Referidos",
+      "submenu": [
+        {
+          "url": "user/referred/tree/tree",
+          "name": "Arbol de Referidos",
+          "icon": "circle",
+          "slug": "Arbol"
+        },
+        {
+          "url": "user/referred/list-direct",
+          "name": "Referidos Directos",
+          "icon": "circle",
+          "slug": "list"
+        },
+        {
+          "url": "user/referred/list-net",
+          "name": "Referidos en Red",
+          "icon": "circle",
+          "slug": "list"
+        }
+      ]
+    },
+    {
       "navheader": "Soporte",
       "slug": ""
     },
@@ -18,13 +49,13 @@
       "slug": "Tickets",
       "submenu": [
         {
-          "url": "tickets/create",
+          "url": "user/tickets/create",
           "name": "Crear Ticket",
           "icon": "circle",
           "slug": "create"
         },
         {
-          "url": "tickets/list-user",
+          "url": "user/tickets/list",
           "name": "Lista de Tickets",
           "icon": "circle",
           "slug": "list"

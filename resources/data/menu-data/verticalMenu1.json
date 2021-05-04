@@ -8,13 +8,13 @@
       "slug": "",
       "submenu": [
         {
-          "url": "dashboard/analytics",
+          "url": "admin/dashboard/analytics",
           "name": "Analytics",
           "icon": "circle",
           "slug": "dashboard-analytics"
         },
         {
-          "url": "dashboard/ecommerce",
+          "url": "admin/dashboard/ecommerce",
           "name": "eCommerce",
           "icon": "circle",
           "slug": "dashboard-ecommerce"
@@ -30,7 +30,7 @@
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "user",
       "slug": "User",
-      "url": "admin/user-list"
+      "url": "admin/users/user-list"
     },
     {
       "navheader": "Soporte",
@@ -41,7 +41,7 @@
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "tag",
       "slug": "Tickets",
-      "url": "tickets/list-admin"
+      "url": "admin/tickets/list-admin"
     }
   ]
 }

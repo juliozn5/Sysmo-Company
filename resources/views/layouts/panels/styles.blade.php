@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{{ asset('css/base/core/menu/menu-types/horizontal-menu.css') }}" />
 @endif
 <link rel="stylesheet" href="{{ asset('css/base/core/menu/menu-types/vertical-menu.css') }}" />
-<!-- <link rel="stylesheet" href="{{ asset('css/base/core/colors/palette-gradient.css') }}"> -->
+{{-- <link rel="stylesheet" href="{{ asset('css/base/core/colors/palette-gradient.css') }}"> --}}
 
 {{-- Page Styles --}}
 @yield('page-style')
@@ -32,7 +32,10 @@
 {{-- user custom styles --}}
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
+
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/tree.css') }}" />
+
 
 {{-- additional --}}
 <link rel="stylesheet" href="{{ asset('css/additional/toastr/toastr.min.css') }}">
