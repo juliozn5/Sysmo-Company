@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'list-tickets-user')
+@section('title', 'referred-list')
 
 @section('page-style')
 {{-- Page Css files --}}

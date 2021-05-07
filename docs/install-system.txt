@@ -1,0 +1,36 @@
+Instalacion del Sistema: Sysmo Company
+
+Requisitos:
+
+Node: v14.15.5 o mayor (no importante)
+PHP: 7.3v o mayor
+Composer: 2.0.4v o mayor
+Laravel: 8.0v o mayor
+Laravel/UI: 3.0v o mayor
+Laravel/Passport: 10.0v o mayor
+
+///////////////////////////////////////////////
+
+Paso #1 Instalar composer
+
+composer install
+
+Paso #2 Hacer la migracion
+
+php artisan migrate
+
+Paso #3 Probar Sistema
+
+php artisan server
+
+paso #4 configurar Auth
+
+en la carpeta resources/backup/vendors/view/laravel
+
+hay una carpeta que se llama "jetstream"
+
+dentro de ella esta las configuraciones del sistema de Auth
+lo que se debe de hacer es copiar la carpeta "jetstream" y
+pergarla en la carpeta laravel dentro del vendor original del proyecto
+no sin antes borrar la carpeta "jetstream" que ya esta ahi
+despues de copiarla, vuelve a correr el proyecto y listo

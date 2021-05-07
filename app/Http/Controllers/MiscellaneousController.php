@@ -11,7 +11,7 @@ class MiscellaneousController extends Controller
   {
     $pageConfigs = ['blankPage' => true];
 
-    return view('/content/miscellaneous/page-coming-soon', ['pageConfigs' => $pageConfigs]);
+    return view('.content.miscellaneous.page-coming-soon', ['pageConfigs' => $pageConfigs]);
   }
 
   // Error
@@ -19,7 +19,7 @@ class MiscellaneousController extends Controller
   {
     $pageConfigs = ['blankPage' => true];
 
-    return view('/content/miscellaneous/error', ['pageConfigs' => $pageConfigs]);
+    return view('.content.miscellaneous.error', ['pageConfigs' => $pageConfigs]);
   }
 
   // Not-authorized
@@ -27,7 +27,7 @@ class MiscellaneousController extends Controller
   {
     $pageConfigs = ['blankPage' => true];
 
-    return view('/content/miscellaneous/page-not-authorized', ['pageConfigs' => $pageConfigs]);
+    return view('.content.miscellaneous.page-not-authorized', ['pageConfigs' => $pageConfigs]);
   }
 
   // Maintenance
@@ -35,7 +35,7 @@ class MiscellaneousController extends Controller
   {
     $pageConfigs = ['blankPage' => true];
 
-    return view('/content/miscellaneous/page-maintenance', [
+    return view('.content.miscellaneous.page-maintenance', [
       'pageConfigs' => $pageConfigs
     ]);
   }
@@ -45,7 +45,7 @@ class MiscellaneousController extends Controller
    {
      $pageConfigs = ['blankPage' => true];
  
-     return view('/content/miscellaneous/403', [
+     return view('.content.miscellaneous.403', [
        'pageConfigs' => $pageConfigs
      ]);
    }

@@ -1,5 +1,5 @@
 @if (Auth::user()->role == 0)
-@include('content.dashboard.dashboard-analytics-user')
+@include('content.dashboard.user.dashboard-analytics')
 @else
-@include('content.dashboard.dashboard-analytics')
+@include('content.dashboard.admin.dashboard-analytics')
 @endif

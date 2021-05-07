@@ -1,0 +1,72 @@
+{
+  "menu": [
+    {
+      "name": "Dashboards",
+      "badge": "2",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "home",
+      "slug": "",
+      "submenu": [
+        {
+          "url": "/",
+          "name": "Analytics",
+          "icon": "circle",
+          "slug": "dashboard-analytics"
+        },
+        {
+          "url": "admin/dashboard/ecommerce",
+          "name": "eCommerce",
+          "icon": "circle",
+          "slug": "dashboard-ecommerce"
+        }
+      ]
+    },
+    {
+      "navheader": "Sistema de Tienda",
+      "slug": ""
+    },
+    {
+      "name": "Tienda",
+      "badge": "2",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "shopping-bag",
+      "slug": "Referidos",
+      "submenu": [
+        {
+          "url": "user/store/store",
+          "name": "Tienda",
+          "icon": "circle",
+          "slug": "Tienda"
+        },
+        {
+          "url": "admin/store/list-admin",
+          "name": "Lista de Productos",
+          "icon": "circle",
+          "slug": "Lista de Productos"
+        }
+      ]
+    },
+    {
+      "navheader": "Table",
+      "slug": ""
+    },
+    {
+      "name": "User",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "user",
+      "slug": "User",
+      "url": "admin/users/user-list"
+    },
+    {
+      "navheader": "Soporte",
+      "slug": ""
+    },
+    {
+      "name": "Tickets",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "tag",
+      "slug": "Tickets",
+      "url": "admin/tickets/list-admin"
+    }
+  ]
+}

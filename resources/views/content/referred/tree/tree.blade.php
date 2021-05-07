@@ -1,5 +1,7 @@
 @extends('layouts/contentLayoutMaster')
 
+@section('title', 'tree')
+
 @section('content')
 <div class="col-12 text-center">
     <div class="padre">

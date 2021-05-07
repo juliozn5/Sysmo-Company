@@ -7,6 +7,16 @@
 <link rel="stylesheet" href="{{ asset('css/base/pages/page-auth.css') }}">
 @endsection
 
+@php $referred = null; @endphp
+@if ( request()->referred_id != null )
+    @php
+        $referred = DB::table('users')
+            ->select('username','id')
+            ->where('id', '=', request()->referred_id)
+            ->first();
+    @endphp
+@endif
+
 @section('content')
 <x-guest-layout>
     <div class="auth-wrapper auth-v1 px-2">
@@ -53,8 +63,11 @@
                         <h2 class="brand-text text-primary ml-1">Sysmo Company</h2>
                     </a>
 
-                    <p class="card-text mb-2">Llena este formulario para poder iniciar sesion!</p>
+                    <p class="card-text mb-2 text-center">Llena este formulario para poder iniciar sesion!</p>
                     <x-jet-validation-errors class="mb-4" />
+                    @if ($referred != null)
+                    <p class="card-text mb-2 text-center">Has sido invitado por: <span class="text-primary font-weight-bold">{{ $referred->username }}</span></p>
+                    @endif
                     <form class="auth-register-form mt-2" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row">
@@ -63,7 +76,7 @@
                                 <input type="text" class="form-control @error('firstname') is-invalid @enderror"
                                     id="register-firstname" name="firstname" placeholder="William"
                                     aria-describedby="register-firstname" tabindex="1" autofocus
-                                    value="{{ old('firstname') }}" />
+                                    value="{{ old('firstname') }}" required />
                                 @error('firstname')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -75,20 +88,41 @@
                                 <input type="text" class="form-control @error('lastname') is-invalid @enderror"
                                     id="register-lastname" name="lastname" placeholder="Ache"
                                     aria-describedby="register-lastname" tabindex="1" autofocus
-                                    value="{{ old('lastname') }}" />
+                                    value="{{ old('lastname') }}" required />
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group col-12">
+                            <div class="form-group col-6">
                                 <label for="register-username" class="form-label">Nombre de Usuario</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="register-username" name="username" placeholder="Willi 28 ache"
+                                    id="register-username" name="username" placeholder="Willi28ache"
                                     aria-describedby="register-username" tabindex="1" autofocus
-                                    value="{{ old('username') }}" />
+                                    value="{{ old('username') }}" required />
                                 @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="register-referred_id" class="form-label">ID del Referido</label>
+                                @if ($referred != null)
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="register-referred_id" name="referred_id" placeholder="{{ $referred->username }}"
+                                aria-describedby="register-referred_id" tabindex="1" autofocus
+                                value="{{ $referred->id }}" readonly/>
+
+                                @else
+
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="register-referred_id" name="referred_id" placeholder="Sin referido"
+                                aria-describedby="register-referred_id" tabindex="1" autofocus
+                                value="{{ old('referred_id') }}" readonly/>
+                                @endif
+                                @error('referred_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -98,8 +132,20 @@
                                 <label for="register-email" class="form-label">Correo</label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror"
                                     id="register-email" name="email" placeholder="william@example.com"
-                                    aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" />
-                                @error('name')
+                                    aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" required />
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group col-12">
+                                <label for="register-email" class="form-label">Confirmar Correo</label>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                    id="register-email" name="email" placeholder="william@example.com"
+                                    aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" required />
+                                @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -115,7 +161,7 @@
                                         class="form-control form-control-merge @error('password') is-invalid @enderror"
                                         id="register-password" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="register-password" tabindex="3" />
+                                        aria-describedby="register-password" tabindex="3" required />
                                     <div class="input-group-append">
                                         <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                     </div>

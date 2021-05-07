@@ -194,4 +194,9 @@ return [
   "Arbol de Referidos" => "Arbol de Referidos",
   "Referidos Directos" => "Referidos Directos",
   "Referidos en Red" => "Referidos en Red",
+
+  "Sistema de Tienda" => "Sistema de Tienda",
+  "Tienda" => "Tienda",
+  "Lista de Productos" => "Lista de Productos",
+
 ];

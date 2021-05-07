@@ -13,7 +13,7 @@ class TicketsController extends Controller
     public function create(){
 
  
-        return view('content.tickets.create');
+        return view('content.tickets.user.create');
     }
 
     // permite la creacion del ticket
@@ -52,7 +52,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
 
-        return view('content.tickets.componenteTickets.user.edit-user')
+        return view('content.tickets.user.edit-user')
         ->with('ticket', $ticket);
     }
 
@@ -93,7 +93,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::where('user_id', Auth::id())->get();
 
-        return view('content.tickets.componenteTickets.user.list-user')
+        return view('content.tickets.user.list-user')
         ->with('ticket', $ticket);
     }
 
@@ -103,7 +103,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
 
-        return view('content.tickets.componenteTickets.user.show-user')
+        return view('content.tickets.user.show-user')
         ->with('ticket', $ticket);
     }
 
@@ -115,7 +115,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
 
-        return view('content.tickets.componenteTickets.admin.edit-admin')
+        return view('content.tickets.admin.edit-admin')
         ->with('ticket', $ticket);
     }
 
@@ -151,7 +151,7 @@ class TicketsController extends Controller
         
         $ticket = Ticket::all();
         
-        return view('content.tickets.componenteTickets.admin.list-admin')
+        return view('content.tickets.admin.list-admin')
         ->with('ticket', $ticket);
     }
 
@@ -161,7 +161,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
 
-        return view('content.tickets.componenteTickets.admin.show-admin')
+        return view('content.tickets.admin.show-admin')
         ->with('ticket', $ticket);
     }
 

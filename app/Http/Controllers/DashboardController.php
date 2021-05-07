@@ -12,7 +12,7 @@ class DashboardController extends Controller
    {
      $pageConfigs = ['pageHeader' => false];
  
-     return view('content.dashboard.dashboard-analytics-user', ['pageConfigs' => $pageConfigs]);
+     return view('content.dashboard.user.dashboard-analytics', ['pageConfigs' => $pageConfigs]);
    }
 
   // Dashboard - Analytics
@@ -20,7 +20,7 @@ class DashboardController extends Controller
   {
     $pageConfigs = ['pageHeader' => false];
 
-    return view('/content/dashboard/dashboard-analytics', ['pageConfigs' => $pageConfigs]);
+    return view('.content.dashboard.admin.dashboard-analytics', ['pageConfigs' => $pageConfigs]);
   }
 
   // Dashboard - Ecommerce
@@ -28,6 +28,6 @@ class DashboardController extends Controller
   {
     $pageConfigs = ['pageHeader' => false];
     
-    return view('/content/dashboard/dashboard-ecommerce', ['pageConfigs' => $pageConfigs]);
+    return view('.content.dashboard.admin.dashboard-ecommerce', ['pageConfigs' => $pageConfigs]);
   }
 }

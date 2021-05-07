@@ -8,6 +8,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImpersonateController;
 use App\Http\Controllers\MiscellaneousController;
+use App\Http\Controllers\ProductWarehouseController;
 
 // Main Page Route
 Route::get('/', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics')->middleware('verified');
@@ -24,16 +25,22 @@ Route::group(['prefix' => 'user'], function () {
 
   // home user
   Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('analytics', [DashboardController::class,'dashboardAnalyticsUser'])->name('dashboard-analytics');
+    Route::get('/', [DashboardController::class,'dashboardAnalyticsUser'])->name('dashboard-analytics-user');
   });
  
+   // store user
+   Route::prefix('store')->group(function(){
+    Route::get('store', [ProductWarehouseController::class,'index'])->name('store.index');
+    Route::post('store/save', [ProductWarehouseController::class,'saveOrden'])->name('store.save');
+    Route::get('list-user', [ProductWarehouseController::class,'listUser'])->name('store.list-user');
+    Route::get('show/{id}', [ProductWarehouseController::class,'showUser'])->name('store.show');
+  });
+
   // referred user
   Route::group(['prefix' => 'referred'], function () {
 
     Route::get('tree/{type}', [ReferredController::class,'index'])->name('tree_type');
     Route::get('{type}/{id}', [ReferredController::class,'moretree'])->name('tree_type_id');
-
-    Route::get('tree', [ReferredController::class,'index'])->name('referred.tree');
     Route::get('list-direct', [ReferredController::class,'listDirect'])->name('referred.list.direct');
     Route::get('list-net', [ReferredController::class,'listNet'])->name('referred.list.net');
   });
@@ -46,7 +53,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::patch('update/{id}', [TicketsController::class,'updateUser'])->name('ticket.update-user');
     Route::get('list', [TicketsController::class,'listUser'])->name('ticket.list-user');
     Route::get('show/{id}', [TicketsController::class,'showUser'])->name('ticket.show-user');
-  });
+  }); 
 
   // impersonate user
   Route::group(['prefix' => 'inspect'], function () {
@@ -60,10 +67,20 @@ Route::group(['prefix' => 'admin'], function () {
 
   // home admin
   Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('analytics', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics')->middleware('auth', 'checkrole:1');
+    Route::get('/', [DashboardController::class,'dashboardAnalytics'])->name('dashboard-analytics')->middleware('auth', 'checkrole:1');
     Route::get('ecommerce', [DashboardController::class,'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('auth', 'checkrole:1');
   });
  
+    // store admin
+    Route::prefix('store')->group(function(){
+      Route::get('create', [ProductWarehouseController::class,'create'])->name('store.create');
+      Route::post('store', [ProductWarehouseController::class,'store'])->name('store');
+      Route::get('edit-admin/{id}', [ProductWarehouseController::class,'editAdmin'])->name('store.edit-admin');
+      Route::patch('update-admin/{id}', [ProductWarehouseController::class,'updateAdmin'])->name('store.update-admin');
+      Route::get('list-admin', [ProductWarehouseController::class,'listAdmin'])->name('store.list-admin');
+      Route::delete('delete/{id}', [ProductWarehouseController::class,'destroy'])->name('store.destroy');
+    });
+
   // user admin
   Route::group(['prefix' => 'users'], function () {
     Route::get('user-list', [UserController::class,'list'])->name('user.list')->middleware('auth', 'checkrole:1');
