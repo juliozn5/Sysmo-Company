@@ -16,8 +16,8 @@
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
                         <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
-                        <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-                        <li class="breadcrumb-item"><a href="#">Lista de Ticket</a></li>
+                        <li class="breadcrumb-item"><a href="#">Tienda</a></li>
+                        <li class="breadcrumb-item"><a href="#">Lista de Productos</a></li>
                     </ol>
                 </div>
             </div>
@@ -30,19 +30,15 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <a href="{{ route('ticket.create')}}" class="btn btn-primary float-right mb-0 waves-effect waves-light"><i
-                        data-feather="plus-circle"></i>&nbsp; Crear Ticket</a>
-                    <div class="table-responsive">
-                        
-                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
-                            <thead class="">
+                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped"
+                            data-order='[[ 1, "asc" ]]' data-page-length='10'>
+                            <thead class="bg-purple-alt2">
 
                                 <tr class="text-center text-dark">
                                     <th>ID</th>
-                                    <th>Whatsapp</th>
-                                    <th>Email</th>
-                                    <th>Asunto</th>
-                                    <th>Descripción</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
                                     <th>Estado</th>
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
@@ -52,37 +48,34 @@
 
                             <tbody>
 
-                                @foreach ($ticket as $item)
+                                @foreach ($store as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->whatsapp}}</td>
-                                    <td>{{ $item->email}}</td>
-                                    <td>{{ $item->issue}}</td>
-                                    <td>{{ $item->description}}</td>
+                                    @if ($item->getProduct->photoDB != NULL)
+                                    <td><img src="{{asset('storage/products/'.$item->getProduct->photoDB)}}" alt="photo" class="rounded" width="50px" height="70px"></td>
+                                    @else
+                                    <td>No Tiene Imagen</td>
+                                    @endif
+                                    <td>{{ $item->getProduct->name}}</td>
+                                    <td>{{ $item->getProduct->amount}}</td>
 
                                     @if ($item->status == '0')
                                     <td> <a class=" badge badge-info text-white">En Espera</a></td>
-                                    @elseif($item->status == '1')
-                                    <td> <a class=" badge badge-success text-white">Solucionado</a></td>
-                                    @elseif($item->status == '2')
-                                    <td> <a class=" badge badge-warning text-white">Procesando</a></td>
-                                    @elseif($item->status == '3')
-                                    <td> <a class=" badge badge-danger text-white">Cancelada</a></td>
-                                    @endif
-
-                                    <td>{{ $item->created_at}}</td>
-
-                                    @if ($item->status == '0')
-                                    <td><a href="{{ route('ticket.edit-user',$item->id) }}"
-                                            class="btn btn-secondary text-bold-600">Editar</a></td>
                                     @else
-                                    <td><a href="{{ route('ticket.show-user',$item->id) }}"
-                                            class="btn btn-secondary text-bold-600">Revisar</a></td>
+                                    <td> <a class=" badge badge-success text-white">Atendido</a></td>
                                     @endif
-                                </tr>
-                                @endforeach
 
-                            </tbody>
+                                    <td>{{ $item->getProduct->created_at}}</td>
+
+                                    <td>
+                                        <a href="{{ route('store.show',$item->id) }}" class="btn
+                                        btn-secondary text-bold-600">Ver</a> 
+                                    </td>
+                                </tr>
+
+                           
+                                
+                                @endforeach
                         </table>
                     </div>
                 </div>
@@ -91,16 +84,26 @@
     </div>
 </div>
 
+
+
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
 @section('page-script')
+
+
+<script>
+    $('#Modal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+
+</script>
 
 <script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
 
 <script>
     $(document).ready(function () {
         $('#mytable').DataTable({
-            //dom: 'flBrtip',
+            dom: 'flBrtip',
             responsive: true,
             searching: false,
             ordering: true,

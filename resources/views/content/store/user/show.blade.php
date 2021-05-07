@@ -11,8 +11,8 @@
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
                         <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
-                        <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-                        <li class="breadcrumb-item"><a href="#">Revisar Ticket</a></li>
+                        <li class="breadcrumb-item"><a href="#">Tienda</a></li>
+                        <li class="breadcrumb-item"><a href="#">Revisando Producto</a></li>
                     </ol>
                 </div>
             </div>
@@ -25,59 +25,41 @@
         <div class="col-md-6 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Revisando el Ticket #{{ $ticket->id}}</h4>
+                    <h4 class="card-title">Revisando la Orden #{{ $store->id}}</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
                         <div class="form-body">
                             <div class="row">
+
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Email de contacto</label>
-                                        <input type="email" readonly id="email" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                                            value="{{ $ticket->email }}" name="email">
+                                        <label>Nombre</label>
+                                        <input type="text" id="name" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="name" value="{{ $store->getProduct->name }}" disabled />
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Whatsapp de contacto</label>
-                                        <input type="text" readonly id="whatsapp" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                                            value="{{ $ticket->whatsapp }}" name="whatsapp">
+                                        <label>Descripcion</label>
+                                        <textarea type="text" id="description" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="description" disabled>{{ $store->getProduct->description }}</textarea>
                                     </div>
                                 </div>
+
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Asunto del Ticket</label>
-                                        <input type="text" id="issue" readonly class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                                            value="{{ $ticket->issue }}" name="issue">
+                                        <label>Precio</label>
+                                        <input type="number" id="amount" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="amount" value="{{ $store->getProduct->amount }}" disabled/>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>Especificación del Ticket</label>
-                                        <textarea type="text" rows="5" readonly id="description" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                                            name="description">{{ $ticket->description }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label>Nota del Administrador</label>
-                                        <textarea type="text" rows="5" readonly id="note_admin"
-                                            placeholder="En este campo estara la nota que deja el administrador que atendio su orden"
-                                            class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="note_admin">{{$ticket->note_admin}}</textarea>
-                                    </div>
-                                </div>
+
                                 <div class="col-12">
                                     <div class="form-group d-flex justify-content-center">
                                         <div class="controls">
-                                            @if ( $ticket->status == 0 )
-                                            <a href="{{ route('ticket.list-user') }}" class=" btn btn-info text-white text-bold-600">En Espera</a>
-                                            @elseif($ticket->status == 1)
-                                            <a href="{{ route('ticket.list-user') }}" class=" btn btn-success text-white text-bold-600">Solucionado</a>
-                                            @elseif($ticket->status == 2)
-                                            <a href="{{ route('ticket.list-user') }}" class=" btn btn-warning text-white text-bold-600">Procesando</a>
-                                            @elseif($ticket->status == 3)
-                                            <a href="{{ route('ticket.list-user') }}" class=" btn btn-danger text-white text-bold-600">Cancelada</a>
+                                            @if ( $store->status == 0 )
+                                            <a href="{{ route('store.list-user') }}" class=" btn btn-info text-white text-bold-600">En Espera</a>
+                                            @elseif($store->status == 1)
+                                            <a href="{{ route('store.list-user') }}" class=" btn btn-success text-white text-bold-600">Atendido</a>
                                             @endif
                                         </div>
                                     </div>

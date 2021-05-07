@@ -14,7 +14,8 @@ class ProductWarehouse extends Model
     protected $dates = ['created_at','updated_at'];
 
     protected $fillable = [
-        'name', 'description', 'amount', 'status'
+
+        'name', 'description', 'amount', 'status', 'photoDB'
     ];
 
     public function getUser()

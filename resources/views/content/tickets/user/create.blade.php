@@ -20,32 +20,32 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Email de contacto</label>
-                                            <input type="email" id="email" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="email" value="{{ Auth::user()->email }}">
+                                            <input type="email" id="email" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="email" value="{{ Auth::user()->email }}" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Whatsapp de contacto</label>
-                                            <input type="text" id="whatsapp" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="whatsapp" value="{{ Auth::user()->whatsapp }}">
+                                            <input type="text" id="whatsapp" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="whatsapp" value="{{ Auth::user()->whatsapp }}" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Asunto del Ticket</label>
-                                            <input type="text" id="issue" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="issue">
+                                            <input type="text" id="issue" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="issue" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Especifique la situacion</label>
                                             <textarea type="text" rows="5" id="description" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                                                name="description"></textarea>
+                                                name="description" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nota del Administrador</label>
-                                            <textarea type="text" rows="5" readonly id="note_admin" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                            <textarea type="text" rows="5" disabled id="note_admin" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
                                                 name="note_admin">En este campo estara la nota que deja el administrador que atendio su orden</textarea>
                                         </div>
                                     </div>

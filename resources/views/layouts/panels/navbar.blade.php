@@ -10,6 +10,8 @@
                           <span class="user-name font-weight-bolder">{{ Auth::user()->username }}</span>
                           @if (Auth::user()->role == 1)
                           <h5 class="user-status badge badge-primary">Administrador</h5>
+                          @else
+                          <h1 class="user-status badge badge-primary">Saldo: {{ Auth::user()->balance }} $</h5>
                           @endif
                       </div>
                       <span class="avatar">

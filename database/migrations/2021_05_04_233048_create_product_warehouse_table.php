@@ -16,10 +16,10 @@ class CreateProductWarehouseTable extends Migration
         Schema::create('product_warehouse', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
-            $table->string('description');
-            $table->string('amount');
-            $table->longtext('photo');
-            $table->enum('status', [0, 1, 2, 3])->default(1)->comment('0 - Inactivo, 1 - Activo, 2 - Agotado, 3 - No disponible');
+            $table->longtext('description');
+            $table->bigInteger('amount');
+            $table->longtext('photoDB');
+            $table->enum('status', [0, 1, 2, 3])->default(1)->comment('0 - Inactivo, 1 - Disponible, 2 - Agotado, 3 - No disponible');
             $table->timestamps();
         });
     }

@@ -75,8 +75,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::prefix('store')->group(function(){
       Route::get('create', [ProductWarehouseController::class,'create'])->name('store.create');
       Route::post('store', [ProductWarehouseController::class,'store'])->name('store');
-      Route::get('edit-admin/{id}', [ProductWarehouseController::class,'editAdmin'])->name('store.edit-admin');
-      Route::patch('update-admin/{id}', [ProductWarehouseController::class,'updateAdmin'])->name('store.update-admin');
+      Route::get('edit-admin/{id}', [ProductWarehouseController::class,'editAdmin'])->name('store.edit');
+      Route::patch('update-admin/{id}', [ProductWarehouseController::class,'updateAdmin'])->name('store.update');
       Route::get('list-admin', [ProductWarehouseController::class,'listAdmin'])->name('store.list-admin');
       Route::delete('delete/{id}', [ProductWarehouseController::class,'destroy'])->name('store.destroy');
     });
@@ -84,6 +84,8 @@ Route::group(['prefix' => 'admin'], function () {
   // user admin
   Route::group(['prefix' => 'users'], function () {
     Route::get('user-list', [UserController::class,'list'])->name('user.list')->middleware('auth', 'checkrole:1');
+    Route::get('user-edit/{id}', [UserController::class,'editUser'])->name('user.edit')->middleware('auth', 'checkrole:1');
+    Route::patch('user-edit/{id}', [UserController::class,'updateUser'])->name('user.update')->middleware('auth', 'checkrole:1');
    });
 
   // tickets admin

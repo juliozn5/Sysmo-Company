@@ -110,7 +110,7 @@
                             <div class="form-group col-6">
                                 <label for="register-referred_id" class="form-label">ID del Referido</label>
                                 @if ($referred != null)
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                <input type="number" class="form-control @error('name') is-invalid @enderror"
                                 id="register-referred_id" name="referred_id" placeholder="{{ $referred->username }}"
                                 aria-describedby="register-referred_id" tabindex="1" autofocus
                                 value="{{ $referred->id }}" readonly/>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <label for="register-email" class="form-label">Correo</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     id="register-email" name="email" placeholder="william@example.com"
                                     aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" required />
                                 @error('email')
@@ -142,7 +142,7 @@
 
                             <div class="form-group col-12">
                                 <label for="register-email" class="form-label">Confirmar Correo</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     id="register-email" name="email" placeholder="william@example.com"
                                     aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" required />
                                 @error('email')

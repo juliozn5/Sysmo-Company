@@ -15,9 +15,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->string('user_id');
-            $table->string('product_id');
-            $table->string('amount');
+            $table->bigInteger('user_id');
+            $table->bigInteger('product_id');
+            $table->bigInteger('amount');
             $table->enum('status', [0, 1])->default(0)->comment('0 - En espera, 1 - Atendida');
             $table->timestamps();
         });

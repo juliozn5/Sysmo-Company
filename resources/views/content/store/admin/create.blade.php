@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'create-tickets')
+@section('title', 'create-products')
 
 @section('content')
 
@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-content"> 
                     <div class="card-body">
-                        <form action="{{route('store')}}" method="POST">
+                        <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
                             @csrf 
                             <div class="form-body">
                                 <div class="row">
@@ -21,31 +21,30 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input type="text" id="name" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="name" />
+                                            <input type="text" id="name" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="name" required />
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Descripcion</label>
-                                            <textarea type="text" id="description" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="description"></textarea>
+                                            <textarea type="text" id="description" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="description" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Precio</label>
-                                            <input type="text" id="amount" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="amount" />
+                                            <input type="number" id="amount" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="amount" min="1" max="1000000000000000" required />
                                         </div>
                                     </div>
-
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Estado</label>
                                             <select name="status" id="status"
                                             class="custom-select data-toggle="select">
                                             <option value="0">Inactivo</option>
-                                            <option value="1">Activo</option>
+                                            <option value="1">Disponible</option>
                                             <option value="2">Agotado</option>
                                             <option value="3">No disponible</option>
                                             </select>
@@ -54,15 +53,12 @@
                               
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <fieldset>
                                                 <label class="h5" for="due_date">Imagen del Product</label>
                                                 <div class="media">
                                                     <div class="custom-file">
-                                                        <label class="custom-file-label" for="photo"><b>Seleccione una imagen para el Cliente</b></label>
-                                                        <input type="file" id="photo"
-                                                            class="custom-file-input @error('photo') is-invalid @enderror"
-                                                            name="photo" onchange="previewFile(this, 'photo_preview')"
-                                                            accept="image/*">
+                                                        <label class="custom-file-label" for="photoDB"><b>Seleccione una imagen para el Cliente</b></label>
+                                                        <input type="file" id="photoDB" class="custom-file-input"
+                                                            name="photoDB" onchange="previewFile(this, 'photo_preview')" accept="image/*"/>
                                                     </div>
                                                 </div>
                               
@@ -74,9 +70,9 @@
                                                     <div class="col"></div>
                                                 </div>
 
-                                            </fieldset>
                                         </div>
                                     </div>
+
                                     <div class="col-12">
                                         <button type="submit"
                                             class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Crear Producto</button>

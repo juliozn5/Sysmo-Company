@@ -20,56 +20,33 @@ class UserController extends Controller
 
         $user = User::find($id);
  
-        return view('users.componenteUsers.admin.edit-user')
+        return view('content.user.edit')
               ->with('user',$user);
 
     }
     
-    // public function updateUser(Request $request, $id)
-    // {
-    //     $user = User::find($id);
+     public function updateUser(Request $request, $id)
+     {
+         $user = User::find($id);
 
-    //     $fields = [
-    //      "name" => ['required'],
-    //      "last_name" => ['required'],
-    //      "email" => [
-    //         'required',
-    //         'string',
-    //         'email',
-    //         'max:255',
-    //     ],
-    //     ];
+         $fields = [     ];
 
-    //     $msj = [
-    //         'name.required' => 'El nombre es requerido',
-    //         'last_name.required' => 'El telefono es requerido',
-    //         'email.unique' => 'El correo debe ser unico',
-    //     ];
+         $msj = [        ];
 
-    //     $this->validate($request, $fields, $msj);
+         $this->validate($request, $fields, $msj);
 
-    //     $fullname = $request->name .' '. $request->last_name;
+         // foto
+         $user->update($request->all());
+     
+         $user->username = $request->username;
+         $user->role = $request->role;
+         $user->status = $request->status;
+         $user->balance = $request->balance;
+         $user->whatsapp = $request->whatsapp;
+         $user->save();
 
-    //     // foto
-    //     $user->update($request->all());
-    //     if ($request->hasFile('photo')) {
-    //         if(!$user->getMedia('photo')->isEmpty()) {
-    //             $user->getFirstMedia('photo')->delete();
-    //         }
-    //         $user->addMediaFromRequest("photo")->toMediaCollection('photo');
-    //     }
-    //     $user->fullname = $fullname;
-    //     $user->utc = $request->utc;
-    //     $user->admin = $request->admin;
-    //     $user->status = $request->status;
-    //     $user->balance = $request->balance;
-    //     $user->website = $request->website;
-    //     $user->whatsapp = $request->whatsapp;
-    //     $user->address = $request->address;
-    //     $user->save();
-
-    //     return redirect()->route('list-user')->with('message','Se actualizo el perfil de '.$user->fullname.'');
-    // }
+         return redirect()->route('user.list')->with('message','Se actualizo el perfil de '.$user->username.'');
+     }
 
 
     public function destroyUser($id)
@@ -78,7 +55,7 @@ class UserController extends Controller
       
       $user->delete();
       
-      return redirect()->route('list-user')->with('message', 'Usuario '.$id.' Eliminado');
+      return redirect()->route('user.list')->with('message', 'Usuario '.$id.' Eliminado');
     }
 
 }

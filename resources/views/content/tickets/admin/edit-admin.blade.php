@@ -38,28 +38,28 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Email de contacto</label>
-                                            <input type="email" readonly id="email" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                            <input type="email" disabled id="email" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
                                                 value="{{ $ticket->email }}" name="email">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Whatsapp de contacto</label>
-                                            <input type="text" readonly id="whatsapp" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                            <input type="text" disabled id="whatsapp" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
                                                 value="{{ $ticket->whatsapp }}" name="whatsapp">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Asunto del Ticket</label>
-                                            <input type="text" id="issue" readonly class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                            <input type="text" id="issue" disabled class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
                                                 value="{{ $ticket->issue }}" name="issue">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Especificación del Ticket</label>
-                                            <textarea type="text" rows="5" readonly id="description"
+                                            <textarea type="text" rows="5" disabled id="description"
                                                 class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
                                                 name="description">{{ $ticket->description }}</textarea>
                                         </div>
@@ -72,7 +72,7 @@
                                             <textarea type="text" rows="5" id="note_admin"
                                                 placeholder="En este campo estara la nota que deja el administrador que atendio su orden"
                                                 class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
-                                                name="note_admin">{{$ticket->note_admin}}</textarea>
+                                                name="note_admin" required>{{$ticket->note_admin}}</textarea>
                                         </div>
                                     </div>
 
@@ -83,7 +83,7 @@
                                                 <span class="text-danger text-bold-600">OBLIGATORIO</span>
                                                 <select name="status" id="status"
                                                     class="custom-select status @error('status') is-invalid @enderror"
-                                                    required data-toggle="select">
+                                                    required data-toggle="select" >
                                                     <option value="0" @if($ticket->status == '0') selected  @endif>En Espera</option>
                                                     <option value="1" @if($ticket->status == '1') selected  @endif>Solucionado</option>
                                                     <option value="2" @if($ticket->status == '2') selected  @endif>Procesando</option>

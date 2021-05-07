@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\ProductWarehouse;
-use 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ProductWarehouseController extends Controller
@@ -34,31 +34,26 @@ class ProductWarehouseController extends Controller
 
         $store = ProductWarehouse::all();
 
-        $fields = [
-            "name" => ['required'],
-            "description" => ['required'],
-            "amount" => ['required'],
-            "photo" => ['required'],
-            'status' => ['1'],
-        ];
+        $fields = [        ];
 
-        $msj = [
-            'name.required' => 'El nombre es Requerido',
-            'description.required' => 'La descripcion es Requerido',
-            'amount.required' => 'El monto es Requerido',
-        ];
+        $msj = [        ];
 
         $this->validate($request, $fields, $msj);
 
         $store = ProductWarehouse::create($request->all());
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $name = $request->id.'_'.$file->getClientsize().'_'.$file->getClientOriginalName();
-            $file->move(public_path() . '/product', $name);
-            $store->photo = $name;
+
+        if ($request->hasFile('photoDB')) {
+            
+            $file = $request->file('photoDB');
+            
+            $name = $request->name.'_'.$file->getClientOriginalName();
+            
+            $file->move(public_path('storage').'/products',$name);
+            
+            $store->photoDB = $name;
         }
-    
-        $store->save();
+
+		$store->save();
         
         return redirect()->route('store.list-admin')->with('message', 'El Producto se creo Exitosamente');
     }
@@ -69,7 +64,7 @@ class ProductWarehouseController extends Controller
 
         $store = ProductWarehouse::find($id);
 
-        return view('content.store.admin.edit-admin')
+        return view('content.store.admin.edit')
         ->with('store', $store);
     }
 
@@ -94,9 +89,21 @@ class ProductWarehouseController extends Controller
         $this->validate($request, $fields, $msj);
 
         $store->update($request->all());
+        
+        if ($request->hasFile('photoDB')) {
+            
+            $file = $request->file('photoDB');
+            
+            $name = $request->name.'_'.$file->getClientOriginalName();
+            
+            $file->move(public_path('storage').'/products',$name);
+            
+            $store->photoDB = $name;
+        }
+
         $store->save();
         
-      return redirect()->route('store.admin.list-admin')->with('message', 'Producto '.$id.' Actualizado ');
+      return redirect()->route('store.list-admin')->with('message', 'Producto '.$id.' Actualizado ');
     }
 
     // permite ver la lista de productos
@@ -117,9 +124,10 @@ class ProductWarehouseController extends Controller
     
       $store->delete();
     
-      return redirect()->route('store.admin.list-admin')->with('message', 'Producto '.$id.' Eliminado');
+      return redirect()->route('store.list-admin')->with('message', 'Producto '.$id.' Eliminado');
     }
 
+    // permite guardar la orden comprada
     public function saveOrden(Request $request)
     {
             $user = Auth::user();
@@ -145,7 +153,7 @@ class ProductWarehouseController extends Controller
   
     public function listUser(){
   
-      $store = ProductWarehouse::where('user_id', Auth::id())->get();
+      $store = Order::where('user_id', '=', Auth::id())->get();
   
       return view('content.store.user.list-user')
       ->with('store', $store);
@@ -155,7 +163,7 @@ class ProductWarehouseController extends Controller
   
     public function showUser($id){
   
-      $store = ProductWarehouse::find($id);
+      $store = Order::find($id);
   
       return view('content.store.user.show')
       ->with('store', $store);

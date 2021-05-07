@@ -1,121 +1,146 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'list-tickets-user')
+@section('title', 'Account Settings')
 
+@section('vendor-style')
+<!-- vendor css files -->
+<link rel='stylesheet' href="{{ asset('vendors/css/forms/select/select2.min.css') }}">
+<link rel='stylesheet' href="{{ asset('vendors/css/pickers/flatpickr/flatpickr.min.css') }}">
+@endsection
 @section('page-style')
-{{-- Page Css files --}}
-<link rel="stylesheet" type="text/css" href="{{asset('css/additional/data-tables/dataTables.min.css')}}">
+<!-- Page css files -->
+<link rel="stylesheet" href="{{ asset('css/base/plugins/forms/pickers/form-pickadate.css') }}">
+<link rel="stylesheet" href="{{ asset('css/base/plugins/forms/pickers/form-flat-pickr.css') }}">
+<link rel="stylesheet" href="{{ asset('css/base/plugins/forms/form-validation.css') }}">
 @endsection
 
+<script src="{{ mix('js/app.js') }}" defer></script>
+ @livewireScripts
+
 @section('content')
-
-<div class="content-header row">
-    <div class="content-header-left col-md-9 col-12 mb-2">
-        <div class="row breadcrumbs-top">
-            <div class="col-12">
-                <div class="breadcrumb-wrapper">
-                    <ol class="breadcrumb">
-                        <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
-                        <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-                        <li class="breadcrumb-item"><a href="#">Lista de Ticket</a></li>
-                    </ol>
-                </div>
-            </div>
+<!-- account setting page -->
+<section id="page-account-settings">
+    <div class="row">
+        <!-- left menu section -->
+        <div class="col-md-3 mb-2 mb-md-0">
+            <ul class="nav nav-pills flex-column nav-left">
+                <!-- general -->
+                <li class="nav-item">
+                    <a class="nav-link active" id="account-pill-general" data-toggle="pill"
+                        href="#account-vertical-general" aria-expanded="true">
+                        <i data-feather="user" class="font-medium-3 mr-1"></i>
+                        <span class="font-weight-bold">Informacion General</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
-</div>
+        <!--/ left menu section -->
 
-<div id="record">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-content">
-                <div class="card-body card-dashboard">
-                    <div class="table-responsive">
-                        <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped"
-                            data-order='[[ 1, "asc" ]]' data-page-length='10'>
-                            <thead class="bg-purple-alt2">
+        <!-- right content section -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <!-- general tab -->
+                        <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
+                            aria-labelledby="account-pill-general" aria-expanded="true">
+                            <section submit="updateProfileInformation">
 
-                                <tr class="text-center text-dark">
-                                    <th>ID</th>
-                                    <th>Perfil</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
-                                    <th>Estado</th>
-                                    <th>Fecha de Creacion</th>
-                                    <th>Accion</th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                                @foreach ($user as $item)
-                                <tr class="text-center">
-                                    <td>{{ $item->id}}</td>
-                                    <td>{{ $item->username}}</td>
-                                    <td>{{ $item->email}}</td>
-                                    {{-- <td>{{ $item->balance}}</td> --}}
 
-                                    @if ($item->admin == '1')
-                                    <td>Administrador</td>
-                                    @else
-                                    <td>Normal</td>
-                                    @endif
+                                <form action="{{ route('user.update',$user->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PATCH')
+                                 
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <h2 class="font-weight-bold">Datos Personales de <span class="text-primary">{{$user->username}}</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label class="required" for="">Nombre</label>
+                                                    <input type="text"
+                                                        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                                        id="username" name="username" placeholder="Nombre"
+                                                        value="{{ $user->username }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label class="required" for="email">Email</label>
+                                                    <input type="email"
+                                                        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                                        id="email" name="email" placeholder="Email"
+                                                        value="{{ $user->email }}">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    @if ($item->status == '0')
-                                    <td> <a class=" badge badge-danger text-white">Inactivo</a></td>
-                                    @else
-                                    <td> <a class=" badge badge-success text-white">Activo</a></td>
-                                    @endif
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label class="required" for="whatsapp">Whatsapp</label>
+                                                    <input type="text"
+                                                        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                                        name="whatsapp" value="{{ $user->whatsapp }}"
+                                                        placeholder="whatsapp">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <td>{{ $item->created_at}}</td>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label class="required" for="whatsapp">Role</label>
+                                                    <select id="role" type="text" class="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="state.role" >
+                                                        <option value="0" @if($user->role == '0') selected  @endif>Normal</option>
+                                                        <option value="1" @if($user->role == '1') selected  @endif>Administrador</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <td>
-                                        @if(Auth::user()->id == $item->id)
-                                        <a href="{{ route('profile.show') }}"
-                                            class="btn btn-secondary text-bold-600">Editar</a>
-                                        @else
-                                        <a href="{{ route('users.edit-user',$item->id) }}"
-                                            class="btn btn-secondary text-bold-600">Editar</a>
-                                        @endif
-                                        <form class="float-right ml-1" action="{{ route('ticket.destroy', $item->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label class="required" for="whatsapp">Estado</label>
+                                                    <select id="status" type="text" class="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="state.status" >
+                                                        <option value="0" @if($user->status == '0') selected  @endif>Inactivo</option>
+                                                        <option value="1" @if($user->status == '1') selected  @endif>Activo</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                  
+                                  
 
-                                        <form class="float-right ml-1" action="{{route('impersonate.start', $item)}}"
-                                            method="POST" id="formImpersonate">
-                                            @csrf
-                                            <button class="btn btn-primary">Ver</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                        </table>
+                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                            <button type="submit"
+                                                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </section>
+                            
+                        </div>
+                        <!--/ general tab -->
+
                     </div>
                 </div>
             </div>
         </div>
+        <!--/ right content section -->
     </div>
-</div>
-
-@endsection
-{{-- permite llamar a las opciones de las tablas --}}
-@section('page-script')
-
-<script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#mytable').DataTable({
-            dom: 'flBrtip',
-            responsive: true,
-            searching: false,
-            ordering: true,
-            paging: true,
-            select: true,
-        });
-    });
-
-</script>
+</section>
+<!-- / account setting page -->
 @endsection

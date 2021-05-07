@@ -37,7 +37,7 @@
 
                                 <tr class="text-center text-dark">
                                     <th>ID</th>
-                                    <th>Perfil</th>
+                                    <th>Nombre de Usuario</th>
                                     <th>Email</th>
                                     <th>Rol</th>
                                     <th>Estado</th>
@@ -71,11 +71,11 @@
                                     <td>
                                         @if(Auth::user()->id == $item->id)
                                         <a href="{{ route('profile.show') }}"
-                                            class="btn btn-secondary text-bold-600">Editar</a>
+                                            class="btn btn-info text-bold-600">Ver Mi Perfil</a>
                                         @else
-                                        {{-- <a href="{{ route('users.edit-user',$item->id) }}"
-                                            class="btn btn-secondary text-bold-600">Editar</a>
-                                             --}}
+                                         <a href="{{ route('user.edit',$item->id) }}"
+                                            class="btn btn-info text-bold-600">Editar</a>
+                                             
                                         {{-- <form class="float-right ml-1" action="{{ route('user.destroy', $item->id) }}"
                                             method="POST">
                                             @csrf

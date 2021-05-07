@@ -17,7 +17,7 @@
                     <ol class="breadcrumb">
                         <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
                         <li class="breadcrumb-item"><a href="#">Tienda</a></li>
-                        <li class="breadcrumb-item"><a href="#">Lista de Tienda</a></li>
+                        <li class="breadcrumb-item"><a href="#">Lista de Productos</a></li>
                     </ol>
                 </div>
             </div>
@@ -54,14 +54,18 @@
                                 @foreach ($store as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->photo}}</td>
+                                    @if ($item->photoDB != NULL)
+                                    <td><img src="{{asset('storage/products/'.$item->photoDB)}}" alt="photo" class="rounded" width="50px" height="70px"></td>
+                                    @else
+                                    <td>No Tiene Imagen</td>
+                                    @endif
                                     <td>{{ $item->name}}</td>
                                     <td>{{ $item->description}}</td>
 
                                     @if ($item->status == '0')
                                     <td> <a class=" badge badge-info text-white">Inactivo</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" badge badge-success text-white">Activo</a></td>
+                                    <td> <a class=" badge badge-success text-white">Disponible</a></td>
                                     @elseif($item->status == '2')
                                     <td> <a class=" badge badge-warning text-white">Agotado</a></td>
                                     @elseif($item->status == '3')
@@ -71,7 +75,7 @@
                                     <td>{{ $item->created_at}}</td>
 
                                     <td>
-                                        <a href="{{ route('store.edit-admin',$item->id) }}" class="btn
+                                        <a href="{{ route('store.edit',$item->id) }}" class="btn
                                         btn-secondary text-bold-600">Editar</a> 
 
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -86,7 +90,7 @@
                                         <div class="modal-content">
                                             <div class="modal-body">
                                                 <form class="float-right ml-1"
-                                                    action="{{ route('ticket.destroy', $item->id) }}" method="POST">
+                                                    action="{{ route('store.destroy', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <h1 class="text-center card-title">Seguro que quieres Eliminar este Ticket ?</h1>
