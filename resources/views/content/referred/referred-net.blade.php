@@ -30,6 +30,9 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
+                    <button class="btn btn-primary float-lg-right"
+                    data-link="http://localhost:8000/register?referred_id={{Auth::user()->id}}" id="referrals_link"
+                    onclick="copyReferralsLink();">Copiar link de referido <i class="far fa-copy"></i></button>
                     <div class="table-responsive">
                         <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped"
                             data-order='[[ 1, "asc" ]]' data-page-length='10'>
@@ -86,5 +89,17 @@
         });
     });
 
+</script>
+
+<script>
+    function copyReferralsLink(){   
+        let copyText = $('#referrals_link').attr('data-link');
+        const textArea = document.createElement('textarea');
+        textArea.textContent = copyText;
+        document.body.append(textArea);      
+        textArea.select();      
+        document.execCommand("copy");    
+        textArea.remove();
+    }
 </script>
 @endsection

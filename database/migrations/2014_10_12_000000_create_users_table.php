@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->enum('status', [0, 1])->default(0)->comment('0-inactivo, 1-activo');
             //$table->bigInteger('wallet_id')->default(0);
             $table->bigInteger('balance')->default(0);
-            $table->bigInteger('referred_id')->default(1);
+            $table->bigInteger('referred_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             //$table->foreignId('current_team_id')->nullable();
             $table->rememberToken();

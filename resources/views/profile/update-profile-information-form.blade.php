@@ -82,7 +82,7 @@
             <!-- role -->
             <div class="col-3 mb-2 ">
                 <x-jet-label for="role" value="{{ __('role') }}" />
-                <select id="role" type="text" class="mt-1 block w-full" wire:model.defer="state.role" >
+                <select id="role" type="number" class="mt-1 block w-full" wire:model.defer="state.role" >
                     <option value="0" @if(Auth::user()->role == '0') selected  @endif>Normal</option>
                     <option value="1" @if(Auth::user()->role == '1') selected  @endif>Administrador</option>
             </select>
@@ -92,7 +92,7 @@
               <!-- status -->
               <div class="col-3 mb-2 ">
                 <x-jet-label for="status" value="{{ __('status') }}" />
-                <select id="status" type="text" class="mt-1 block w-full" wire:model.defer="state.status" >
+                <select id="status" type="number" class="mt-1 block w-full" wire:model.defer="state.status" >
                     <option value="0" @if(Auth::user()->status == '0') selected  @endif>Inactivo</option>
                     <option value="1" @if(Auth::user()->status == '1') selected  @endif>Activo</option>
             </select>

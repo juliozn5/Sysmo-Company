@@ -101,7 +101,7 @@
                                             <div class="form-group">
                                                 <div class="controls">
                                                     <label class="required" for="whatsapp">Role</label>
-                                                    <select id="role" type="text" class="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="state.role" >
+                                                    <select id="role" type="number" class="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="state.role" >
                                                         <option value="0" @if($user->role == '0') selected  @endif>Normal</option>
                                                         <option value="1" @if($user->role == '1') selected  @endif>Administrador</option>
                                                 </select>
@@ -113,7 +113,7 @@
                                             <div class="form-group">
                                                 <div class="controls">
                                                     <label class="required" for="whatsapp">Estado</label>
-                                                    <select id="status" type="text" class="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="state.status" >
+                                                    <select id="status" type="number" class="mt-1 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" wire:model.defer="state.status" >
                                                         <option value="0" @if($user->status == '0') selected  @endif>Inactivo</option>
                                                         <option value="1" @if($user->status == '1') selected  @endif>Activo</option>
                                                 </select>

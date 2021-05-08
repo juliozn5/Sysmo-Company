@@ -3,7 +3,11 @@
 @section('title', 'tree')
 
 @section('content')
+
+
+
 <div class="col-12 text-center">
+    <button class="btn btn-primary float-lg-right" data-link="http://localhost:8000/register?referred_id={{Auth::user()->id}}" id="referrals_link" onclick="copyReferralsLink();">Copiar link de referido <i class="far fa-copy"></i></button>
     <div class="padre">
         <ul>
             <li class="baseli">
@@ -73,3 +77,15 @@
     @endif
 </div>
 @endsection
+
+<script>
+    function copyReferralsLink(){   
+        let copyText = $('#referrals_link').attr('data-link');
+        const textArea = document.createElement('textarea');
+        textArea.textContent = copyText;
+        document.body.append(textArea);      
+        textArea.select();      
+        document.execCommand("copy");    
+        textArea.remove();
+    }
+</script>
