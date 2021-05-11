@@ -37,44 +37,8 @@
           "slug": "Tienda"
         }
       ]
-    },
-    {
-      "name": "Comisiones",
-      "icon": "clipboard",
-      "slug": "Comisiones",
-      "url": "admin/commissions/index"
-    },
-    {
-      "name": "Liquidaciones",
-      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
-      "icon": "activity",
-      "slug": "Liquidaciones",
-      "submenu": [
-        {
-          "url": "/",
-          "name": "Liquidaciones",
-          "icon": "circle",
-          "slug": "Liquidaciones"
-        },
-        {
-          "url": "/",
-          "name": "Generar liquidaciones",
-          "icon": "circle",
-          "slug": "Generar liquidaciones"
-        },
-        {
-          "url": "/",
-          "name": "Pendientes",
-          "icon": "circle",
-          "slug": "Pendientes"
-        },
-        {
-          "url": "/",
-          "name": "Liquidaciones realizadas",
-          "icon": "circle",
-          "slug": "Liquidaciones realizadas"
-        }
-      ]
     }
+
+    
   ]
 }
