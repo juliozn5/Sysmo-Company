@@ -2,71 +2,79 @@
   "menu": [
     {
       "name": "Dashboards",
-      "badge": "2",
-      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "home",
       "slug": "",
-      "submenu": [
-        {
-          "url": "/",
-          "name": "Analytics",
-          "icon": "circle",
-          "slug": "dashboard-analytics"
-        },
-        {
-          "url": "admin/dashboard/ecommerce",
-          "name": "eCommerce",
-          "icon": "circle",
-          "slug": "dashboard-ecommerce"
-        }
-      ]
+      "url": "/"
     },
     {
-      "navheader": "Sistema de Tienda",
-      "slug": ""
+      "name": "eCommerce",
+      "icon": "home",
+      "slug": "",
+      "url": "admin/dashboard/ecommerce"
     },
     {
       "name": "Tienda",
-      "badge": "2",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "shopping-bag",
-      "slug": "Referidos",
+      "slug": "",
       "submenu": [
+        {
+          "name": "Añadir producto",
+          "icon": "circle",
+          "slug": "Productos",
+          "url": "admin/store/create"
+        },
+        {
+          "name": "Pedidos",
+          "icon": "circle",
+          "slug": "Pedidos",
+          "url": "admin/store/list-admin"
+        },
         {
           "url": "user/store/store",
           "name": "Tienda",
           "icon": "circle",
           "slug": "Tienda"
-        },
-        {
-          "url": "admin/store/list-admin",
-          "name": "Lista de Productos",
-          "icon": "circle",
-          "slug": "Lista de Productos"
         }
       ]
     },
     {
-      "navheader": "Table",
-      "slug": ""
+      "name": "Comisiones",
+      "icon": "clipboard",
+      "slug": "Comisiones",
+      "url": "admin/commissions/index"
     },
     {
-      "name": "User",
+      "name": "Liquidaciones",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
-      "icon": "user",
-      "slug": "User",
-      "url": "admin/users/user-list"
-    },
-    {
-      "navheader": "Soporte",
-      "slug": ""
-    },
-    {
-      "name": "Tickets",
-      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
-      "icon": "tag",
-      "slug": "Tickets",
-      "url": "admin/tickets/list-admin"
+      "icon": "activity",
+      "slug": "Liquidaciones",
+      "submenu": [
+        {
+          "url": "/",
+          "name": "Liquidaciones",
+          "icon": "circle",
+          "slug": "Liquidaciones"
+        },
+        {
+          "url": "/",
+          "name": "Generar liquidaciones",
+          "icon": "circle",
+          "slug": "Generar liquidaciones"
+        },
+        {
+          "url": "/",
+          "name": "Pendientes",
+          "icon": "circle",
+          "slug": "Pendientes"
+        },
+        {
+          "url": "/",
+          "name": "Liquidaciones realizadas",
+          "icon": "circle",
+          "slug": "Liquidaciones realizadas"
+        }
+      ]
     }
   ]
 }

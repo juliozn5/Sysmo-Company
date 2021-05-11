@@ -78,4 +78,34 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'referred_id', 'id');
     }
 
+        /**
+     * Permite obtener todas las ordenes de compra de saldo realizadas
+     *
+     * @return void
+     */
+    public function getSaldos()
+    {
+        return $this->hasMany('App\Models\AddSaldo', 'user_id');
+    }
+
+    /**
+     * Permite obtener todas las ordenes de compra de saldo realizadas
+     *
+     * @return void
+     */
+    public function getWallet()
+    {
+        return $this->hasMany('App\Models\Wallet', 'user_id');
+    }
+
+    /**
+     * Permite obtener todas la liquidaciones que tengo
+     *
+     * @return void
+     */
+    public function getLiquidate()
+    {
+        return $this->hasMany('App\Models\Liquidaction', 'user_id');
+    }
+
 }

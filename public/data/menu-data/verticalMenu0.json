@@ -7,88 +7,42 @@
       "slug": "dashboard-analytics"
     },
     {
-      "navheader": "Sistema de Tienda",
-      "slug": ""
-    },
-    {
       "name": "Tienda",
-      "badge": "2",
-      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "shopping-bag",
-      "slug": "Referidos",
-      "submenu": [
-        {
-          "url": "user/store/store",
-          "name": "Tienda",
-          "icon": "circle",
-          "slug": "Tienda"
-        },
-        {
-          "url": "user/store/list-user",
-          "name": "Lista de Productos",
-          "icon": "circle",
-          "slug": "Lista de Productos"
-        }
-      ]
+      "url": "user/store/store",
+      "slug": "Referidos"
     },
     {
-      "navheader": "Sistema de Referidos",
-      "slug": ""
+      "name": "Wallet",
+      "icon": "inbox",
+      "slug": "Wallet",
+      "url": "user/wallet/index"
     },
     {
       "name": "Referidos",
-      "badge": "3",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "users",
       "slug": "Referidos",
       "submenu": [
         {
           "url": "user/referred/tree/tree",
-          "name": "Arbol de Referidos",
+          "name": "Arbol",
           "icon": "circle",
           "slug": "Arbol"
         },
         {
           "url": "user/referred/list-direct",
-          "name": "Referidos Directos",
+          "name": "Directos",
           "icon": "circle",
           "slug": "list"
         },
         {
           "url": "user/referred/list-net",
-          "name": "Referidos en Red",
-          "icon": "circle",
-          "slug": "list"
-        }
-      ]
-    },
-    {
-      "navheader": "Soporte",
-      "slug": ""
-    },
-    {
-      "name": "Tickets",
-      "badge": "2",
-      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
-      "icon": "tag",
-      "slug": "Tickets",
-      "submenu": [
-        {
-          "url": "user/tickets/create",
-          "name": "Crear Ticket",
-          "icon": "circle",
-          "slug": "create"
-        },
-        {
-          "url": "user/tickets/list",
-          "name": "Lista de Tickets",
+          "name": "Red",
           "icon": "circle",
           "slug": "list"
         }
       ]
     }
-
-    
   ]
-
 }

@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalletController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ReferredController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\ImpersonateController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\ProductWarehouseController;
@@ -34,6 +36,30 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('store/save', [ProductWarehouseController::class,'saveOrden'])->name('store.save');
     Route::get('list-user', [ProductWarehouseController::class,'listUser'])->name('store.list-user');
     Route::get('show/{id}', [ProductWarehouseController::class,'showUser'])->name('store.show');
+  });
+
+  // Ruta para agregar saldo
+  Route::prefix('addsaldo')->group(function ()
+  {
+      Route::get('/', 'AddSaldoController@index')->name('addsaldo.index');
+      // Rutas para el pago stripe
+      Route::post('/stripe', 'AddSaldoController@stripe')->name('addsaldo.stripe');
+      // Rutas para el pago payulatam
+      Route::prefix('payu')->group(function ()
+      {
+         Route::post('/generate_orden', 'AddSaldoController@generate_orden_payu')->name('addsaldo.payu.generate');
+         Route::get('/{orden}/response_orden', 'AddSaldoController@response_orden_payu')->name('addsaldo.payu.response');
+         Route::post('/{orden}/confirmation_orden', 'AddSaldoController@confimation_orden_payu')->name('addsaldo.payu.confirmation');
+      });
+      // Rutas para el Coinbase
+      Route::post('/coinbase', 'AddSaldoController@generate_orden_coinbase')->name('addsaldo.coinbase');
+      Route::get('{status}/status_coinbase', 'AddSaldoController@status_coinbase')->name('addsaldo.coinbase.status');
+  });
+
+
+  Route::prefix('wallet')->group(function ()
+  {
+    Route::get('index', [WalletController::class,'index'])->name('wallet.index');
   });
 
   // referred user
@@ -87,6 +113,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('user-edit/{id}', [UserController::class,'editUser'])->name('user.edit')->middleware('auth', 'checkrole:1');
     Route::patch('user-edit/{id}', [UserController::class,'updateUser'])->name('user.update')->middleware('auth', 'checkrole:1');
    });
+
+  Route::prefix('commissions')->group(function ()
+  {
+    Route::get('index', [CommissionController::class,'indexCommissions'])->name('commission.index');
+    Route::get('request', [CommissionController::class,'indexRequest'])->name('commissions.request');
+  });
+
+  Route::prefix('liquidaction')->group(function() 
+  {
+      //Ruta liquidaciones realizadas
+    Route::get('index', [LiquidactionController::class,'index'])->name('liquidaction.index');
+    Route::get('pending', [LiquidactionController::class,'indexPendientes'])->name('liquidaction.pending');
+    Route::post('process', [LiquidactionController::class,'procesarLiquidacion'])->name('liquidaction.process');
+    Route::get('{status}/history', [LiquidactionController::class,'indexHistory'])->name('liquidaction.history.status');
+    //Route::resource('liquidation', [LiquidactionController::class]);
+
+  });
+
 
   // tickets admin
    Route::prefix('tickets')->group(function(){

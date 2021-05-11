@@ -120,7 +120,7 @@
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 id="register-referred_id" name="referred_id" placeholder="Sin referido"
                                 aria-describedby="register-referred_id" tabindex="1" autofocus
-                                value="{{ old('referred_id') }}" readonly/>
+                                value="1" readonly/>
                                 @endif
                                 @error('referred_id')
                                 <span class="invalid-feedback" role="alert">

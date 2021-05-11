@@ -187,16 +187,28 @@ return [
   "Soporte" => "Soporte",
   "Tickets" => "Tickets",
   "Crear Ticket" => "Crear Ticket",
-  "Lista de Tickets" => "Lista de Tickets",
+  "Tickets" => "Tickets",
  
-  "Sistema de Referidos" => "Sistema de Referidos",
   "Referidos" => "Referidos",
-  "Arbol de Referidos" => "Arbol de Referidos",
-  "Referidos Directos" => "Referidos Directos",
-  "Referidos en Red" => "Referidos en Red",
+  "Arbol" => "Arbol",
+  "Directos" => "Directos",
+  "Red" => "Red",
 
   "Sistema de Tienda" => "Sistema de Tienda",
   "Tienda" => "Tienda",
-  "Lista de Productos" => "Lista de Productos",
+  "Productos" => "Productos",
+  "Añadir producto" => "Añadir producto",
+
+  "Wallet" => "Wallet",
+
+  "Sistema de Comisiones" => "Sistema de Comisiones",
+  "Comisiones" => "Comisiones",
+  "Historial Comisiones" => "Historial Comisiones",
+  "Historial de Pedidos" => "Historial de Pedidos",
+
+  "Liquidaciones" => "Liquidaciones",
+  "Generar liquidaciones" => "Generar liquidaciones",
+  "Pendientes" => "Pendientes",
+  "Liquidaciones realizadas" => "Liquidaciones realizadas",
 
 ];
