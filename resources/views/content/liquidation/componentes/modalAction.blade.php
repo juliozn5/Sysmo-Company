@@ -10,11 +10,11 @@
                 </button>
             </div>
             <div class="modal-body text-justify">
-                <form action="{{route('settlement.process')}}" method="post">
+                <form action="{{route('liquidaction.process')}}" method="post">
                     @csrf
                     <input type="hidden" name="idliquidation" :value="ComisionesDetalles.idliquidaction">
                     <input type="hidden" name="action" :value="StatusProcess">
-                    <h5>Usuario: <strong v-text="ComisionesDetalles.fullname"></strong></h5>
+                    <h5>Usuario: <strong v-text="ComisionesDetalles.username"></strong></h5>
                     <h5>Total: <strong v-text="ComisionesDetalles.total"></strong></h5>
 
                     <div class="form-group" v-if="StatusProcess == 'aproved'">

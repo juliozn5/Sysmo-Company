@@ -10,7 +10,7 @@ class LogLiquidation extends Model
     protected $table = 'log_liquidations';
 
     protected $fillable = [
-        'idliquidation', 'comentario', 'accion'
+        'id_liquidation', 'commentary', 'action'
     ];
 
     /**

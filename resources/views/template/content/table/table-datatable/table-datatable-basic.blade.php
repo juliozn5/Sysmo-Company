@@ -51,11 +51,11 @@
         </div>
         <div class="modal-body flex-grow-1">
           <div class="form-group">
-            <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+            <label class="form-label" for="basic-icon-default-username">Full Name</label>
             <input
               type="text"
               class="form-control dt-full-name"
-              id="basic-icon-default-fullname"
+              id="basic-icon-default-username"
               placeholder="John Doe"
               aria-label="John Doe"
             />

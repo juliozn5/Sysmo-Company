@@ -17,7 +17,7 @@ class AddBalanceTableSeeder extends Seeder
 
                 [
                   "id"=>"1",
-                  "iduser"=>"1",
+                  " user_id"=>"1",
                   "saldo"=>"100",
                   "metodo_pago"=>"Skrill",
                   "id_transacion"=>"123",
@@ -27,7 +27,7 @@ class AddBalanceTableSeeder extends Seeder
                 ],
                 [
                   "id"=>"2",
-                  "iduser"=>"1",
+                  " user_id"=>"1",
                   "saldo"=>"100",
                   "metodo_pago"=>"Stripe",
                   "id_transacion"=>"456",
@@ -37,7 +37,7 @@ class AddBalanceTableSeeder extends Seeder
                 ],
                 [
                   "id"=>"3",
-                  "iduser"=>"1",
+                  " user_id"=>"1",
                   "saldo"=>"100",
                   "metodo_pago"=>"Payu",
                   "id_transacion"=>"789",
@@ -47,7 +47,7 @@ class AddBalanceTableSeeder extends Seeder
                 ],
                 [
                   "id"=>"4",
-                  "iduser"=>"1",
+                  " user_id"=>"1",
                   "saldo"=>"100",
                   "metodo_pago"=>"Coinbase",
                   "id_transacion"=>"159",

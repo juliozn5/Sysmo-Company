@@ -9,7 +9,7 @@ class AddBalance extends Model
     protected $table = 'add_balance';
 
     protected $fillable = [
-        'user_id', 'balance', 'payment_method', 'id_transacion', 'status'
+        'user_id', 'balance', 'payment_method', 'transacion_id', 'status'
     ];
 
     /**

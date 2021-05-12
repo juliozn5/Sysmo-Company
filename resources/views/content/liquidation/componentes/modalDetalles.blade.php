@@ -4,15 +4,15 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
+                <h5 class="modal-title" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.username}})</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body text-justify">
-                <form action="{{route('liquidation.store')}}" method="post">
+                <form action="{{route('liquidaction.process')}}" method="post">
                     @csrf
-                    <input type="hidden" name="iduser" :value="ComisionesDetalles.iduser">
+                    <input type="hidden" name=" user_id" :value="ComisionesDetalles. user_id">
                     <table class="table nowrap scroll-horizontal-vertical table-striped" style="width: 100%">
                         <thead>
                             <tr class="text-center">
@@ -42,7 +42,7 @@
                                 <td v-text="item.fecha"></td>
                                 <td v-text="item.descripcion"></td>
                                 <td v-text="item.referred_id"></td>
-                                <td v-text="item.referido.fullname"></td>
+                                <td v-text="item.referido.username"></td>
                                 <td v-text="item.debito +' $'"></td>
                             </tr>
                         </tbody>

@@ -1,23 +1,33 @@
-@extends('layouts.dashboard')
+@extends('layouts/contentLayoutMaster')
 
-@push('vendor_css')
+@section('title', 'Comissions')
+
+@section('page-script')
+
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
-@endpush
-
-@push('page_vendor_js')
 <script src="{{asset('assets/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script src="{{asset('assets/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
-@endpush
-
-{{-- permite llamar las librerias montadas --}}
-@push('page_js')
 <script src="{{asset('assets/js/librerias/vue.js')}}"></script>
 <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
-@endpush
-
-@push('custom_js')
 <script src="{{asset('assets/js/liquidation.js')}}"></script>
-@endpush
+
+
+<script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#mytable').DataTable({
+            // dom: 'flBrtip',
+            responsive: true,
+            searching: false,
+            ordering: true,
+            paging: true,
+            select: true,
+        });
+    });
+
+</script>
+@endsection
 
 @section('content')
 <div id="settlement">
@@ -25,10 +35,10 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <div class="table-responsive">
-                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
+                    <div class="table-responsive"> 
+                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped" id='mytable'>
                             <thead class="">
-                                <tr class="text-center text-white bg-purple-alt2">
+                                <tr class="text-center text-black bg-purple-alt2"> 
                                     {{-- <th> Seleccionar Todo </th>                              --}}
                                     <th>ID Usuario</th>
                                     <th>Usuario</th>
@@ -39,18 +49,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($comisiones as $comision)
+                                @foreach ($commissions as $comision)
                                     <tr class="text-center">
                                         {{-- <td>
                                             <input type="checkbox" value="item.id" name="listComisiones[]">
                                         </td> --}}
-                                        <td>{{$comision->iduser}}</td>
-                                        <td>{{$comision->getWalletUser->fullname}}</td>
+                                        <td>{{$comision->user_id}}</td>
+                                        <td>{{$comision->getWalletUser->username}}</td>
                                         <td>{{$comision->getWalletUser->email}}</td>
                                         <td>{{$comision->total}}</td>
                                         <td>{{$comision->getWalletUser->status}}</td>
                                         <td>
-                                            <a onclick="vm_liquidation.getDetailComision({{$comision->iduser}})" class="btn btn-info">
+                                            <a onclick="vm_liquidation.getDetailComision({{$comision->user_id}})" class="btn btn-info">
                                                 <i class="feather icon-eye"></i>
                                             </a>
                                         </td>
@@ -63,11 +73,6 @@
             </div>
         </div>
     </div>
-    @include('settlement.componentes.modalDetalles', ['all' => true])
+    @include('content.liquidation.componentes.modalDetalles', ['all' => true])
 </div>
 @endsection
-
-{{-- permite llamar a las opciones de las tablas --}}
-@include('layouts.componenteDashboard.optionDatatable')
-
-

@@ -61,7 +61,7 @@ class WalletController extends Controller
                                 $pocentaje = $this->getPorcentage($sponsor->nivel);
                                 $monto = $this->recalcularMonto($balance->balance, $balance->metodo_pago);
                                 $comision = ($monto * $pocentaje);
-                                $concepto = 'Comision del usuario '.$balance->getUser->fullname.' por un monto de '.$balance->balance;
+                                $concepto = 'Comision del usuario '.$balance->getUser->username.' por un monto de '.$balance->balance;
                                 $data = [
                                     'user_id' => $sponsor->id,
                                     'referred_id' => $balance->user_id,

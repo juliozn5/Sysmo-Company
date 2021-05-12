@@ -9,6 +9,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\ImpersonateController;
+use App\Http\Controllers\LiquidactionController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\ProductWarehouseController;
 
@@ -104,9 +105,12 @@ Route::group(['prefix' => 'admin'], function () {
       Route::get('edit-admin/{id}', [ProductWarehouseController::class,'editAdmin'])->name('store.edit');
       Route::patch('update-admin/{id}', [ProductWarehouseController::class,'updateAdmin'])->name('store.update');
       Route::get('list-admin', [ProductWarehouseController::class,'listAdmin'])->name('store.list-admin');
+      Route::get('list-orders', [ProductWarehouseController::class,'orders'])->name('store.list-orders');
+      Route::get('attend-order/{id}', [ProductWarehouseController::class,'orderAttend'])->name('store.attend');
+      Route::patch('update-order/{id}', [ProductWarehouseController::class,'updateOrder'])->name('store.order');
       Route::delete('delete/{id}', [ProductWarehouseController::class,'destroy'])->name('store.destroy');
     });
-
+    
   // user admin
   Route::group(['prefix' => 'users'], function () {
     Route::get('user-list', [UserController::class,'list'])->name('user.list')->middleware('auth', 'checkrole:1');
@@ -127,7 +131,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('pending', [LiquidactionController::class,'indexPendientes'])->name('liquidaction.pending');
     Route::post('process', [LiquidactionController::class,'procesarLiquidacion'])->name('liquidaction.process');
     Route::get('{status}/history', [LiquidactionController::class,'indexHistory'])->name('liquidaction.history.status');
-    //Route::resource('liquidation', [LiquidactionController::class]);
+    // Route::resource('liquidation', [LiquidactionController::class]);
 
   });
 

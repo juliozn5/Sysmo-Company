@@ -17,7 +17,7 @@
                                     <div class="controls">
                                         <label>Nombre del Usuario</label>
                                         <input type="text" class="form-control" readonly
-                                            value="{{ $orden->getOrdenUser->fullname}}">
+                                            value="{{ $orden->getOrdenUser->username}}">
                                     </div>
                                 </div>
                             </div>

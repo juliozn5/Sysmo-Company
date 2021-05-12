@@ -20,6 +20,14 @@ class ProductWarehouseController extends Controller
     
     }
 
+     // permite ver la vista de la tienda
+    public function orders(){
+
+        $store = Order::all();
+        return view('content.store.admin.orders')->with('store', $store);
+    
+    }
+
     // permite ver la vista de creacion delproducto
 
     public function create(){
@@ -68,6 +76,37 @@ class ProductWarehouseController extends Controller
         ->with('store', $store);
     }
 
+     // permite editar el producto
+
+     public function orderAttend($id){
+
+        $store = Order::find($id);
+
+        return view('content.store.admin.order-attend')
+        ->with('store', $store);
+    }
+
+    public function updateOrder(Request $request, $id){
+
+        $store = Order::find($id);
+
+        $fields = [
+     
+        ];
+
+        $msj = [
+      
+        ];
+        
+        $this->validate($request, $fields, $msj);
+
+        $store->update($request->all());
+
+        $store->save();
+        
+      return redirect()->route('store.list-orders')->with('message', 'Producto '.$id.' Actualizado ');
+    }
+
     // permite actualizar el producto
 
     public function updateAdmin(Request $request, $id){
@@ -77,13 +116,13 @@ class ProductWarehouseController extends Controller
         $fields = [
             "name" => ['required'],
             "description" => ['required'],
-            "amount" => ['required'],
+            "price" => ['required'],
         ];
 
         $msj = [
             'name.required' => 'El nombre es Requerido',
             'description.required' => 'La descripcion es Requerido',
-            'amount.required' => 'El monto es Requerido',
+            'price.required' => 'El monto es Requerido',
         ];
         
         $this->validate($request, $fields, $msj);
@@ -132,7 +171,7 @@ class ProductWarehouseController extends Controller
     {
             $user = Auth::user();
 
-            if($user->balance >= $request->amount){
+            if($user->balance >= $request->price){
 
             $orden = Order::create([
                 'user_id' => Auth::id(),
@@ -140,7 +179,7 @@ class ProductWarehouseController extends Controller
                 'amount' => '1',
             ]);
 
-            $wallet = $user->balance - $request->amount;
+            $wallet = $user->balance - $request->price;
             $orden->getUser->update(['balance' => $wallet]);
 
             return redirect()->back()->with('message', 'Producto Comprado');

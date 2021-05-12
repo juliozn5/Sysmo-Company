@@ -55,15 +55,15 @@
           </div>
           <div class="modal-body flex-grow-1">
             <div class="form-group">
-              <label class="form-label" for="basic-icon-default-fullname">Full Name</label>
+              <label class="form-label" for="basic-icon-default-username">Full Name</label>
               <input
                 type="text"
                 class="form-control dt-full-name"
-                id="basic-icon-default-fullname"
+                id="basic-icon-default-username"
                 placeholder="John Doe"
-                name="user-fullname"
+                name="user-username"
                 aria-label="John Doe"
-                aria-describedby="basic-icon-default-fullname2"
+                aria-describedby="basic-icon-default-username2"
               />
             </div>
             <div class="form-group">

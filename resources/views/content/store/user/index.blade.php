@@ -20,15 +20,15 @@
                         <img class="" src="{{asset('storage/products/'.$item->photoDB)}}" height="180" width="230" alt="Card">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title float-right pb-0">{{ $item->amount }} $</h4>
-                            <input type="number" value="{{ $item->amount }}" class=" d-none" name="amount">
+                            <h4 class="card-title float-right pb-0">{{ $item->price }} $</h4>
+                            <input type="number" value="{{ $item->price }}" class=" d-none" name="price">
                             <h4 class="card-title">⭐⭐⭐⭐⭐</h4>
                             <br>
                             <h6 class="card-title small font-weight-medium">{{ $item->name }}</h6>
                             <input type="text" value="{{ $item->name }}" class=" d-none" name="name">
                             <p class="card-text">{{ $item->description }}</p>
                         </div>
-                        @if (Auth::user()->balance >= $item->amount)
+                        @if (Auth::user()->balance >= $item->price)
                         <button type="submit" class="col-12 btn btn-lg btn-success waves-effect waves-light"><i data-feather='shopping-bag' class="mr-1"></i> Comprar</button>    
                         @else
                         <button type="submit" class="col-12 btn btn-lg btn-danger waves-effect waves-light"><i data-feather='alert-circle' class=" mr-1"></i>Saldo Insuficiente</button> 

@@ -30,7 +30,7 @@ class LiquidactionController extends Controller
     public function index()
     {
         $commissions = $this->getTotalCommissions([], null);
-        return view('liquidation.index')->with('commissions', $commissions);
+        return view('content.liquidation.index')->with('commissions', $commissions);
     }
 
     /**
@@ -42,9 +42,9 @@ class LiquidactionController extends Controller
     {
         $liquidations = Liquidaction::where('status', 0)->get();
         foreach ($liquidations as $liqui) {
-            $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            $liqui->username = $liqui->getUserLiquidation->username;
         }
-        return view('liquidation.pending')->with('liquidations', $liquidations);
+        return view('content.liquidation.pending')->with('liquidations', $liquidations);
     }
 
     /**
@@ -58,9 +58,9 @@ class LiquidactionController extends Controller
         $status = ($status == 'Reservadas') ? 2 : 1;
         $liquidations = Liquidaction::where('status', $status)->get();
         foreach ($liquidations as $liqui) {
-            $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            $liqui->username = $liqui->getUserLiquidation->username;
         }
-        return view('liquidation.history')
+        return view('content.liquidation.history')
         ->with('liquidations', $liquidations)
         ->with('status', $status);
     }
@@ -86,7 +86,7 @@ class LiquidactionController extends Controller
         if ($request->tipo = 'detallada') {
             $validate = $request->validate([
                 'listComisiones' => ['required', 'array'],
-                'iduser' => ['required']
+                'user_id' => ['required']
             ]);
         }else{
             $validate = $request->validate([
@@ -97,10 +97,10 @@ class LiquidactionController extends Controller
         try {
             if ($validate) {
                 if ($request->tipo = 'detallada') {
-                    $this->generarLiquidation($request->iduser, $request->listComisiones);
+                    $this->generarLiquidation($request->user_id, $request->listComisiones);
                 }else{
-                    foreach ($request->listUsers as $iduser) {
-                        $this->generarLiquidation($iduser, []);
+                    foreach ($request->listUsers as $user_id) {
+                        $this->generarLiquidation($user_id, []);
                     }
                 }
                 return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
@@ -124,23 +124,23 @@ class LiquidactionController extends Controller
         $commissions = Wallet::where([
             ['status', '=', 0],
             ['liquidation_id', '=', null],
-            ['tipo_transaction', '=', 0],
-            ['iduser', '=', $id]
+            ['type_transaction', '=', 0],
+            ['user_id', '=', $id]
         ])->get();
 
         foreach ($commissions as $comi) {
             $date = new Carbon($comi->created_at);
             $comi->date = $date->format('Y-m-d');
-            $comi->referred = User::find($comi->referred_id)->only('fullname');
+            $comi->referred = User::find($comi->referred_id)->only('username');
         }
         
         $user = User::find($id);
 
         $details = [
-            'iduser' => $id,
-            'fullname' => $user->fullname,
+            'user_id' => $id,
+            'username' => $user->username,
             'commissions' => $commissions,
-            'total' => number_format($commissions->sum('debito'), 2, ',', '.')
+            'total' => number_format($commissions->sum('debit'), 2, ',', '.')
         ];
 
         return json_encode($details);        
@@ -161,16 +161,16 @@ class LiquidactionController extends Controller
         foreach ($commissions as $comi) {
             $date = new Carbon($comi->created_at);
             $comi->date = $date->format('Y-m-d');
-            $comi->referred = User::find($comi->referred_id)->only('fullname');
+            $comi->referred = User::find($comi->referred_id)->only('username');
         }
-        $user = User::find($commissions->pluck('iduser')[0]);
+        $user = User::find($commissions->pluck('user_id')[0]);
 
         $details = [
             'idliquidaction' => $id,
-            'iduser' => $user->id,
-            'fullname' => $user->fullname,
+            'user_id' => $user->id,
+            'username' => $user->username,
             'commissions' => $commissions,
-            'total' => number_format($commissions->sum('debito'), 2, ',', '.')
+            'total' => number_format($commissions->sum('debit'), 2, ',', '.')
         ];
 
         return json_encode($details);
@@ -203,30 +203,30 @@ class LiquidactionController extends Controller
      * Permite Obtener la informacion de las commissions y el total disponible
      *
      * @param array $filters - filtro para mejorar la vistas
-     * @param integer $iduser - si es para un usuario especifico
+     * @param integer $user_id - si es para un usuario especifico
      * @return array
      */
-    public function getTotalCommissions(array $filters, int $iduser = null): array
+    public function getTotalCommissions(array $filters, int $user_id = null): array
     {
         try {
             $commissions = [];
-            if ($iduser != null && $iduser != 1) {
+            if ($user_id != null && $user_id != 1) {
                 $commissionstmp = Wallet::where([
                     ['status', '=', 0],
                     ['liquidation_id', '=', null],
-                    ['tipo_transaction', '=', 0],
-                    ['iduser', '=', $iduser]
+                    ['type_transaction', '=', 0],
+                    ['user_id', '=', $user_id]
                 ])->select(
-                    DB::raw('sum(debito) as total'), 'iduser'
-                )->groupBy('iduser')->get();
+                    DB::raw('sum(debit) as total'), 'user_id'
+                )->groupBy('user_id')->get();
             }else{
                 $commissionstmp = Wallet::where([
                     ['status', '=', 0],
                     ['liquidation_id', '=', null],
-                    ['tipo_transaction', '=', 0],
+                    ['type_transaction', '=', 0],
                 ])->select(
-                    DB::raw('sum(debito) as total'), 'iduser'
-                )->groupBy('iduser')->get();
+                    DB::raw('sum(debit) as total'), 'user_id'
+                )->groupBy('user_id')->get();
             }
 
             foreach ($commissionstmp as $commission) {
@@ -266,34 +266,34 @@ class LiquidactionController extends Controller
     /**
      * Permite procesar las liquidations
      *
-     * @param integer $iduser -  id del usuario
+     * @param integer $user_id -  id del usuario
      * @param array $listComision - commissions a procesar si son selecionada
      * @return void
      */
-    public function generarLiquidation(int $iduser, array $listComision)
+    public function generarLiquidation(int $user_id, array $listComision)
     {
         try {
-            $user = User::find($iduser);
+            $user = User::find($user_id);
             $commissions = collect();
 
             if ($listComision == []) {
                 $commissions = Wallet::where([
-                    ['iduser', '=', $iduser],
+                    ['user_id', '=', $user_id],
                     ['status', '=', 0],
-                    ['tipo_transaction', '=', 0],
+                    ['type_transaction', '=', 0],
                 ])->get();
             }else {
                 $commissions = Wallet::whereIn('id', $listComision)->get();
             }
 
-            $crude = $commissions->sum('debito');
+            $crude = $commissions->sum('debit');
             $feed = ($crude * 0);
             $total = ($crude - $feed);
 
             $arrayLiquidation = [
-                'iduser' => $iduser,
+                'user_id' => $user_id,
                 'total' => $total,
-                'monto_bruto' => $crude,
+                'gross_amount' => $crude,
                 'feed' => $feed,
                 'hash',
                 'wallet_used',
@@ -301,14 +301,14 @@ class LiquidactionController extends Controller
             ];
             $idLiquidation = $this->saveLiquidation($arrayLiquidation);
 
-            $concept = 'Liquidacion del usuario '.$user->fullname.' por un monto de '.$crude;
+            $concept = 'Liquidacion del usuario '.$user->username.' por un monto de '.$crude;
             $arrayWallet =[
-                'iduser' => $user->id,
+                'user_id' => $user->id,
                 'referred_id' => $user->id,
                 'credito' => $crude,
                 'descripcion' => $concept,
                 'status' => 0,
-                'tipo_transaction' => 1,
+                'type_transaction' => 1,
             ];
 
             $this->walletController->saveWallet($arrayWallet);
@@ -418,13 +418,13 @@ class LiquidactionController extends Controller
 
         $concept = 'Liquidacion Reservada - Motivo: '.$comentario;
         $arrayWallet =[
-            'iduser' => $liquidation->iduser,
+            'user_id' => $liquidation->user_id,
             'orden_id' => null,
-            'referred_id' => $liquidation->iduser,
-            'debito' => $liquidation->monto_bruto,
+            'referred_id' => $liquidation->user_id,
+            'debit' => $liquidation->gross_amount,
             'descripcion' => $concept,
             'status' => 1,
-            'tipo_transaction' => 0,
+            'type_transaction' => 0,
         ];
 
         $this->walletController->saveWallet($arrayWallet);

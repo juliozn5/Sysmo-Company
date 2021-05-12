@@ -45,7 +45,7 @@ class AddBalanceController extends Controller
     //     try {
             
     //         $orden = [
-    //             'iduser' => Auth::id(),
+    //             ' user_id' => Auth::id(),
     //             'balance' => $request->balance,
     //             'metodo_pago' => 'Stripe',
     //             'fecha_creacion' => Carbon::now()
@@ -96,7 +96,7 @@ class AddBalanceController extends Controller
         try {
             
             $orden = [
-                'iduser' => Auth::id(),
+                ' user_id' => Auth::id(),
                 'balance' => $request->balance,
                 'metodo_pago' => 'Payu',
                 'fecha_creacion' => Carbon::now()
@@ -272,7 +272,7 @@ class AddBalanceController extends Controller
     // {
     //     try {
     //         $orden = [
-    //             'iduser' => Auth::id(),
+    //             ' user_id' => Auth::id(),
     //             'balance' => $request->balance,
     //             'metodo_pago' => 'Coinbase',
     //             'fecha_creacion' => Carbon::now()
@@ -344,10 +344,10 @@ class AddBalanceController extends Controller
     /**
      * Permite agregar obtener el balance por meses 
      *
-     * @param integer $iduser
+     * @param integer $ user_id
      * @return array
      */
-    public function getDataGraphicBalance($iduser): array
+    public function getDataGraphicBalance($ user_id): array
     {
         try {
             $valorBalance = [];
@@ -364,7 +364,7 @@ class AddBalanceController extends Controller
             }else{
                 $balances = AddBalance::select(DB::raw('SUM(balance) as balance'))
                                 ->where([
-                                    ['iduser', '=', $iduser],
+                                    [' user_id', '=', $ user_id],
                                     ['estado', '>=', 0],
                                 ])
                                 ->groupBy(DB::raw('YEAR(fecha_creacion)'), DB::raw('MONTH(fecha_creacion)'))

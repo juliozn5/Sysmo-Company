@@ -1,23 +1,16 @@
-@extends('layouts.dashboard')
+@extends('layouts/contentLayoutMaster')
 
-@push('vendor_css')
+@section('title', 'Comissions')
+
+@section('page-script')
+
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
-@endpush
-
-@push('page_vendor_js')
 <script src="{{asset('assets/app-assets/vendors/js/extensions/sweetalert2.all.min.js')}}"></script>
 <script src="{{asset('assets/app-assets/vendors/js/extensions/polyfill.min.js')}}"></script>
-@endpush
-
-{{-- permite llamar las librerias montadas --}}
-@push('page_js')
 <script src="{{asset('assets/js/librerias/vue.js')}}"></script>
 <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
-@endpush
-
-@push('custom_js')
 <script src="{{asset('assets/js/liquidation.js')}}"></script>
-@endpush
+@endsection
 
 @section('content')
 <div id="settlement">
@@ -28,7 +21,7 @@
                     <div class="table-responsive">
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
-                                <tr class="text-center text-white bg-purple-alt2">
+                                <tr class="text-center text-black bg-purple-alt2">
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Total </th>
@@ -42,12 +35,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($liquidaciones as $liqui)
+                                @foreach ($liquidations as $liqui)
                                 <tr class="text-center">
                                     <td>{{$liqui->id}}</td>
-                                    <td>{{$liqui->fullname}}</td>
+                                    <td>{{$liqui->username}}</td>
                                     <td>{{$liqui->total}}</td>
-                                    <td>{{$liqui->monto_bruto}}</td>
+                                    <td>{{$liqui->gross_amount}}</td>
                                     <td>{{$liqui->feed}}</td>
                                     <td>{{$liqui->hash}}</td>
                                     <td>{{$liqui->wallet_used}}</td>
@@ -69,11 +62,8 @@
             </div>
         </div>
     </div>
-    @include('settlement.componentes.modalDetalles', ['all' => false])
+    @include('content.liquidation.componentes.modalDetalles', ['all' => true])
 </div>
 
 
 @endsection
-
-{{-- permite llamar a las opciones de las tablas --}}
-@include('layouts.componenteDashboard.optionDatatable')

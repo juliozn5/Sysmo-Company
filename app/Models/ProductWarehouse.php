@@ -15,7 +15,7 @@ class ProductWarehouse extends Model
 
     protected $fillable = [
 
-        'name', 'description', 'amount', 'status', 'photoDB'
+        'name', 'description', 'price', 'status', 'photoDB'
     ];
 
     public function getUser()

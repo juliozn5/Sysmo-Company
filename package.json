@@ -28,6 +28,8 @@
         "rtlcss": "^2.4.0",
         "sass": "^1.22.12",
         "sass-loader": "^8.0.0",
-        "tailwindcss": "^2.0.1"
+        "tailwindcss": "^2.0.1",
+        "vue": "^2.5.17",
+        "vue-template-compiler": "^2.6.10"
     }
 }

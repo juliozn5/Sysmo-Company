@@ -70,7 +70,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Precio</label>
-                                            <input type="number" id="amount" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="amount" value="{{ $store->amount }}" required/>
+                                            <input type="number" id="price" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" name="price" value="{{ $store->price }}" required/>
                                         </div>
                                     </div>
 

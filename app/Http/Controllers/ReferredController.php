@@ -189,14 +189,14 @@ class ReferredController extends Controller
     //    /**
     //  * Permite obtener la cantidad de usuarios tantos directos, como indirectos
     //  *
-    //  * @param integer $iduser
+    //  * @param integer $ user_id
     //  * @return array
     //  */
-    // public function getTotalUser(int $iduser): array
+    // public function getTotalUser(int $ user_id): array
     // {
     //     try {
-    //         $directos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 1));
-    //         $indirectos = count($this->getChidrens2($iduser, [], 1, 'referred_id', 0));
+    //         $directos = count($this->getChidrens2($ user_id, [], 1, 'referred_id', 1));
+    //         $indirectos = count($this->getChidrens2($ user_id, [], 1, 'referred_id', 0));
     //         return [
     //             'directos' => $directos,
     //             'indirectos' => $indirectos

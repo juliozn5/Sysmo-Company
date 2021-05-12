@@ -197,6 +197,7 @@ return [
   "Sistema de Tienda" => "Sistema de Tienda",
   "Tienda" => "Tienda",
   "Productos" => "Productos",
+  "Pedidos" => "Pedidos",
   "Añadir producto" => "Añadir producto",
 
   "Wallet" => "Wallet",
