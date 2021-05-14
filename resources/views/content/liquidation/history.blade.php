@@ -10,6 +10,22 @@
 <script src="{{asset('assets/js/librerias/vue.js')}}"></script>
 <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
 <script src="{{asset('assets/js/liquidation.js')}}"></script>
+
+<script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#mytable').DataTable({
+            // dom: 'flBrtip',
+            responsive: true,
+            searching: false,
+            ordering: true,
+            paging: true,
+            select: true,
+        });
+    });
+
+</script>
 @endsection
 
 @section('content')
@@ -49,7 +65,7 @@
                                     <td>
                                         @if ($estado == 1)
                                         <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">
-                                            <i class="fa fa-eye"></i>
+                                            Ver
                                         </button>
                                         @endif
                                     </td>

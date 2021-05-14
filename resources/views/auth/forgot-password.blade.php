@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
-                                placeholder="william@example.com" aria-describedby="email" tabindex="1" autofocus
+                                placeholder="Email@example.com" aria-describedby="email" tabindex="1" autofocus
                                 required :value="old('email')" />
                         </div>
                         <button class="btn btn-primary btn-block" tabindex="2">Enviar enlace de

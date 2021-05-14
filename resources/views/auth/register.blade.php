@@ -74,7 +74,7 @@
                             <div class="form-group col-6">
                                 <label for="register-firstname" class="form-label">Nombre</label>
                                 <input type="text" class="form-control @error('firstname') is-invalid @enderror"
-                                    id="register-firstname" name="firstname" placeholder="William"
+                                    id="register-firstname" name="firstname" placeholder="Nombre"
                                     aria-describedby="register-firstname" tabindex="1" autofocus
                                     value="{{ old('firstname') }}" required />
                                 @error('firstname')
@@ -86,7 +86,7 @@
                             <div class="form-group col-6">
                                 <label for="register-lastname" class="form-label">Apellido</label>
                                 <input type="text" class="form-control @error('lastname') is-invalid @enderror"
-                                    id="register-lastname" name="lastname" placeholder="Ache"
+                                    id="register-lastname" name="lastname" placeholder="Apellido"
                                     aria-describedby="register-lastname" tabindex="1" autofocus
                                     value="{{ old('lastname') }}" required />
                                 @error('lastname')
@@ -98,7 +98,7 @@
                             <div class="form-group col-6">
                                 <label for="register-username" class="form-label">Nombre de Usuario</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="register-username" name="username" placeholder="Willi28ache"
+                                    id="register-username" name="username" placeholder="Username"
                                     aria-describedby="register-username" tabindex="1" autofocus
                                     value="{{ old('username') }}" required />
                                 @error('username')
@@ -131,7 +131,7 @@
                             <div class="form-group col-12">
                                 <label for="register-email" class="form-label">Correo</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="register-email" name="email" placeholder="william@example.com"
+                                    id="register-email" name="email" placeholder="Email@example.com"
                                     aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" required />
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -143,7 +143,7 @@
                             <div class="form-group col-12">
                                 <label for="register-email" class="form-label">Confirmar Correo</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="register-email" name="email" placeholder="william@example.com"
+                                    id="register-email" name="email" placeholder="Email@example.com"
                                     aria-describedby="register-email" tabindex="2" value="{{ old('email') }}" required />
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">

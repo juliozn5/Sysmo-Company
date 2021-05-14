@@ -52,7 +52,7 @@
                                 @foreach ($commissions as $comision)
                                     <tr class="text-center">
                                         {{-- <td>
-                                            <input type="checkbox" value="item.id" name="listComisiones[]">
+                                            <input type="checkbox" value="item.id" name="listCommissions[]">
                                         </td> --}}
                                         <td>{{$comision->user_id}}</td>
                                         <td>{{$comision->getWalletUser->username}}</td>
@@ -61,7 +61,7 @@
                                         <td>{{$comision->getWalletUser->status}}</td>
                                         <td>
                                             <a onclick="vm_liquidation.getDetailComision({{$comision->user_id}})" class="btn btn-info">
-                                                <i class="feather icon-eye"></i>
+                                                Ver
                                             </a>
                                         </td>
                                     </tr>

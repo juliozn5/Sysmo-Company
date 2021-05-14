@@ -22,7 +22,6 @@ class WalletController extends Controller
     public function __construct()
     {
         $this->referredController = new ReferredController;
-        View::share('titleq', 'Billetera');
     }
 
     /**
@@ -50,7 +49,7 @@ class WalletController extends Controller
     public function payComision()
     {
         try {
-            $saldos = $this->getSaldos();
+            $saldos = $this->getBalances();
             foreach ($saldos as $balance) {
                 $sponsors = $this->referredController->getSponsor($balance->user_id, [], 0, 'id', 'referred_id');
                 // dd($sponsors);
@@ -59,7 +58,7 @@ class WalletController extends Controller
                         if ($sponsor->id != $balance->user_id) {
                             if ($sponsor->nivel <= 5) {
                                 $pocentaje = $this->getPorcentage($sponsor->nivel);
-                                $monto = $this->recalcularMonto($balance->balance, $balance->metodo_pago);
+                                $monto = $this->recalculateAmount($balance->balance, $balance->payment_method);
                                 $comision = ($monto * $pocentaje);
                                 $concepto = 'Comision del usuario '.$balance->getUser->username.' por un monto de '.$balance->balance;
                                 $data = [
@@ -105,7 +104,7 @@ class WalletController extends Controller
      * @param string $tipo_pago
      * @return float
      */
-    public function recalcularMonto(float $monto, string $tipo_pago):float
+    public function recalculateAmount(float $monto, string $tipo_pago):float
     {
         $arrayMetodo = [
             'payulatam' => 1.10, 'manual' => 1.00, 'stripe' => 1.10, 'coinbase' => 1.02
@@ -121,7 +120,7 @@ class WalletController extends Controller
      * @param integer $user_id
      * @return object
      */
-    public function getSaldos($user_id = null): object
+    public function getBalances($user_id = null): object
     {
         try {
             $fecha = Carbon::now();
@@ -151,9 +150,9 @@ class WalletController extends Controller
     public function saveWallet($data)
     {
         try {
-            if ($data['tipo_transaction'] == 1) {
+            if ($data['type_transaction'] == 1) {
                 $wallet = Wallet::create($data);
-                $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['credito']);
+                $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['credit']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 $wallet->update(['balance' => $saldoAcumulado]);
             }else{
@@ -168,7 +167,7 @@ class WalletController extends Controller
                 }else{
                     $wallet = Wallet::create($data);
                 }
-                $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['debito']);
+                $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['debit']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 $wallet->update(['balance' => $saldoAcumulado]);
             }
@@ -187,9 +186,9 @@ class WalletController extends Controller
     public function getTotalComision($user_id): float
     {
         try {
-            $wallet = Wallet::where([['user_id', '=', $user_id], ['status', '=', 0]])->get()->sum('debito');
+            $wallet = Wallet::where([['user_id', '=', $user_id], ['status', '=', 0]])->get()->sum('debit');
             if ($user_id == 1) {
-                $wallet = Wallet::where([['status', '=', 0]])->get()->sum('debito');
+                $wallet = Wallet::where([['status', '=', 0]])->get()->sum('debit');
             }
             return $wallet;
         } catch (\Throwable $th) {
@@ -209,7 +208,7 @@ class WalletController extends Controller
         try {
             $totalComision = [];
             if (Auth::user()->admin == 1) {
-                $Comisiones = Wallet::select(DB::raw('SUM(debito) as Comision'))
+                $Comisiones = Wallet::select(DB::raw('SUM(debit) as Comision'))
                                 ->where([
                                     ['status', '<=', 1]
                                 ])
@@ -219,7 +218,7 @@ class WalletController extends Controller
                                 ->take(6)
                                 ->get();
             }else{
-                $Comisiones = Wallet::select(DB::raw('SUM(debito) as Comision'))
+                $Comisiones = Wallet::select(DB::raw('SUM(debit) as Comision'))
                                 ->where([
                                     ['user_id', '=',  $user_id],
                                     ['status', '<=', 1]

@@ -4,19 +4,18 @@ var vm_liquidation = new Vue({
         return{
             seleAllComision: false,
             StatusProcess: '',
-            ComisionesDetalles: []
+            CommissionsDetails: []
         }
     },
     methods: {
         /**
          * Permite obtener la informacion de las comisiones de un usuario
-         * @param {integer}  user_id 
+         * @param {integer} user_id  
          */
-        getDetailComision: function( user_id){
-            let url = route('liquidation.show',  user_id)
+        getDetailComision: function(user_id){
             this.seleAllComision = false
-            axios.get(url).then((response) => {
-                this.ComisionesDetalles = response.data
+            axios.get('show/' + user_id).then((response) => {
+                this.CommissionsDetails = response.data
                 $('#modalModalDetalles').modal('show')
             }).catch(function (error) {
                 console.log(error)
@@ -27,11 +26,10 @@ var vm_liquidation = new Vue({
          * Permite obtener la informacion de las comisiones de las liquidaciones
          * @param {integer}  user_id 
          */
-         getDetailComisionLiquidation: function( user_id){
-            let url = route('liquidation.edit',  user_id)
+         getDetailComisionLiquidation: function(user_id){
             this.seleAllComision = false
-            axios.get(url).then((response) => {
-                this.ComisionesDetalles = response.data
+            axios.get('edit/' + user_id).then((response) => {
+                this.CommissionsDetails = response.data 
                 $('#modalModalDetalles').modal('show')
             }).catch(function (error) {
                 console.log(error)
@@ -45,10 +43,9 @@ var vm_liquidation = new Vue({
          */
          getDetailComisionLiquidationStatus: function( user_id, status){
             this.StatusProcess = status
-            let url = route('liquidation.edit',  user_id)
             this.seleAllComision = false
-            axios.get(url).then((response) => {
-                this.ComisionesDetalles = response.data
+            axios.get('edit/' + user_id).then((response) => {
+                this.CommissionsDetails = response.data
                 $('#modalModalAccion').modal('show')
             }).catch(function (error) {
                 console.log(error)

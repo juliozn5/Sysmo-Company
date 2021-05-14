@@ -31,7 +31,7 @@ class Liquidaction extends Model
      */
     public function getLogLiquidation()
     {
-        return $this->hasMany('App\Models\LogLiquidation', 'idliquidation');
+        return $this->hasMany('App\Models\LogLiquidation', 'liquidation_id');
     }
 
 }

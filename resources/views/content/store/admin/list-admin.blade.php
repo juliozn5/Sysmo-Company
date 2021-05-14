@@ -64,12 +64,8 @@
 
                                     @if ($item->status == '0')
                                     <td> <a class=" badge badge-info text-white">Inactivo</a></td>
-                                    @elseif($item->status == '1')
-                                    <td> <a class=" badge badge-success text-white">Disponible</a></td>
-                                    @elseif($item->status == '2')
-                                    <td> <a class=" badge badge-warning text-white">Agotado</a></td>
-                                    @elseif($item->status == '3')
-                                    <td> <a class=" badge badge-danger text-white">No Disponible</a></td>
+                                    @else
+                                    <td> <a class=" badge badge-success text-white">Activo</a></td>
                                     @endif
 
                                     <td>{{ $item->created_at}}</td>

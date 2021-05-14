@@ -11,7 +11,7 @@
         @if ($item->status == 1)
         
         <div class="col-3">
-            <form action="{{ route('store.save') }}" method="POST">
+            {{-- <form action="{{ route('store.save') }}" method="POST"> --}}
                 {{ csrf_field() }}
                 <input type="number" value="{{ $item->id }}" class=" d-none" name="id">
                 <div class="card">
@@ -28,15 +28,16 @@
                             <input type="text" value="{{ $item->name }}" class=" d-none" name="name">
                             <p class="card-text">{{ $item->description }}</p>
                         </div>
-                        @if (Auth::user()->balance >= $item->price)
+                        <button type="submit" class="col-12 btn btn-lg btn-success waves-effect waves-light"><i data-feather='shopping-bag' class="mr-1"></i> Comprar</button>    
+                        {{-- @if (Auth::user()->balance >= $item->price)
                         <button type="submit" class="col-12 btn btn-lg btn-success waves-effect waves-light"><i data-feather='shopping-bag' class="mr-1"></i> Comprar</button>    
                         @else
                         <button type="submit" class="col-12 btn btn-lg btn-danger waves-effect waves-light"><i data-feather='alert-circle' class=" mr-1"></i>Saldo Insuficiente</button> 
-                        @endif
+                        @endif --}}
                         
                     </div>
                 </div>
-            </form>
+            {{-- </form> --}}
         </div>
         @endif
         @endforeach

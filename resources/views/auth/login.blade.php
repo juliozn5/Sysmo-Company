@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="login-email" class="form-label">Email</label>
                             <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                id="login-email" name="email" placeholder="john@example.com"
+                                id="login-email" name="email" placeholder="Email@example.com"
                                 aria-describedby="login-email" tabindex="1" autofocus value="{{ old('email') }}" />
                             @error('email')
                             <span class="invalid-feedback" role="alert">

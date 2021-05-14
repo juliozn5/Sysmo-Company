@@ -39,9 +39,6 @@
                                     <th>ID</th>
                                     <th>Concepto</th>
                                     <th>Fecha</th>
-                                    <th>Debito</th>
-                                    <th>Credito</th>
-                                    <th>Balance</th>
                                     <th>Estado</th>
                                 </tr>
                             </thead>
@@ -51,9 +48,6 @@
                                     <td>{{$wallet->id}}</td>
                                     <td>{{$wallet->description}}</td>
                                     <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
-                                    <td>$ {{$wallet->debit}}</td>
-                                    <td>$ {{$wallet->credit}}</td>
-                                    <td class="text-success">$ {{$wallet->balance}}</td>
                                     <td>
                                         @if ($wallet->status == 1)
                                             Pagado

@@ -7,7 +7,7 @@
       "url": "/"
     },
     {
-      "name": "eCommerce",
+      "name": "Ecommerce",
       "icon": "home",
       "slug": "",
       "url": "admin/dashboard/ecommerce"
@@ -29,6 +29,12 @@
           "icon": "circle",
           "slug": "Pedidos",
           "url": "admin/store/list-orders"
+        },
+        {
+          "name": "Productos",
+          "icon": "circle",
+          "slug": "Productos",
+          "url": "admin/store/list-admin"
         },
         {
           "url": "user/store/store",

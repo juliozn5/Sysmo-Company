@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.username}})</h5>
+                <h5 class="modal-title" id="modalModalDetallesTitle">Detalles de commissions del usuario (@{{CommissionsDetails.username}})</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,7 +12,7 @@
             <div class="modal-body text-justify">
                 <form action="{{route('liquidaction.process')}}" method="post">
                     @csrf
-                    <input type="hidden" name=" user_id" :value="ComisionesDetalles. user_id">
+                    <input type="hidden" name=" user_id" :value="CommissionsDetails. user_id">
                     <table class="table nowrap scroll-horizontal-vertical table-striped" style="width: 100%">
                         <thead>
                             <tr class="text-center">
@@ -32,24 +32,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in ComisionesDetalles.comisiones" class="text-center">
+                            <tr v-for="item in CommissionsDetails.commissions" class="text-center">
                                 @if ($all)
                                 <td>
-                                    <input type="checkbox" :value="item.id" :checked="(seleAllComision) ? true : false" name="listComisiones[]">
+                                    <input type="checkbox" :value="item.id" :checked="(seleAllComision) ? true : false" name="listCommissions[]">
                                 </td>
                                 @endif
                                 <td v-text="item.id"></td>
-                                <td v-text="item.fecha"></td>
-                                <td v-text="item.descripcion"></td>
+                                <td v-text="item.date"></td>
+                                <td v-text="item.description"></td>
                                 <td v-text="item.referred_id"></td>
-                                <td v-text="item.referido.username"></td>
-                                <td v-text="item.debito +' $'"></td>
+                                <td v-text="item.referred.username"></td>
+                                <td v-text="item.debit +' $'"></td>
                             </tr>
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th colspan="4" class="text-right">Total Comision</th>
-                                <th colspan="2" v-text="ComisionesDetalles.total+' $'" class="text-right"></th>
+                                <th colspan="2" v-text="CommissionsDetails.total+' $'" class="text-right"></th>
                             </tr>
                         </tfoot>
                     </table>

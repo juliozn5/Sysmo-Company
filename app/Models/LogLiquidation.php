@@ -10,7 +10,7 @@ class LogLiquidation extends Model
     protected $table = 'log_liquidations';
 
     protected $fillable = [
-        'id_liquidation', 'commentary', 'action'
+        'liquidation_id', 'commentary', 'action'
     ];
 
     /**
@@ -20,6 +20,6 @@ class LogLiquidation extends Model
      */
     public function getLiquidation()
     {
-        return $this->belongsTo('App\Models\Liquidaction', 'idliquidation', 'id');
+        return $this->belongsTo('App\Models\Liquidaction', 'liquidation_id', 'id');
     }
 }

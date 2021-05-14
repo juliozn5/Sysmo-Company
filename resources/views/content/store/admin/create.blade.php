@@ -44,9 +44,7 @@
                                             <select name="status" id="status"
                                             class="custom-select data-toggle="select">
                                             <option value="0">Inactivo</option>
-                                            <option value="1">Disponible</option>
-                                            <option value="2">Agotado</option>
-                                            <option value="3">No disponible</option>
+                                            <option value="1">Activo</option>
                                             </select>
                                         </div>
                                     </div>

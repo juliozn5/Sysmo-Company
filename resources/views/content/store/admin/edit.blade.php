@@ -81,9 +81,7 @@
                                             class="custom-select status @error('status') is-invalid @enderror"
                                             required data-toggle="select">
                                             <option value="0" @if($store->status == '0') selected  @endif>Inactivo</option>
-                                            <option value="1" @if($store->status == '1') selected  @endif>Disponible</option>
-                                            <option value="2" @if($store->status == '2') selected  @endif>Agotado</option>
-                                            <option value="3" @if($store->status == '3') selected  @endif>No Disponible</option>
+                                            <option value="1" @if($store->status == '1') selected  @endif>Activo</option>
                                         </select>
                                         </div>
                                     </div>

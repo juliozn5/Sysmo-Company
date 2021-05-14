@@ -40,22 +40,22 @@ Route::group(['prefix' => 'user'], function () {
   });
 
   // Ruta para agregar saldo
-  Route::prefix('addsaldo')->group(function ()
-  {
-      Route::get('/', 'AddSaldoController@index')->name('addsaldo.index');
-      // Rutas para el pago stripe
-      Route::post('/stripe', 'AddSaldoController@stripe')->name('addsaldo.stripe');
-      // Rutas para el pago payulatam
-      Route::prefix('payu')->group(function ()
-      {
-         Route::post('/generate_orden', 'AddSaldoController@generate_orden_payu')->name('addsaldo.payu.generate');
-         Route::get('/{orden}/response_orden', 'AddSaldoController@response_orden_payu')->name('addsaldo.payu.response');
-         Route::post('/{orden}/confirmation_orden', 'AddSaldoController@confimation_orden_payu')->name('addsaldo.payu.confirmation');
-      });
-      // Rutas para el Coinbase
-      Route::post('/coinbase', 'AddSaldoController@generate_orden_coinbase')->name('addsaldo.coinbase');
-      Route::get('{status}/status_coinbase', 'AddSaldoController@status_coinbase')->name('addsaldo.coinbase.status');
-  });
+  // Route::prefix('addsaldo')->group(function ()
+  // {
+  //     Route::get('/', 'AddBalanceController@index')->name('addsaldo.index');
+  //     // Rutas para el pago stripe
+  //     Route::post('/stripe', 'AddBalanceController@stripe')->name('addsaldo.stripe');
+  //     // Rutas para el pago payulatam
+  //     Route::prefix('payu')->group(function ()
+  //     {
+  //        Route::post('/generate_orden', 'AddBalanceController@generate_orden_payu')->name('addsaldo.payu.generate');
+  //        Route::get('/{orden}/response_orden', 'AddBalanceController@response_orden_payu')->name('addsaldo.payu.response');
+  //        Route::post('/{orden}/confirmation_orden', 'AddBalanceController@confimation_orden_payu')->name('addsaldo.payu.confirmation');
+  //     });
+  //     // Rutas para el Coinbase
+  //     Route::post('/coinbase', 'AddBalanceController@generate_orden_coinbase')->name('addsaldo.coinbase');
+  //     Route::get('{status}/status_coinbase', 'AddBalanceController@status_coinbase')->name('addsaldo.coinbase.status');
+  // });
 
 
   Route::prefix('wallet')->group(function ()
@@ -128,10 +128,11 @@ Route::group(['prefix' => 'admin'], function () {
   {
       //Ruta liquidaciones realizadas
     Route::get('index', [LiquidactionController::class,'index'])->name('liquidaction.index');
-    Route::get('pending', [LiquidactionController::class,'indexPendientes'])->name('liquidaction.pending');
-    Route::post('process', [LiquidactionController::class,'procesarLiquidacion'])->name('liquidaction.process');
+    Route::get('pending', [LiquidactionController::class,'indexPendings'])->name('liquidaction.pending');
+    Route::post('process', [LiquidactionController::class,'ProcessLiquidation'])->name('liquidaction.process');
     Route::get('{status}/history', [LiquidactionController::class,'indexHistory'])->name('liquidaction.history.status');
-    // Route::resource('liquidation', [LiquidactionController::class]);
+    Route::get('edit/{id}', [LiquidactionController::class,'edit'])->name('liquidation.edit');
+    Route::get('show/{id}', [LiquidactionController::class,'show'])->name('liquidation.show');
 
   });
 

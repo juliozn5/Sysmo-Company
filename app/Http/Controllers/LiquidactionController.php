@@ -38,7 +38,7 @@ class LiquidactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexPendientes()
+    public function indexPendings()
     {
         $liquidations = Liquidaction::where('status', 0)->get();
         foreach ($liquidations as $liqui) {
@@ -85,7 +85,7 @@ class LiquidactionController extends Controller
     {
         if ($request->tipo = 'detallada') {
             $validate = $request->validate([
-                'listComisiones' => ['required', 'array'],
+                'listCommissions' => ['required', 'array'],
                 'user_id' => ['required']
             ]);
         }else{
@@ -97,13 +97,13 @@ class LiquidactionController extends Controller
         try {
             if ($validate) {
                 if ($request->tipo = 'detallada') {
-                    $this->generarLiquidation($request->user_id, $request->listComisiones);
+                    $this->generateLiquidation($request->user_id, $request->listCommissions);
                 }else{
                     foreach ($request->listUsers as $user_id) {
-                        $this->generarLiquidation($user_id, []);
+                        $this->generateLiquidation($user_id, []);
                     }
                 }
-                return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
+                return redirect()->back()->with('message', 'Liquidaciones Generada Exitoxamente');
             }
         } catch (\Throwable $th) {
             Log::error('Store LiquidactionController -> '.$th);
@@ -166,7 +166,7 @@ class LiquidactionController extends Controller
         $user = User::find($commissions->pluck('user_id')[0]);
 
         $details = [
-            'idliquidaction' => $id,
+            'liquidation_id' => $id,
             'user_id' => $user->id,
             'username' => $user->username,
             'commissions' => $commissions,
@@ -270,7 +270,7 @@ class LiquidactionController extends Controller
      * @param array $listComision - commissions a procesar si son selecionada
      * @return void
      */
-    public function generarLiquidation(int $user_id, array $listComision)
+    public function generateLiquidation(int $user_id, array $listComision)
     {
         try {
             $user = User::find($user_id);
@@ -305,8 +305,8 @@ class LiquidactionController extends Controller
             $arrayWallet =[
                 'user_id' => $user->id,
                 'referred_id' => $user->id,
-                'credito' => $crude,
-                'descripcion' => $concept,
+                'credit' => $crude,
+                'description' => $concept,
                 'status' => 0,
                 'type_transaction' => 1,
             ];
@@ -357,26 +357,25 @@ class LiquidactionController extends Controller
         }
         try {
             if ($validate) {
-                $idliquidation = $request->idliquidation;
+                $liquidation_id = $request->liquidation_id;
                 $accion = 'No Procesada';
                 if ($request->action == 'reverse') {
                     $accion = 'Reversada';
-                    $this->reversarLiquidacion($idliquidation, $request->comentario);
+                    $this->reversarLiquidacion($liquidation_id, $request->comentario);
                 }elseif ($request->action == 'aproved') {
                     $accion = 'Aprobada';
-                    $this->ApproveLiquidation($idliquidation, $request->hash);
+                    $this->ApproveLiquidation($liquidation_id, $request->hash);
                 }
     
                 if ($accion != 'No Procesada') {
                     $arrayLog = [
-                        'idliquidation' => $idliquidation,
+                        'liquidation_id' => $liquidation_id,
                         'comentario' => $request->comentario,
                         'accion' => $accion
                     ];
                     DB::table('log_liquidations')->insert($arrayLog);
                 }
-                
-                return redirect()->back()->with('msj-success', 'La Liquidacion fue '.$accion.' con exito');
+                    return view('content.liquidation.pending')->with('message', 'La Liquidacion fue '.$accion.' con exito');
             }
         } catch (\Throwable $th) {
             Log::error('Funcion ProcessLiquidation -> '.$th);
@@ -386,32 +385,32 @@ class LiquidactionController extends Controller
     /**
      * Permite aprobar las liquidations
      *
-     * @param integer $idliquidation
+     * @param integer $liquidation_id
      * @param string $hash
      * @return void
      */
-    public function ApproveLiquidation($idliquidation, $hash)
+    public function ApproveLiquidation($liquidation_id, $hash)
     {
-        Liquidaction::where('id', $idliquidation)->update([
+        Liquidaction::where('id', $liquidation_id)->update([
             'status' => 1,
             'hash' => $hash
         ]);
 
-        Wallet::where('liquidation_id', $idliquidation)->update(['liquidado' => 1]);
+        Wallet::where('liquidation_id', $liquidation_id)->update(['liquidado' => 1]);
     }
 
     /**
      * Permite procesar reversiones del sistema
      *
-     * @param integer $idliquidation
+     * @param integer $liquidation_id
      * @param string $comentario
      * @return void
      */
-    public function reversarLiquidacion($idliquidation, $comentario)
+    public function reversarLiquidacion($liquidation_id, $comentario)
     {
-        $liquidation = Liquidaction::find($idliquidation);
+        $liquidation = Liquidaction::find($liquidation_id);
         
-        Wallet::where('liquidation_id', $idliquidation)->update([
+        Wallet::where('liquidation_id', $liquidation_id)->update([
             'status' => 0,
             'liquidation_id' => null,
         ]);
@@ -422,7 +421,7 @@ class LiquidactionController extends Controller
             'orden_id' => null,
             'referred_id' => $liquidation->user_id,
             'debit' => $liquidation->gross_amount,
-            'descripcion' => $concept,
+            'description' => $concept,
             'status' => 1,
             'type_transaction' => 0,
         ];

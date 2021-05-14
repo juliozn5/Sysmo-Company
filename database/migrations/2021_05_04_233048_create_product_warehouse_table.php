@@ -19,7 +19,7 @@ class CreateProductWarehouseTable extends Migration
             $table->longtext('description');
             $table->bigInteger('price');
             $table->longtext('photoDB')->nullable();
-            $table->enum('status', [0, 1, 2, 3])->default(1)->comment('0 - Inactivo, 1 - Disponible, 2 - Agotado, 3 - No disponible');
+            $table->enum('status', [0, 1])->default(1)->comment('0 - Inactivo, 1 - Activo');
             $table->timestamps();
         });
     }

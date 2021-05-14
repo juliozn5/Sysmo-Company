@@ -9,6 +9,22 @@
 <script src="{{asset('assets/js/librerias/vue.js')}}"></script>
 <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
 <script src="{{asset('assets/js/liquidation.js')}}"></script>
+
+<script src="{{ asset('js/additional/data-tables/dataTables.min.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#mytable').DataTable({
+            // dom: 'flBrtip',
+            responsive: true,
+            searching: false,
+            ordering: true,
+            paging: true,
+            select: true,
+        });
+    });
+
+</script>
 @endsection
 
 @section('content')
@@ -47,10 +63,10 @@
                                     <td>{{date('Y-m-d', strtotime($liqui->created_at))}}</td>
                                     <td>
                                         <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">
-                                            <i class="fa fa-eye"></i>
+                                            Ver
                                         </button>
                                         <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'aproved')">
-                                            <i class="fa fa-check"></i>
+                                            Aprovar
                                         </button>
                                         {{-- <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'reverse')">
                                             <i class="fa fa-reply"></i>
