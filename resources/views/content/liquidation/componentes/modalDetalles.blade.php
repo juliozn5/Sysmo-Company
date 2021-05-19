@@ -10,9 +10,9 @@
                 </button>
             </div>
             <div class="modal-body text-justify">
-                <form action="{{route('liquidaction.process')}}" method="post">
+                <form action="{{route('liquidaction.store')}}" method="POST">
                     @csrf
-                    <input type="hidden" name=" user_id" :value="CommissionsDetails. user_id">
+                    <input type="hidden" name="user_id" :value="CommissionsDetails.user_id">
                     <table class="table nowrap scroll-horizontal-vertical table-striped" style="width: 100%">
                         <thead>
                             <tr class="text-center">
@@ -55,7 +55,7 @@
                     </table>
                     @if ($all)
                     <div class="form-group text-center">
-                        <button class="btn btn-primary">Generar Liquidacion</button>
+                        <button class="btn btn-primary" type="submit">Generar Liquidacion</button>
                     </div>
                     @endif
                 </form>

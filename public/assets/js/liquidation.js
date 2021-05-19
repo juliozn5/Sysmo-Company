@@ -3,7 +3,7 @@ var vm_liquidation = new Vue({
     data: function(){
         return{
             seleAllComision: false,
-            StatusProcess: '',
+            StatusProcess: '', 
             CommissionsDetails: []
         }
     },
@@ -19,7 +19,7 @@ var vm_liquidation = new Vue({
                 $('#modalModalDetalles').modal('show')
             }).catch(function (error) {
                 console.log(error)
-            })
+            }) 
         },
 
         /**
@@ -36,7 +36,7 @@ var vm_liquidation = new Vue({
             })
         },
 
-        /**
+        /** 
          * Permite obtener la informacion de las comisiones de las liquidaciones para aprobar o reversar
          * @param {integer}  user_id
          * @param {string} status

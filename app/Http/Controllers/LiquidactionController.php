@@ -29,6 +29,7 @@ class LiquidactionController extends Controller
      */
     public function index()
     {
+   
         $commissions = $this->getTotalCommissions([], null);
         return view('content.liquidation.index')->with('commissions', $commissions);
     }
@@ -49,20 +50,18 @@ class LiquidactionController extends Controller
 
     /**
      * LLeva a la vistas de las liquidations reservadas o aprobadas
-     *
+     * 
      * @param string $status
      * @return void
      */
-    public function indexHistory($status)
+    public function indexHistory()
     {
-        $status = ($status == 'Reservadas') ? 2 : 1;
-        $liquidations = Liquidaction::where('status', $status)->get();
+        $liquidations = Liquidaction::where('status', '1')->get();
         foreach ($liquidations as $liqui) {
             $liqui->username = $liqui->getUserLiquidation->username;
         }
         return view('content.liquidation.history')
-        ->with('liquidations', $liquidations)
-        ->with('status', $status);
+        ->with('liquidations', $liquidations);
     }
 
     /**
@@ -154,6 +153,7 @@ class LiquidactionController extends Controller
      */
     public function edit($id)
     {
+
         $commissions = Wallet::where([
             ['liquidation_id', '=', $id],
         ])->get();
@@ -272,6 +272,8 @@ class LiquidactionController extends Controller
      */
     public function generateLiquidation(int $user_id, array $listComision)
     {
+
+      
         try {
             $user = User::find($user_id);
             $commissions = collect();
@@ -299,7 +301,7 @@ class LiquidactionController extends Controller
                 'wallet_used',
                 'status' => 0,
             ];
-            $idLiquidation = $this->saveLiquidation($arrayLiquidation);
+            $liquidation_id = $this->saveLiquidation($arrayLiquidation);
 
             $concept = 'Liquidacion del usuario '.$user->username.' por un monto de '.$crude;
             $arrayWallet =[
@@ -313,11 +315,11 @@ class LiquidactionController extends Controller
 
             $this->walletController->saveWallet($arrayWallet);
             
-            if (!empty($idLiquidation)) {
+            if (!empty($liquidation_id)) {
                 $listComi = $commissions->pluck('id');
                 Wallet::whereIn('id', $listComi)->update([
                     'status' => 1,
-                    'liquidation_id' => $idLiquidation
+                    'liquidation_id' => $liquidation_id
                 ]);
             }
         } catch (\Throwable $th) {
@@ -346,40 +348,47 @@ class LiquidactionController extends Controller
      */
     public function ProcessLiquidation(Request $request)
     {
+        
         if ($request->action == 'aproved') {
             $validate = $request->validate([
                 'hash' => ['required'],
             ]);
         }else{
             $validate = $request->validate([
-                'comentario' => ['required'],
+                'commentary' => ['required'],
             ]);
         }
         try {
             if ($validate) {
+
                 $liquidation_id = $request->liquidation_id;
                 $accion = 'No Procesada';
+
                 if ($request->action == 'reverse') {
                     $accion = 'Reversada';
-                    $this->reversarLiquidacion($liquidation_id, $request->comentario);
+                    $this->reversarLiquidacion($liquidation_id, $request->commentary);
                 }elseif ($request->action == 'aproved') {
                     $accion = 'Aprobada';
                     $this->ApproveLiquidation($liquidation_id, $request->hash);
                 }
-    
                 if ($accion != 'No Procesada') {
                     $arrayLog = [
                         'liquidation_id' => $liquidation_id,
-                        'comentario' => $request->comentario,
-                        'accion' => $accion
+                        'commentary' => $request->commentary,
+                        'action' => $accion
                     ];
                     DB::table('log_liquidations')->insert($arrayLog);
                 }
-                    return view('content.liquidation.pending')->with('message', 'La Liquidacion fue '.$accion.' con exito');
+
+
             }
         } catch (\Throwable $th) {
             Log::error('Funcion ProcessLiquidation -> '.$th);
         }
+
+        return redirect()->back()->with('message', 'La Liquidacion fue '.$accion.' con exito');
+
+
     }
 
     /**
@@ -403,10 +412,10 @@ class LiquidactionController extends Controller
      * Permite procesar reversiones del sistema
      *
      * @param integer $liquidation_id
-     * @param string $comentario
+     * @param string $commentary
      * @return void
      */
-    public function reversarLiquidacion($liquidation_id, $comentario)
+    public function reversarLiquidacion($liquidation_id, $commentary)
     {
         $liquidation = Liquidaction::find($liquidation_id);
         
@@ -415,7 +424,7 @@ class LiquidactionController extends Controller
             'liquidation_id' => null,
         ]);
 
-        $concept = 'Liquidacion Reservada - Motivo: '.$comentario;
+        $concept = 'Liquidacion Reservada - Motivo: '.$commentary;
         $arrayWallet =[
             'user_id' => $liquidation->user_id,
             'orden_id' => null,

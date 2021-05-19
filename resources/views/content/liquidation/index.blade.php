@@ -61,7 +61,7 @@
                                         <td>{{$comision->getWalletUser->status}}</td>
                                         <td>
                                             <a onclick="vm_liquidation.getDetailComision({{$comision->user_id}})" class="btn btn-info">
-                                                Ver
+                                                Liquidar
                                             </a>
                                         </td>
                                     </tr>

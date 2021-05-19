@@ -10,14 +10,15 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hexters/coinpayment": "^3.0",
         "laravel/framework": "^8.26.1",
         "laravel/jetstream": "^2.3",
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
         "livewire/livewire": "^2.0",
-        "tightenco/ziggy": "^0.9.4",
-        "symfony/filesystem": "^5.2"
+        "symfony/filesystem": "^5.2",
+        "tightenco/ziggy": "^0.9.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

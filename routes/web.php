@@ -130,10 +130,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('index', [LiquidactionController::class,'index'])->name('liquidaction.index');
     Route::get('pending', [LiquidactionController::class,'indexPendings'])->name('liquidaction.pending');
     Route::post('process', [LiquidactionController::class,'ProcessLiquidation'])->name('liquidaction.process');
-    Route::get('{status}/history', [LiquidactionController::class,'indexHistory'])->name('liquidaction.history.status');
-    Route::get('edit/{id}', [LiquidactionController::class,'edit'])->name('liquidation.edit');
-    Route::get('show/{id}', [LiquidactionController::class,'show'])->name('liquidation.show');
-
+    Route::get('history', [LiquidactionController::class,'indexHistory'])->name('liquidaction.history.status');
+    Route::get('edit/{id}', [LiquidactionController::class,'edit'])->name('liquidaction.edit');
+    Route::get('show/{id}', [LiquidactionController::class,'show'])->name('liquidaction.show');
+    Route::post('store', [LiquidactionController::class,'store'])->name('liquidaction.store');
+ 
   });
 
 

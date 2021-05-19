@@ -12,7 +12,7 @@
             <div class="modal-body text-justify">
                 <form action="{{route('liquidaction.process')}}" method="post">
                     @csrf
-                    <input type="hidden" name="liquidation_id" :value="CommissionsDetails.liquidaction_id">
+                    <input type="hidden" name="liquidation_id" :value="CommissionsDetails.liquidation_id">
                     <input type="hidden" name="action" :value="StatusProcess">
                     <h5>Usuario: <strong v-text="CommissionsDetails.username"></strong></h5>
                     <h5>Total: <strong v-text="CommissionsDetails.total"></strong></h5>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Comentario</label>
-                        <textarea name="comentario" class="form-control" :required="(StatusProcess == 'reverse') ? true : false"></textarea>
+                        <textarea name="commentary" class="form-control" :required="(StatusProcess == 'reverse') ? true : false"></textarea>
                     </div>
                     <div class="form-group text-center">
                         <button class="btn btn-primary" v-text="(StatusProcess == 'reverse') ? 'Reservar' : 'Aprobar'"></button>
