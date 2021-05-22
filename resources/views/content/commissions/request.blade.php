@@ -71,7 +71,7 @@
                                     <td><img src="{{asset('images/other/coinbase1.png')}}" height="40" width="110"></td>
                                     @endif
 
-                                    <td>{{$item->created_at}}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->created_at))}}</td>
                                 </tr>
                                 @endforeach
 

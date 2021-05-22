@@ -20,7 +20,7 @@ var vm_liquidation = new Vue({
             }).catch(function (error) {
                 console.log(error)
             }) 
-        },
+        }, 
 
         /**
          * Permite obtener la informacion de las comisiones de las liquidaciones

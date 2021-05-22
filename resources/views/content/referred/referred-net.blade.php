@@ -60,7 +60,7 @@
                                     @endif
 
 						            <td>{{ $item->level }}</td>
-                                    <td>{{ $item->created_at}}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->created_at))}}</td>
                                 </tr>
                                 @endforeach
                         </table>

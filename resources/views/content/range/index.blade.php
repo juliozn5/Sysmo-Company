@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Comissions')
+@section('title', 'profit')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -16,7 +16,7 @@
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
                         <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
-                        <li class="breadcrumb-item"><a href="#">Comisiones</a></li>
+                        <li class="breadcrumb-item"><a href="#">Flujo de Ganancia</a></li>
                     </ol>
                 </div>
             </div>
@@ -29,31 +29,38 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
+                    <a href="#" class="btn btn-primary float-right mb-0 waves-effect waves-light ml-2"><i
+                        data-feather="plus-circle"></i>&nbsp; Añadir Saldo</a>
+                        {{-- <h1 href="#" class="btn btn-primary float-right mb-0 waves-effect waves-light">Comisiones sin liquidar: {{$user}}</h1> --}}
                     <div class="table-responsive">
                         <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
                             <thead class="">
-
-                                <tr class="text-center text-black bg-purple-alt2">
+                                <tr class="text-center text-dark bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Usuario</th>
-                                    <th>Descripción</th> 
-                                    <th>Debito</th>
+                                    <th>Concepto</th>
+                                    <th>Monto</th>
                                     <th>Fecha</th>
+                                    <th>Estado</th>
                                 </tr>
-
                             </thead>
                             <tbody>
-
-                                @foreach ($wallet as $item)
+                                {{-- @foreach ($wallets as $wallet)
                                 <tr class="text-center">
-                                    <td>{{ $item->id}}</td>
-                                    <td> {{$item->getWalletUser->username}} </td>
-                                    <td>{{ $item->description}}</td>
-                                    <td>{{ $item->debit}}</td>
-                                    <td>{{ date('d-m-Y', strtotime($item->created_at))}}</td>
+                                    <td>{{$wallet->id}}</td>
+                                    <td>{{$wallet->description}}</td>
+                                    <td>{{$wallet->balance}}</td>
+                                    <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
+                                    <td>
+                                        @if ($wallet->status == 1)
+                                            Pagado
+                                        @elseif ($wallet->status == 2)
+                                            Cancelado
+                                        @else
+                                            En Espera
+                                        @endif
+                                    </td>
                                 </tr>
-                                @endforeach
-
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>

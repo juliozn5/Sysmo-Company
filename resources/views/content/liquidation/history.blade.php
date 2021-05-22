@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    @include('content.liquidation.componentes.modalDetalles', ['all' => true])
+    @include('content.liquidation.componentes.modalDetalles', ['all' => false])
 </div>
 
 

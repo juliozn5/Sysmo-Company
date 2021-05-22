@@ -66,7 +66,7 @@
                                     <td> <a class=" badge badge-success text-white">Activo</a></td>
                                     @endif
 
-                                    <td>{{ $item->created_at}}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->created_at))}}</td>
 
                                     <td>
                                         @if(Auth::user()->id == $item->id)

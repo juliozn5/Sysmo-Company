@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RangeController;
+use App\Http\Controllers\ProfitController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\ReferredController;
@@ -68,6 +70,7 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::get('tree/{type}', [ReferredController::class,'index'])->name('tree_type');
     Route::get('{type}/{id}', [ReferredController::class,'moretree'])->name('tree_type_id');
+    
     Route::get('list-direct', [ReferredController::class,'listDirect'])->name('referred.list.direct');
     Route::get('list-net', [ReferredController::class,'listNet'])->name('referred.list.net');
   });
@@ -116,6 +119,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('user-list', [UserController::class,'list'])->name('user.list')->middleware('auth', 'checkrole:1');
     Route::get('user-edit/{id}', [UserController::class,'editUser'])->name('user.edit')->middleware('auth', 'checkrole:1');
     Route::patch('user-edit/{id}', [UserController::class,'updateUser'])->name('user.update')->middleware('auth', 'checkrole:1');
+   });
+
+   Route::group(['prefix' => 'range'], function () {
+    Route::get('index', [RangeController::class,'index'])->name('range.index');
+   });
+
+   Route::group(['prefix' => 'profit'], function () {
+    Route::get('index', [ProfitController::class,'index'])->name('profit.index');
    });
 
   Route::prefix('commissions')->group(function ()

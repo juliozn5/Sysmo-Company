@@ -65,7 +65,7 @@
                                     <td> <a class=" badge badge-success text-white">Atendido</a></td>
                                     @endif
 
-                                    <td>{{ $item->getProduct->created_at}}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->getProduct->created_at))}}</td>
 
                                     <td>
                                         <a href="{{ route('store.show',$item->id) }}" class="btn

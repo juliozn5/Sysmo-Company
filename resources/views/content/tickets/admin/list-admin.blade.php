@@ -66,7 +66,7 @@
                                     <td> <a class=" badge badge-danger text-white">Cancelada</a></td>
                                     @endif
 
-                                    <td>{{ $item->created_at}}</td>
+                                    <td>{{ date('d-m-Y', strtotime($item->created_at))}}</td>
 
                                     <td>
                                         <a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn

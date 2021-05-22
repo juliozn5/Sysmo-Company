@@ -52,7 +52,7 @@
                             <tbody>
                                 @foreach ($liquidations as $liqui)
                                 <tr class="text-center">
-                                    <td>{{$liqui->id}}</td>
+                                    <td>{{$liqui->id}}</td> 
                                     <td>{{$liqui->username}}</td>
                                     <td>{{$liqui->total}}</td>
                                     <td>{{$liqui->gross_amount}}</td>

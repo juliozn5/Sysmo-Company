@@ -13,6 +13,10 @@
       "url": "admin/dashboard/ecommerce"
     },
     {
+      "navheader": "Sistema de Tienda",
+      "slug": ""
+    },
+    {
       "name": "Tienda",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "shopping-bag",
@@ -23,12 +27,6 @@
           "icon": "circle",
           "slug": "Productos",
           "url": "admin/store/create"
-        },
-        {
-          "name": "Pedidos",
-          "icon": "circle",
-          "slug": "Pedidos",
-          "url": "admin/store/list-orders"
         },
         {
           "name": "Productos",
@@ -45,15 +43,41 @@
       ]
     },
     {
+      "navheader": "Informes",
+      "slug": ""
+    },
+    {
+      "name": "Pedidos",
+      "icon": "file-text",
+      "slug": "Pedidos",
+      "url": "admin/store/list-orders"
+    },
+    {
       "name": "Comisiones",
       "icon": "clipboard",
       "slug": "Comisiones",
       "url": "admin/commissions/index"
     },
     {
+      "name": "Rangos",
+      "icon": "star",
+      "slug": "Rangos",
+      "url": "admin/range/index"
+    },
+    {
+      "name": "Flujo de ganancia",
+      "icon": "activity",
+      "slug": "Flujo de ganancia",
+      "url": "admin/profit/index"
+    },
+    {
+      "navheader": "Sistema de liquidacion",
+      "slug": ""
+    },
+    {
       "name": "Liquidaciones",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
-      "icon": "activity",
+      "icon": "list",
       "slug": "Liquidaciones",
       "submenu": [
         {

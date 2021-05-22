@@ -47,7 +47,7 @@
                             </tr>
                         </tbody>
                         <tfoot>
-                            <tr>
+                            <tr> 
                                 <th colspan="4" class="text-right">Total Comision</th>
                                 <th colspan="2" v-text="CommissionsDetails.total+' $'" class="text-right"></th>
                             </tr>

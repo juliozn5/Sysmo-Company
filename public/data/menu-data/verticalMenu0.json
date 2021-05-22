@@ -7,16 +7,42 @@
       "slug": "dashboard-analytics"
     },
     {
+      "navheader": "Sistema de Tienda",
+      "slug": ""
+    },
+    {
       "name": "Tienda",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "shopping-bag",
-      "url": "user/store/store",
-      "slug": "Referidos"
+      "slug": "",
+      "submenu": [
+        {
+          "name": "Tienda",
+          "icon": "circle",
+          "slug": "Tienda",
+          "url": "user/store/store"
+        },
+        {
+          "name": "Mis ordenes",
+          "icon": "circle",
+          "slug": "Productos",
+          "url": "user/store/list-user"
+        }
+      ]
+    },
+    {
+      "navheader": "Financiero",
+      "slug": ""
     },
     {
       "name": "Wallet",
-      "icon": "inbox",
+      "icon": "credit-card",
       "slug": "Wallet",
       "url": "user/wallet/index"
+    },
+    {
+      "navheader": "Organizacion",
+      "slug": ""
     },
     {
       "name": "Referidos",

@@ -31,6 +31,14 @@ class WalletController extends Controller
      */
     public function index()
     {
+
+        $user = Wallet::where([
+            ['status', '=', 0],
+            ['liquidation_id', '=', null],
+            ['type_transaction', '=', 0],
+            ['user_id', '=', Auth::user()->id]
+        ])->get()->count();
+
         $this->payComision();
         // dd('parar');
         if (Auth::user()->role == 1) {
@@ -38,7 +46,9 @@ class WalletController extends Controller
         }else{
             $wallets = Auth::user()->getWallet;
         }
-        return view('content.wallet.index')->with('wallets', $wallets);
+        return view('content.wallet.index')
+        ->with('user', $user)
+        ->with('wallets', $wallets);
     }
 
     /**
@@ -196,7 +206,7 @@ class WalletController extends Controller
             Log::error('Funcion getTotalComision -> '.$th);
         }
     }
-
+ 
     /**
      * Permite obtener el total de comisiones por meses
      *

@@ -197,11 +197,18 @@ return [
   "Sistema de Tienda" => "Sistema de Tienda",
   "Tienda" => "Tienda",
   "Productos" => "Productos",
+  "Mis ordenes" => "Mis ordenes",
   "Pedidos" => "Pedidos",
   "Añadir producto" => "Añadir producto",
 
   "Wallet" => "Wallet",
-
+  "Flujo de ganancia" => "Flujo de ganancia",
+  "Rangos" => "Rangos",
+  "Informes" => "Informes",
+  "Organizacion" => "Organizacion",
+  "Financiero" => "Financiero",
+  "Sistema de liquidacion" => "Sistema de liquidacion",
+  
   "Sistema de Comisiones" => "Sistema de Comisiones",
   "Comisiones" => "Comisiones",
   "Historial Comisiones" => "Historial Comisiones",
