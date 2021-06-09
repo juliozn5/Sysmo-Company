@@ -1,67 +1,27 @@
 <style>
-    .nombre {
-    margin: -22px 5px 0px;
-    background: #1199c4;
-    color: #ffffff;
-    padding: 3px 3px;
-}
-
-li {
-    position: relative;
-}
-
-li img:hover+.inforuser {
-    transform: translateY(-100px);
-}
-
-input.form-control {
-    background-color: #e2e2e2 !important;
-}
-
-
-.col-sm-10.col-sm-offset-1.panel.panel-default.taq.dobi {
-    margin-top: 20px;
+	.padre ul {
     padding-top: 20px;
-}
-
-.inforuser {
-    width: 300px;
-    position: absolute;
-    /* top: 0; */
-    /* left: 0; */
-    /* margin: 0; */
-    z-index: 9996;
-    border: 0px !important;
-    /* box-shadow: 1px 1px 10px 1px; */
-    transition: 0.8s all;
-    transform: translateY(-1000px);
-}
-
-.tree {
-    margin-left: 0%;
-    width: 100%;
+    padding-left: 0px;
+    position: relative;
     display: flex;
+    overflow: auto;
     justify-content: center;
-}
-
-.green {
-    background: #00702e !important;
-    color: #ffffff;
-    border-radius: 10px;
-}
-
-.padre ul {
-    padding-top: 20px;
-    position: relative;
-    display: flex;
-    /* overflow: auto; */
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
 }
 
-.padre ul ul {
+.padre ul ul{
     padding-left: 0;
+}
+
+.padre .base{
+    height: 100px;
+    width: 100px;
+}
+
+.padre .baseli{
+    width: 50%;
 }
 
 .padre li {
@@ -69,7 +29,8 @@ input.form-control {
     text-align: center;
     list-style-type: none;
     position: relative;
-    padding: 20px 5px 0 5px;
+    padding: 20px 40px 0;
+
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -83,7 +44,7 @@ input.form-control {
     position: absolute;
     top: 0;
     right: 50%;
-    border-top: 1px solid #ccc;
+    border-top: 2px solid #693ED0;
     width: 50%;
     height: 20px;
 }
@@ -91,7 +52,7 @@ input.form-control {
 .padre li::after {
     right: auto;
     left: 50%;
-    border-left: 1px solid #ccc;
+    border-left: 2px solid #693ED0;
 }
 
 /*We need to remove left-right connectors from elements without 
@@ -115,7 +76,7 @@ right connector from last child*/
 
 /*Adding back the vertical connector to the last nodes*/
 .padre li:last-child::before {
-    border-right: 1px solid #ccc;
+    border-right: 2px solid #693ED0;
     border-radius: 0 5px 0 0;
     -webkit-border-radius: 0 5px 0 0;
     -moz-border-radius: 0 5px 0 0;
@@ -133,14 +94,14 @@ right connector from last child*/
     position: absolute;
     top: 0;
     left: 50%;
-    border-left: 1px solid #ccc;
+    border-left: 2px solid #693ED0;
     width: 0;
     height: 20px;
 }
 
 .padre li a {
-    border: 1px solid #ccc;
-    padding: 8px 5px;
+    border: 2px solid #693ED0;
+    /* padding: 8px 5px; */
     text-decoration: none;
     color: #666;
     font-family: arial, verdana, tahoma;
@@ -148,9 +109,9 @@ right connector from last child*/
     display: inline-block;
     height: 60px;
     width: 60px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
 
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
@@ -163,7 +124,7 @@ right connector from last child*/
 .padre li a:hover+ul li a {
     background: #c8e4f8;
     color: #000;
-    border: 1px solid #94a0b4;
+    border: 2px solid #94a0b4;
 }
 
 /*Connector styles on hover*/
@@ -172,11 +133,5 @@ right connector from last child*/
 .padre li a:hover+ul::before,
 .padre li a:hover+ul ul::before {
     border-color: #94a0b4;
-}
-
-.padre img {
-    height: 64px;
-    border-radius: 50%;
-    border: 1px solid #cccccc;
 }
 </style>

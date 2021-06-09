@@ -38,7 +38,7 @@ class MiscellaneousController extends Controller
     return view('.content.miscellaneous.page-maintenance', [
       'pageConfigs' => $pageConfigs
     ]);
-  }
+  } 
 
    // 403
    public function errorAuthorization()

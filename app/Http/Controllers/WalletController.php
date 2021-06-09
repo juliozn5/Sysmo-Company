@@ -32,12 +32,13 @@ class WalletController extends Controller
     public function index()
     {
 
-        $user = Wallet::where([
-            ['status', '=', 0],
-            ['liquidation_id', '=', null],
-            ['type_transaction', '=', 0],
-            ['user_id', '=', Auth::user()->id]
-        ])->get()->count();
+
+        $total = DB::table('wallets')
+            ->where('user_id', '=', Auth::id())
+            ->where('status', '=', 0)
+            ->where('liquidation_id', '=', null)
+            ->where('type_transaction', '=', 0)
+            ->sum('balance');
 
         $this->payComision();
         // dd('parar');
@@ -47,7 +48,7 @@ class WalletController extends Controller
             $wallets = Auth::user()->getWallet;
         }
         return view('content.wallet.index')
-        ->with('user', $user)
+        ->with('total', $total)
         ->with('wallets', $wallets);
     }
 

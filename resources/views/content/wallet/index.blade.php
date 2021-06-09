@@ -29,9 +29,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <a href="#" class="btn btn-primary float-right mb-0 waves-effect waves-light ml-2"><i
-                        data-feather="plus-circle"></i>&nbsp; Añadir Saldo</a>
-                        <h1 href="#" class="btn btn-primary float-right mb-0 waves-effect waves-light">Comisiones sin liquidar: {{$user}}</h1>
+                        <h1 href="#" class="btn btn-primary float-right mb-0 waves-effect waves-light">Saldo Disponible: {{ $total }}$</h1>
                     <div class="table-responsive">
                         <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped" data-order='[[ 1, "asc" ]]' data-page-length='10'>
                             <thead class="">

@@ -6,18 +6,9 @@
       "slug": "",
       "url": "/"
     },
+
     {
       "name": "Ecommerce",
-      "icon": "home",
-      "slug": "",
-      "url": "admin/dashboard/ecommerce"
-    },
-    {
-      "navheader": "Sistema de Tienda",
-      "slug": ""
-    },
-    {
-      "name": "Tienda",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "shopping-bag",
       "slug": "",
@@ -42,38 +33,40 @@
         }
       ]
     },
+
     {
-      "navheader": "Informes",
-      "slug": ""
-    },
-    {
-      "name": "Pedidos",
+      "name": "Informes",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "file-text",
-      "slug": "Pedidos",
-      "url": "admin/store/list-orders"
+      "slug": "Informes",
+      "submenu": [
+        {
+          "url": "admin/store/list-orders",
+          "name": "Pedidos",
+          "icon": "circle",
+          "slug": "Pedidos"
+        },
+        {
+          "url": "admin/commissions/index",
+          "name": "Comisiones",
+          "icon": "circle",
+          "slug": "Comisiones"
+        },
+        {
+          "url": "#",
+          "name": "Rangos",
+          "icon": "circle",
+          "slug": "Rangos"
+        },
+        {
+          "url": "admin/profit/index",
+          "name": "Flujo de ganancia",
+          "icon": "circle",
+          "slug": "Flujo de ganancia"
+        }
+      ]
     },
-    {
-      "name": "Comisiones",
-      "icon": "clipboard",
-      "slug": "Comisiones",
-      "url": "admin/commissions/index"
-    },
-    {
-      "name": "Rangos",
-      "icon": "star",
-      "slug": "Rangos",
-      "url": "admin/range/index"
-    },
-    {
-      "name": "Flujo de ganancia",
-      "icon": "activity",
-      "slug": "Flujo de ganancia",
-      "url": "admin/profit/index"
-    },
-    {
-      "navheader": "Sistema de liquidacion",
-      "slug": ""
-    },
+
     {
       "name": "Liquidaciones",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",

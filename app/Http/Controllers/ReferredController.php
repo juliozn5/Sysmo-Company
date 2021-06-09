@@ -62,9 +62,10 @@ class ReferredController extends Controller
      */
     public function index($type)
     {
-            $trees = $this->getDataEstructura(Auth::id(), $type);
+            $trees = $this->getDataEstructura(Auth::user()->id, $type);
+            $type = ucfirst($type);
             $base = Auth::user();
-            $base->children = User::where('referred_id', '=', $base->id)->get();
+            $base->children = User::where('referred_id', '=', Auth::id())->get();
             $base->logoarbol = asset('images/logo/logoarbol.png');
             return view('content.referred.tree.tree', compact('trees','type', 'base'));
     }
@@ -77,14 +78,22 @@ class ReferredController extends Controller
      * @param string $id
      * @return void
      */
-    public function moretree($id, $type)
+    public function moretree($type, $id)
     {
-            $id = base64_decode($id);
-            $trees = $this->getDataEstructura($id, $type);
+
+
+            $trees = $this->getDataEstructura($id, strtolower($type));
+            $type = ucfirst($type);
             $base = User::find($id);
+        dd($id);
+
+            if (empty($base)) {
+                return redirect()->back()->with('msj2', 'El ID '. $id.', no se encuentra registrado');
+            }
             $base->children = User::where('referred_id', '=', $base->id)->get();
             $base->logoarbol = asset('images/logo/logoarbol.png');
-            return view('content.referred.tree.tree', compact('trees','type','base'));
+            return view('content.referred.tree.tree')->with(compact('base', 'trees', 'type'));
+
     }
 
 
@@ -101,6 +110,8 @@ class ReferredController extends Controller
                 'tree' => 'referred_id',
                 'matriz' => 'referred_id',
             ];
+
+
             $childres = $this->getData($id, 1, $genealogyType[$type]);
             $trees = $this->getChildren($childres, 2, $genealogyType[$type]);
             return $trees;
@@ -138,6 +149,7 @@ class ReferredController extends Controller
     private function getData($id, $nivel, $typeTree) : object
     {
             $resul = User::where($typeTree, '=', $id)->get();
+            
             foreach ($resul as $user) {
                 
                 $user->nivel = $nivel;

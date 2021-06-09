@@ -36,3 +36,31 @@
         }
       ]
     }
+
+
+
+
+        {
+      "name": "Tienda",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "shopping-bag",
+      "slug": "",
+      "submenu": [
+        {
+          "name": "Tienda",
+          "icon": "circle",
+          "slug": "Tienda",
+          "url": "user/store/store"
+        },
+        {
+          "name": "Mis ordenes",
+          "icon": "circle",
+          "slug": "Productos",
+          "url": "user/store/list-user"
+        }
+      ]
+    },
+
+
+
+    

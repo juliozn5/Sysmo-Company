@@ -193,6 +193,8 @@ return [
   "Arbol" => "Arbol",
   "Directos" => "Directos",
   "Red" => "Red",
+  "Rango" => "Rango",
+  "Pagos" => "Pagos",
 
   "Sistema de Tienda" => "Sistema de Tienda",
   "Tienda" => "Tienda",
@@ -218,5 +220,7 @@ return [
   "Generar liquidaciones" => "Generar liquidaciones",
   "Pendientes" => "Pendientes",
   "Liquidaciones realizadas" => "Liquidaciones realizadas",
+
+  "Bot" => "Bot",
 
 ];

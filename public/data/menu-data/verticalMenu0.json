@@ -6,46 +6,46 @@
       "url": "/",
       "slug": "dashboard-analytics"
     },
-    {
-      "navheader": "Sistema de Tienda",
-      "slug": ""
-    },
+
     {
       "name": "Tienda",
-      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "shopping-bag",
-      "slug": "",
+      "url": "user/store/store",
+      "slug": "Tienda"
+    },
+
+    {
+      "name": "Bot",
+      "icon": "codesandbox",
+      "url": "#",
+      "slug": "Bot"
+    },
+
+    {
+      "name": "Financiero",
+      "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
+      "icon": "credit-card",
+      "slug": "Financiero",
       "submenu": [
         {
-          "name": "Tienda",
+          "url": "user/wallet/index",
+          "name": "Wallet",
           "icon": "circle",
-          "slug": "Tienda",
-          "url": "user/store/store"
+          "slug": "Wallet"
         },
+
         {
-          "name": "Mis ordenes",
+          "url": "admin/range/index",
+          "name": "Pangos",
           "icon": "circle",
-          "slug": "Productos",
-          "url": "user/store/list-user"
+          "slug": "Pagos"
         }
       ]
     },
+
+
     {
-      "navheader": "Financiero",
-      "slug": ""
-    },
-    {
-      "name": "Wallet",
-      "icon": "credit-card",
-      "slug": "Wallet",
-      "url": "user/wallet/index"
-    },
-    {
-      "navheader": "Organizacion",
-      "slug": ""
-    },
-    {
-      "name": "Referidos",
+      "name": "Organizacion",
       "badgeClass": "badge badge-light-warning badge-pill ml-auto mr-1",
       "icon": "users",
       "slug": "Referidos",
@@ -60,15 +60,23 @@
           "url": "user/referred/list-direct",
           "name": "Directos",
           "icon": "circle",
-          "slug": "list"
+          "slug": "Directos"
         },
         {
           "url": "user/referred/list-net",
           "name": "Red",
           "icon": "circle",
-          "slug": "list"
+          "slug": "Red"
+        },
+        {
+          "url": "#",
+          "name": "Rango",
+          "icon": "circle",
+          "slug": "Rango"
         }
       ]
     }
+
+
   ]
 }

@@ -43,7 +43,7 @@
           <div class="text-center">
             <h1 class="mb-1 text-white">Bienvenido Admin: {{ Auth::user()->username }}</h1>
             <p class="card-text m-auto w-75">
-              <button class="btn btn-danger" data-link="http://localhost:8000/register?referred_id={{Auth::user()->id}}" id="referrals_link" onclick="copyReferralsLink();">Copiar link de referido <i class="far fa-copy"></i></button>
+              <button class="btn btn-danger" data-link="http://sysmocompany.valdusoft.com/sysmocompany/public/register?referred_id={{Auth::user()->id}}" id="referrals_link" onclick="copyReferralsLink();">Copiar link de referido <i class="far fa-copy"></i></button>
             </p>
           </div>
         </div>
