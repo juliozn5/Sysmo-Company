@@ -36,7 +36,7 @@
 
         {
           "url": "admin/range/index",
-          "name": "Pangos",
+          "name": "Pagos",
           "icon": "circle",
           "slug": "Pagos"
         }
