@@ -53,12 +53,6 @@
           "slug": "Comisiones"
         },
         {
-          "url": "#",
-          "name": "Rangos",
-          "icon": "circle",
-          "slug": "Rangos"
-        },
-        {
           "url": "admin/profit/index",
           "name": "Flujo de ganancia",
           "icon": "circle",
