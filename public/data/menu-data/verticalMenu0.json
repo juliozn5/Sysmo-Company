@@ -67,12 +67,6 @@
           "name": "Red",
           "icon": "circle",
           "slug": "Red"
-        },
-        {
-          "url": "#",
-          "name": "Rango",
-          "icon": "circle",
-          "slug": "Rango"
         }
       ]
     }
