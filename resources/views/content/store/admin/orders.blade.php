@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'list-orders-user')
+@section('title', 'Informes | Pedidos')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -37,12 +37,10 @@
 
                                 <tr class="text-center text-dark">
                                     <th>ID</th>
-                                    <th>Imagen</th>
                                     <th>Producto</th>
                                     <th>Usuario</th>
                                     <th>Estado</th>
-                                    <th>Fecha de Creacion</th>
-                                    <th>Accion</th>
+                                    <th>Fecha</th>
                                 </tr>
 
                             </thead>
@@ -51,12 +49,7 @@
 
                                 @foreach ($store as $item)
                                 <tr class="text-center">
-                                    <td>{{ $item->id}}</td>
-                                    @if ($item->getProduct->photoDB != NULL)
-                                    <td><img src="{{asset('storage/products/'.$item->getProduct->photoDB)}}" alt="photo" class="rounded" width="50px" height="70px"></td>
-                                    @else
-                                    <td>No Tiene Imagen</td>
-                                    @endif
+                                    <td>{{ $item->id}}</td>                                    
                                     <td>{{ $item->getProduct->name}}</td>
                                     <td>{{ $item->getUser->username}}</td>
 
