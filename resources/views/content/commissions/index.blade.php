@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Comissions')
+@section('title', 'Comisiones')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -37,7 +37,8 @@
                                     <th>ID</th>
                                     <th>Usuario</th>
                                     <th>Descripción</th> 
-                                    <th>Debito</th>
+                                    <th>monto</th>
+                                    <th>Estado</th>
                                     <th>Fecha</th>
                                 </tr>
 
@@ -50,6 +51,7 @@
                                     <td> {{$item->getWalletUser->username}} </td>
                                     <td>{{ $item->description}}</td>
                                     <td>{{ $item->debit}}</td>
+                                    <td>{{ $item->state}}</td>
                                     <td>{{ date('d-m-Y', strtotime($item->created_at))}}</td>
                                 </tr>
                                 @endforeach
