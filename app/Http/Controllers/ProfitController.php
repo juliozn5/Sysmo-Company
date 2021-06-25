@@ -22,7 +22,7 @@ class ProfitController extends Controller
         $liquidaction = Liquidaction::all();
         $product_warehouse = ProductWarehouse::all();
 
-dd($product_warehouse);
+// dd($product_warehouse);
 
         $profit = Wallet::with('id_user')
         ->with('users')

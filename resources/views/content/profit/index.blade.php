@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'profit')
+@section('title', 'Flujo de Ganancia')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -35,8 +35,8 @@
                             <thead class="">
                                 <tr class="text-center text-dark bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Compras del istema</th>
-                                    <th>Retiros del sistema</th>
+                                    <th>Compras del Sistema</th>
+                                    <th>Retiros del Sistema</th>
                                     <th>ID</th>
                                     <th>ID</th>
                                     <th>ID</th>
@@ -45,12 +45,12 @@
                             </thead>
                             <tbody>
                                 <tr class="text-center">
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
