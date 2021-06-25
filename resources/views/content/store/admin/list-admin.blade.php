@@ -30,8 +30,8 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <a href="{{ route('store.create')}}" class="btn btn-primary float-right mb-0 waves-effect waves-light"><i
-                        data-feather="plus-circle"></i>&nbsp; Crear Producto</a>
+                    <!-- <a href="{{ route('store.create')}}" class="btn btn-primary float-right mb-0 waves-effect waves-light"><i
+                        data-feather="plus-circle"></i>&nbsp; Crear Producto</a> -->
                     <div class="table-responsive">
                         <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped"
                             data-order='[[ 1, "asc" ]]' data-page-length='10'>
@@ -41,7 +41,7 @@
                                     <th>ID</th>
                                     <th>Imagen</th>
                                     <th>Nombre</th>
-                                    <th>Descripcion</th>
+                                    <th>Precio</th>
                                     <th>Estado</th>
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
@@ -60,7 +60,7 @@
                                     <td>No Tiene Imagen</td>
                                     @endif
                                     <td>{{ $item->name}}</td>
-                                    <td>{{ $item->description}}</td>
+                                    <td>{{ $item->price}}</td>
 
                                     @if ($item->status == '0')
                                     <td> <a class=" badge badge-info text-white">Inactivo</a></td>

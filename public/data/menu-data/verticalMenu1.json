@@ -14,12 +14,6 @@
       "slug": "",
       "submenu": [
         {
-          "name": "Añadir producto",
-          "icon": "circle",
-          "slug": "Productos",
-          "url": "admin/store/create"
-        },
-        {
           "name": "Productos",
           "icon": "circle",
           "slug": "Productos",
