@@ -39,29 +39,21 @@
                             <thead class="">
                                 <tr class="text-center text-black bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Total </th>
-                                    <th>Monto Bruto</th>
-                                    <th>Feed</th>
-                                    <th>Hash</th>
-                                    <th>Billetera</th>
-                                    <th>Status</th>
-                                    <th>Fecha</th>
-                                    <th>Accion</th>
+                                    <th>Correo</th>
+                                    <th>Fecha </th>
+                                    <th>Monto</th>
+                                    <th>Billetera</th>  
+                                    <th>Acción</th>                                  
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($liquidations as $liqui)
                                 <tr class="text-center">
                                     <td>{{$liqui->id}}</td>
-                                    <td>{{$liqui->username}}</td>
-                                    <td>{{$liqui->total}}</td>
-                                    <td>{{$liqui->gross_amount}}</td>
-                                    <td>{{$liqui->feed}}</td>
-                                    <td>{{$liqui->hash}}</td>
-                                    <td>{{$liqui->wallet_used}}</td>
-                                    <td>{{$liqui->status}}</td>
+                                    <td>{{$liqui->email}}</td>
                                     <td>{{date('Y-m-d', strtotime($liqui->created_at))}}</td>
+                                    <td>{{$liqui->total}}</td>
+                                    <td>{{$liqui->wallet_used}}</td>
                                     <td>
                                         @if ($liqui->status == 1)
                                         <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">

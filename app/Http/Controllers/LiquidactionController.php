@@ -43,7 +43,7 @@ class LiquidactionController extends Controller
     {
         $liquidations = Liquidaction::where('status', 0)->get();
         foreach ($liquidations as $liqui) {
-            $liqui->username = $liqui->getUserLiquidation->username;
+            $liqui->email = $liqui->getUserLiquidation->email;
         }
         return view('content.liquidation.pending')->with('liquidations', $liquidations);
     }
@@ -58,7 +58,7 @@ class LiquidactionController extends Controller
     {
         $liquidations = Liquidaction::where('status', '1')->get();
         foreach ($liquidations as $liqui) {
-            $liqui->username = $liqui->getUserLiquidation->username;
+            $liqui->email = $liqui->getUserLiquidation->email;
         }
         return view('content.liquidation.history')
         ->with('liquidations', $liquidations);

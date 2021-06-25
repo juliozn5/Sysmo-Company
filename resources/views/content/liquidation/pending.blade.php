@@ -39,7 +39,6 @@
                                 <tr class="text-center text-black bg-purple-alt2">
                                     <th>ID</th>
                                     <th>Correo</th>
-                                    <th>Total </th>
                                     <th>Fecha</th>
                                     <th>Billetera</th>
                                     <th>Total</th>
@@ -51,8 +50,7 @@
                                 @foreach ($liquidations as $liqui)
                                 <tr class="text-center">
                                     <td>{{$liqui->id}}</td> 
-                                    <td>{1}</td>
-                                    <!-- <td>{{$liqui->correo}}</td> -->
+                                    <td>{{$liqui->email}}</td> 
                                     <td>{{date('Y-m-d', strtotime($liqui->created_at))}}</td>
                                     <td>{{$liqui->wallet_used}}</td>
                                     <td>{{$liqui->total}}</td>
@@ -62,11 +60,11 @@
                                             Ver
                                         </button>
                                         <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'aproved')">
-                                            Aprovar
+                                            Aprobar
                                         </button>
-                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'reverse')">
+                                        {{-- <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'reverse')">
                                             <i class="fa fa-reply"></i>
-                                        </button> 
+                                        </button> --}}
                                     </td>
                                 </tr>
                                 @endforeach
@@ -77,7 +75,7 @@
             </div>
         </div>
     </div>
-    @include('content.liquidation.componentes.modalDetalles', ['all' => true])
+    @include('content.liquidation.componentes.modalDetalles', ['all' => false])
     @include('content.liquidation.componentes.modalAction')
 </div>
 @endsection
