@@ -38,14 +38,12 @@
                             <thead class="">
                                 <tr class="text-center text-black bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Correo</th>
                                     <th>Total </th>
-                                    <th>Monto Bruto</th>
-                                    <th>Feed</th>
-                                    <th>Hash</th>
-                                    <th>Billetera</th>
-                                    <th>Status</th>
                                     <th>Fecha</th>
+                                    <th>Billetera</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
                                     <th>Accion</th>
                                 </tr>
                             </thead>
@@ -53,14 +51,12 @@
                                 @foreach ($liquidations as $liqui)
                                 <tr class="text-center">
                                     <td>{{$liqui->id}}</td> 
-                                    <td>{{$liqui->username}}</td>
-                                    <td>{{$liqui->total}}</td>
-                                    <td>{{$liqui->gross_amount}}</td>
-                                    <td>{{$liqui->feed}}</td>
-                                    <td>{{$liqui->hash}}</td>
-                                    <td>{{$liqui->wallet_used}}</td>
-                                    <td>{{$liqui->status}}</td>
+                                    <td>{1}</td>
+                                    <!-- <td>{{$liqui->correo}}</td> -->
                                     <td>{{date('Y-m-d', strtotime($liqui->created_at))}}</td>
+                                    <td>{{$liqui->wallet_used}}</td>
+                                    <td>{{$liqui->total}}</td>
+                                    <td>{{$liqui->status}}</td>
                                     <td>
                                         <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">
                                             Ver
@@ -68,9 +64,9 @@
                                         <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'aproved')">
                                             Aprovar
                                         </button>
-                                        {{-- <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'reverse')">
+                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'reverse')">
                                             <i class="fa fa-reply"></i>
-                                        </button> --}}
+                                        </button> 
                                     </td>
                                 </tr>
                                 @endforeach
@@ -81,7 +77,7 @@
             </div>
         </div>
     </div>
-    @include('content.liquidation.componentes.modalDetalles', ['all' => false])
+    @include('content.liquidation.componentes.modalDetalles', ['all' => true])
     @include('content.liquidation.componentes.modalAction')
 </div>
 @endsection
