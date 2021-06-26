@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'list-tickets-user')
+@section('title', 'Lista de Productos')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -36,7 +36,6 @@
                         <table id="mytable" class="table nowrap scroll-horizontal-vertical myTable table-striped"
                             data-order='[[ 1, "asc" ]]' data-page-length='10'>
                             <thead class="bg-purple-alt2">
-
                                 <tr class="text-center text-dark">
                                     <th>ID</th>
                                     <th>Imagen</th>
@@ -46,11 +45,8 @@
                                     <th>Fecha de Creacion</th>
                                     <th>Accion</th>
                                 </tr>
-
                             </thead>
-
                             <tbody>
-
                                 @foreach ($store as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
@@ -89,7 +85,7 @@
                                                     action="{{ route('store.destroy', $item->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <h1 class="text-center card-title">Seguro que quieres Eliminar este Ticket ?</h1>
+                                                    <h1 class="text-center card-title">Seguro que quieres Eliminar este Producto?</h1>
                                             </div>
                                             <div class="modal-footer justify-conten-center">
                                                 <button type="button" class="btn btn-secondary"

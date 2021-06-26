@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Comissions')
+@section('title', 'Generar Liquidaciones')
 
 @section('page-script')
 
@@ -30,6 +30,21 @@
 @endsection
 
 @section('content')
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                        <h1 class="content-header-title float-left mr-2">Sysmo Company</h1>
+                        <li class="breadcrumb-item"><a href="#">Liquidaciones</a></li>
+                        <li class="breadcrumb-item"><a href="#">Generar Liquidaciones</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="settlement">
     <div class="col-12">
         <div class="card">
